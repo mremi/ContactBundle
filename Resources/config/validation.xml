@@ -1,0 +1,91 @@
+<?xml version="1.0" ?>
+<constraint-mapping xmlns="http://symfony.com/schema/dic/constraint-mapping"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/constraint-mapping
+        http://symfony.com/schema/dic/constraint-mapping/constraint-mapping-1.0.xsd">
+
+    <class name="Mremi\ContactBundle\Model\Contact">
+
+        <property name="title">
+            <constraint name="NotBlank">
+                <option name="message">mremi_contact.title.blank</option>
+            </constraint>
+            <constraint name="Length">
+                <option name="min">3</option>
+                <option name="minMessage">mremi_contact.title.short</option>
+                <option name="max">4</option>
+                <option name="maxMessage">mremi_contact.title.long</option>
+            </constraint>
+        </property>
+
+        <property name="firstName">
+            <constraint name="NotBlank">
+                <option name="message">mremi_contact.first_name.blank</option>
+            </constraint>
+            <constraint name="Length">
+                <option name="min">2</option>
+                <option name="minMessage">mremi_contact.first_name.short</option>
+                <option name="max">50</option>
+                <option name="maxMessage">mremi_contact.first_name.long</option>
+            </constraint>
+        </property>
+
+        <property name="lastName">
+            <constraint name="NotBlank">
+                <option name="message">mremi_contact.last_name.blank</option>
+            </constraint>
+            <constraint name="Length">
+                <option name="min">2</option>
+                <option name="minMessage">mremi_contact.last_name.short</option>
+                <option name="max">50</option>
+                <option name="maxMessage">mremi_contact.last_name.long</option>
+            </constraint>
+        </property>
+
+        <property name="email">
+            <constraint name="NotBlank">
+                <option name="message">mremi_contact.email.blank</option>
+            </constraint>
+            <constraint name="Length">
+                <option name="min">2</option>
+                <option name="minMessage">mremi_contact.email.short</option>
+                <option name="max">254</option>
+                <option name="maxMessage">mremi_contact.email.long</option>
+            </constraint>
+            <constraint name="Email">
+                <option name="message">mremi_contact.email.invalid</option>
+            </constraint>
+        </property>
+
+        <property name="subject">
+            <constraint name="NotBlank">
+                <option name="message">mremi_contact.subject.blank</option>
+            </constraint>
+            <constraint name="Length">
+                <option name="min">2</option>
+                <option name="minMessage">mremi_contact.subject.short</option>
+                <option name="max">50</option>
+                <option name="maxMessage">mremi_contact.subject.long</option>
+            </constraint>
+        </property>
+
+        <property name="message">
+            <constraint name="NotBlank">
+                <option name="message">mremi_contact.message.blank</option>
+            </constraint>
+            <constraint name="Length">
+                <option name="min">2</option>
+                <option name="minMessage">mremi_contact.message.short</option>
+                <option name="max">500</option>
+                <option name="maxMessage">mremi_contact.message.long</option>
+            </constraint>
+        </property>
+
+        <property name="createdAt">
+            <constraint name="DateTime">
+                <option name="message">mremi_contact.created_at.invalid</option>
+            </constraint>
+        </property>
+    </class>
+
+</constraint-mapping>

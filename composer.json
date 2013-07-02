@@ -1,0 +1,24 @@
+{
+    "name": "mremi/contact-bundle",
+    "type": "symfony-bundle",
+    "description": "Implementation of a contact form for Symfony2",
+    "keywords": ["contact", "form"],
+    "homepage": "https://github.com/mremi/ContactBundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rémi Marseille",
+            "email": "marseille.remi@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "symfony/framework-bundle": "~2.1",
+        "symfony/form": "~2.1",
+        "genemu/form-bundle": "2.1.*"
+    },
+    "autoload": {
+        "psr-0": { "Mremi\\ContactBundle": "" }
+    },
+    "target-dir": "Mremi/ContactBundle"
+}

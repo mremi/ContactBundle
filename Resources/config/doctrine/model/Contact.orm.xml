@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                  http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <mapped-superclass name="Mremi\ContactBundle\Model\Contact">
+
+        <field name="title"     column="title"      type="string"   length="10"  />
+        <field name="firstName" column="first_name" type="string"   length="255" />
+        <field name="lastName"  column="last_name"  type="string"   length="255" />
+        <field name="email"     column="email"      type="string"   length="255" />
+        <field name="subject"   column="subject"    type="string"   length="255" />
+        <field name="message"   column="message"    type="string"   length="255" />
+        <field name="createdAt" column="created_at" type="datetime"              />
+
+    </mapped-superclass>
+
+</doctrine-mapping>

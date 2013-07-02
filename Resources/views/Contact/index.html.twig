@@ -1,0 +1,10 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+    <form action="{{ path('mremi_contact_form') }}" {{ form_enctype(form) }} method="POST">
+        {{ form_widget(form) }}
+        <div>
+            <input type="submit" id="contact_form_submit_button" value="{{ 'contact_form.submit'|trans }}" />
+        </div>
+    </form>
+{% endblock body %}

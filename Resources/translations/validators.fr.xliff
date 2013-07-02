@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="mremi_contact.title.blank">
+                <source>mremi_contact.title.blank</source>
+                <target>Merci de sélectionner votre civilité</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.title.short">
+                <source>mremi_contact.title.short</source>
+                <target>Merci de sélectionner votre civilité</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.title.long">
+                <source>mremi_contact.title.long</source>
+                <target>Merci de sélectionner votre civilité</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.first_name.blank">
+                <source>mremi_contact.first_name.blank</source>
+                <target>Merci de saisir votre prénom</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.first_name.short">
+                <source>mremi_contact.first_name.short</source>
+                <target>[-Inf,Inf]Votre prénom est trop court</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.first_name.long">
+                <source>mremi_contact.first_name.long</source>
+                <target>[-Inf,Inf]Votre prénom est trop long</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.last_name.blank">
+                <source>mremi_contact.last_name.blank</source>
+                <target>Merci de saisir votre nom</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.last_name.short">
+                <source>mremi_contact.last_name.short</source>
+                <target>[-Inf,Inf]Votre nom est trop court</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.last_name.long">
+                <source>mremi_contact.last_name.long</source>
+                <target>[-Inf,Inf]Votre nom est trop long</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.email.blank">
+                <source>mremi_contact.email.blank</source>
+                <target>Merci de saisir votre adresse e-mail</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.email.short">
+                <source>mremi_contact.email.short</source>
+                <target>[-Inf,Inf]Votre adresse e-mail est trop courte</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.email.long">
+                <source>mremi_contact.email.long</source>
+                <target>[-Inf,Inf]Votre adresse e-mail est trop longue</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.email.invalid">
+                <source>mremi_contact.email.invalid</source>
+                <target>Votre adresse e-mail est invalide</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.subject.blank">
+                <source>mremi_contact.subject.blank</source>
+                <target>Merci de saisir un sujet</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.subject.short">
+                <source>mremi_contact.subject.short</source>
+                <target>[-Inf,Inf]Votre sujet est trop court</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.subject.long">
+                <source>mremi_contact.subject.long</source>
+                <target>[-Inf,Inf]Votre sujet est trop long</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.message.blank">
+                <source>mremi_contact.message.blank</source>
+                <target>Merci de saisir un message</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.message.short">
+                <source>mremi_contact.message.short</source>
+                <target>[-Inf,Inf]Votre message est trop court</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.message.long">
+                <source>mremi_contact.message.long</source>
+                <target>[-Inf,Inf]Votre message est trop long</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.created_at.invalid">
+                <source>mremi_contact.created_at.invalid</source>
+                <target>La date de création est invalide</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
