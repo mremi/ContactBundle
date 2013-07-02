@@ -41,7 +41,7 @@ class ContactControllerTest extends WebTestCase
 
         $submittedValues = $submittedValues['mremi_contact_form_type'];
 
-        $this->assertCount(7, $submittedValues);
+        $this->assertCount(8, $submittedValues);
 
         $this->assertArrayHasKey('title', $submittedValues);
         $this->assertEquals('mr.', $submittedValues['title']);
@@ -60,6 +60,8 @@ class ContactControllerTest extends WebTestCase
 
         $this->assertArrayHasKey('message', $submittedValues);
         $this->assertEquals('', $submittedValues['message']);
+
+        $this->assertArrayHasKey('captcha', $submittedValues);
 
         $this->assertArrayHasKey('_token', $submittedValues);
     }
