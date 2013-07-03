@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="mremi_contact.form_title">
+                <source>mremi_contact.form_title</source>
+                <target>Contact form</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.form_submit">
+                <source>mremi_contact.form_submit</source>
+                <target>Send</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

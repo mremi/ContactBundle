@@ -1,10 +1,12 @@
 {% extends "::base.html.twig" %}
 
 {% block body %}
+    <h1>{{ 'mremi_contact.form_title'|trans({}, 'MremiContactBundle') }}</h1>
+
     <form action="{{ path('mremi_contact_form') }}" {{ form_enctype(form) }} method="POST">
         {{ form_widget(form) }}
         <div>
-            <input type="submit" id="contact_form_submit_button" value="{{ 'contact_form.submit'|trans }}" />
+            <input type="submit" id="contact_form_submit_button" value="{{ 'mremi_contact.form_submit'|trans({}, 'MremiContactBundle') }}" />
         </div>
     </form>
 {% endblock body %}
