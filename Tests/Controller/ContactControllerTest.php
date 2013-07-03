@@ -31,6 +31,7 @@ class ContactControllerTest extends WebTestCase
             'mremi_contact_form_type[email]'     => 'marseille.remi@gmail.com',
             'mremi_contact_form_type[subject]'   => 'Subject',
             'mremi_contact_form_type[message]'   => '',  // do not set value to cause a validation error
+            'mremi_contact_form_type[captcha]'   => '1234',
         ));
 
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
@@ -62,6 +63,7 @@ class ContactControllerTest extends WebTestCase
         $this->assertEquals('', $submittedValues['message']);
 
         $this->assertArrayHasKey('captcha', $submittedValues);
+        $this->assertEquals(1234, $submittedValues['captcha']);
 
         $this->assertArrayHasKey('_token', $submittedValues);
     }
