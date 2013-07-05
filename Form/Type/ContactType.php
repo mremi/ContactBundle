@@ -41,14 +41,14 @@ class ContactType extends AbstractType
         $builder
             ->add('title',     'choice', array(
                 'choices'  => array_combine($titles, array_map('ucfirst', $titles)),
-                'expanded' => true
+                'expanded' => true,
             ))
             ->add('firstName', 'text')
             ->add('lastName',  'text')
             ->add('email',     'email')
             ->add('subject',   'text')
             ->add('message',   'textarea')
-            ->add('captcha',   'genemu_captcha', array('property_path' => false));
+            ->add('captcha',   'genemu_captcha', array('mapped' => false));
     }
 
     /**
