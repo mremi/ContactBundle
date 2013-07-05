@@ -122,3 +122,9 @@ Or if you prefer XML:
 
 > In order to use the built-in email functionality, you must activate and
 > configure the SwiftmailerBundle.
+
+You can now access to the contact form at `http://example.com/app_dev.php/contact`!
+
+**Note:**
+
+> The HTML5 validation can be disabled by adding `?novalidate=1` to the URL.
