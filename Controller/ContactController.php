@@ -4,6 +4,7 @@ namespace Mremi\ContactBundle\Controller;
 
 use Mremi\ContactBundle\ContactEvents;
 use Mremi\ContactBundle\Event\ContactEvent;
+use Mremi\ContactBundle\Event\FilterContactResponseEvent;
 use Mremi\ContactBundle\Event\FormEvent;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -43,6 +44,8 @@ class ContactController extends Controller
                 if (null === $response = $event->getResponse()) {
                     $response = new RedirectResponse($this->getRouter()->generate('mremi_contact_confirmation'));
                 }
+
+                $dispatcher->dispatch(ContactEvents::FORM_COMPLETED, new FilterContactResponseEvent($contact, $request, $response));
 
                 return $response;
             }
