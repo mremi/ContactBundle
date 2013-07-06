@@ -21,9 +21,8 @@
         <whitelist>
             <directory>./</directory>
             <exclude>
-                <directory>./Tests/</directory>
                 <directory>./Resources/</directory>
-                <directory>./DependencyInjection/</directory>
+                <directory>./Tests/</directory>
             </exclude>
         </whitelist>
     </filter>
