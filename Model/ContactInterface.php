@@ -12,8 +12,8 @@ interface ContactInterface
     /**
      * Possible title values
      */
-    const TITLE_MR  = 'mr.';
-    const TITLE_MRS = 'mrs.';
+    const TITLE_MR  = 'mr';
+    const TITLE_MRS = 'mrs';
 
     /**
      * Sets the created at
@@ -121,6 +121,13 @@ interface ContactInterface
      * @return string
      */
     public function getTitle();
+
+    /**
+     * Gets the title value
+     *
+     * @return string
+     */
+    public function getTitleValue();
 
     /**
      * Gets an array of possible titles

@@ -161,7 +161,7 @@ class Contact implements ContactInterface
      */
     public function setTitle($title)
     {
-        $validTitles = self::getTitles();
+        $validTitles = array_keys(self::getTitles());
 
         if (!in_array($title, $validTitles)) {
             throw new \InvalidArgumentException(sprintf('Invalid title %s, possible values are: %s', $title, implode(', ', $validTitles)));
@@ -181,11 +181,19 @@ class Contact implements ContactInterface
     /**
      * {@inheritdoc}
      */
+    public function getTitleValue()
+    {
+        return self::getTitles()[$this->title];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public static function getTitles()
     {
         return array(
-            self::TITLE_MR,
-            self::TITLE_MRS,
+            self::TITLE_MR  => 'mremi_contact.form.title_mr',
+            self::TITLE_MRS => 'mremi_contact.form.title_mrs',
         );
     }
 }

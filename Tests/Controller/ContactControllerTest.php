@@ -25,7 +25,7 @@ class ContactControllerTest extends WebTestCase
         $form = $crawler->selectButton('contact_form_submit_button')->form();
 
         $client->submit($form, array(
-            'mremi_contact_form_type[title]'     => 'mr.',
+            'mremi_contact_form_type[title]'     => 'mr',
             'mremi_contact_form_type[firstName]' => 'Rémi',
             'mremi_contact_form_type[lastName]'  => 'Marseille',
             'mremi_contact_form_type[email]'     => 'marseille.remi@gmail.com',
@@ -45,7 +45,7 @@ class ContactControllerTest extends WebTestCase
         $this->assertCount(8, $submittedValues);
 
         $this->assertArrayHasKey('title', $submittedValues);
-        $this->assertEquals('mr.', $submittedValues['title']);
+        $this->assertEquals('mr', $submittedValues['title']);
 
         $this->assertArrayHasKey('firstName', $submittedValues);
         $this->assertEquals('Rémi', $submittedValues['firstName']);

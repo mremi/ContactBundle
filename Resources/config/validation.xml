@@ -11,7 +11,7 @@
                 <option name="message">mremi_contact.title.blank</option>
             </constraint>
             <constraint name="Length">
-                <option name="min">3</option>
+                <option name="min">2</option>
                 <option name="minMessage">mremi_contact.title.short</option>
                 <option name="max">4</option>
                 <option name="maxMessage">mremi_contact.title.long</option>

@@ -43,4 +43,19 @@ class ContactTest extends \PHPUnit_Framework_TestCase
         $contact = new Contact;
         $contact->setTitle('foo');
     }
+
+    /**
+     * Tests the getTitleValue method
+     */
+    public function testGetTitleValue()
+    {
+        $contact = new Contact;
+        $contact->setTitle(Contact::TITLE_MR);
+
+        $this->assertEquals('mremi_contact.form.title_mr', $contact->getTitleValue());
+
+        $contact->setTitle(Contact::TITLE_MRS);
+
+        $this->assertEquals('mremi_contact.form.title_mrs', $contact->getTitleValue());
+    }
 }

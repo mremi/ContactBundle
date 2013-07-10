@@ -6,6 +6,42 @@
                 <source>mremi_contact.form_title</source>
                 <target>Formulaire de contact</target>
             </trans-unit>
+            <trans-unit id="mremi_contact.form.title">
+                <source>mremi_contact.form.title</source>
+                <target>Civilité</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.form.title_mr">
+                <source>mremi_contact.form.title_mr</source>
+                <target>M.</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.form.title_mrs">
+                <source>mremi_contact.form.title_mrs</source>
+                <target>Mme</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.form.first_name">
+                <source>mremi_contact.form.first_name</source>
+                <target>Prénom</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.form.last_name">
+                <source>mremi_contact.form.last_name</source>
+                <target>Nom</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.form.email">
+                <source>mremi_contact.form.email</source>
+                <target>E-mail</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.form.subject">
+                <source>mremi_contact.form.subject</source>
+                <target>Sujet</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.form.message">
+                <source>mremi_contact.form.message</source>
+                <target>Commentaires</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.form.captcha">
+                <source>mremi_contact.form.captcha</source>
+                <target>Code sécurité</target>
+            </trans-unit>
             <trans-unit id="mremi_contact.form_submit">
                 <source>mremi_contact.form_submit</source>
                 <target>Envoyer</target>

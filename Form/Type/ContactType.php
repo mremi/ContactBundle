@@ -35,20 +35,19 @@ class ContactType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        // todo: handle it better (translation)
-        $titles = Contact::getTitles();
-
         $builder
             ->add('title',     'choice', array(
-                'choices'  => array_combine($titles, array_map('ucfirst', $titles)),
-                'expanded' => true,
+                'choices'            => Contact::getTitles(),
+                'expanded'           => true,
+                'label'              => 'mremi_contact.form.title',
+                'translation_domain' => 'MremiContactBundle',
             ))
-            ->add('firstName', 'text')
-            ->add('lastName',  'text')
-            ->add('email',     'email')
-            ->add('subject',   'text')
-            ->add('message',   'textarea')
-            ->add('captcha',   'genemu_captcha', array('mapped' => false));
+            ->add('firstName', 'text',           array('label' => 'mremi_contact.form.first_name', 'translation_domain' => 'MremiContactBundle'))
+            ->add('lastName',  'text',           array('label' => 'mremi_contact.form.last_name',  'translation_domain' => 'MremiContactBundle'))
+            ->add('email',     'email',          array('label' => 'mremi_contact.form.email',      'translation_domain' => 'MremiContactBundle'))
+            ->add('subject',   'text',           array('label' => 'mremi_contact.form.subject',    'translation_domain' => 'MremiContactBundle'))
+            ->add('message',   'textarea',       array('label' => 'mremi_contact.form.message',    'translation_domain' => 'MremiContactBundle'))
+            ->add('captcha',   'genemu_captcha', array('label' => 'mremi_contact.form.captcha',    'translation_domain' => 'MremiContactBundle', 'mapped' => false));
     }
 
     /**
