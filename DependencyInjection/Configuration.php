@@ -26,6 +26,7 @@ class Configuration implements ConfigurationInterface
                     ->isRequired()
                     ->addDefaultsIfNotSet()
                     ->children()
+                        ->scalarNode('mailer')->defaultValue('mremi_contact.mailer.twig_swift')->cannotBeEmpty()->end()
                         ->scalarNode('recipient_address')->isRequired()->cannotBeEmpty()->end()
                         ->scalarNode('template')->defaultValue('MremiContactBundle:Contact:email.txt.twig')->cannotBeEmpty()->end()
                     ->end()

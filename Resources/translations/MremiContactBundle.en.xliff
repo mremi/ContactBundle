@@ -46,6 +46,54 @@
                 <source>mremi_contact.form_submit</source>
                 <target>Send</target>
             </trans-unit>
+            <trans-unit id="mremi_contact.email_message_txt">
+                <source>mremi_contact.email_message_txt</source>
+                <target><![CDATA[Hello,
+
+A user has filled the contact form:
+
+Title: %title%
+
+First name: %firstName%
+
+Last name: %lastName%
+
+Email: %email%
+
+Message:
+%message%
+
+Regards
+]]></target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.email_message_html">
+                <source>mremi_contact.email_message_html</source>
+                <target><![CDATA[Hello,
+<br/>
+<br/>
+A user has filled the contact form:
+<br/>
+<br/>
+<strong><em>Title:</em></strong> %title%
+<br/>
+<br/>
+<strong><em>First name:</em></strong> %firstName%
+<br/>
+<br/>
+<strong><em>Last name:</em></strong> %lastName%
+<br/>
+<br/>
+<strong><em>Email:</em></strong> %email%
+<br/>
+<br/>
+<strong><em>Message:</em></strong>
+<br/>
+%message%
+<br/>
+<br/>
+Regards
+]]></target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

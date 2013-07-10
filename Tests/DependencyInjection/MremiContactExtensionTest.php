@@ -33,6 +33,19 @@ class MremiContactExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests extension loading throws exception if mailer is empty
+     *
+     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     */
+    public function testContactLoadThrowsExceptionIfMailerEmpty()
+    {
+        $loader = new MremiContactExtension;
+        $config = $this->getEmptyConfig();
+        $config['email']['mailer'] = '';
+        $loader->load(array($config), new ContainerBuilder);
+    }
+
+    /**
      * Tests extension loading throws exception if recipient address is not set
      *
      * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
@@ -120,7 +133,29 @@ class MremiContactExtensionTest extends \PHPUnit_Framework_TestCase
         $this->assertHasDefinition('mremi_contact.contact_manager');
         $this->assertHasDefinition('mremi_contact.form_factory');
         $this->assertHasDefinition('mremi_contact.contact_form_type');
-//        $this->assertHasDefinition('mremi_contact.listener.email_confirmation');
+        $this->assertHasDefinition('mremi_contact.listener.email_confirmation');
+        $this->assertHasDefinition('mremi_contact.mailer.twig_swift');
+        $this->assertHasDefinition('mremi_contact.mailer');
+    }
+
+    /**
+     * Tests default mailer
+     */
+    public function testContactLoadDefaultMailer()
+    {
+        $this->createEmptyConfiguration();
+
+        $this->assertAlias('mremi_contact.mailer.twig_swift', 'mremi_contact.mailer');
+    }
+
+    /**
+     * Tests custom mailer
+     */
+    public function testContactLoadCustomMailer()
+    {
+        $this->createFullConfiguration();
+
+        $this->assertAlias('application_mremi_contact.mailer', 'mremi_contact.mailer');
     }
 
     /**
@@ -165,8 +200,6 @@ class MremiContactExtensionTest extends \PHPUnit_Framework_TestCase
         $yaml = <<<EOF
 email:
     recipient_address: webmaster@example.com
-
-contact_class: Mremi\ContactBundle\Model\Contact
 EOF;
         $parser = new Parser;
 
@@ -182,15 +215,16 @@ EOF;
     {
         $yaml = <<<EOF
 email:
-    recipient_address: webmaster@example.com
-    template:          MremiContactBundle:Contact:email.txt.twig
+    mailer:            application_mremi_contact.mailer
+    recipient_address: foo@example.com
+    template:          ApplicationMremiContactBundle:Contact:email.txt.twig
 
-contact_class: Mremi\ContactBundle\Model\Contact
+contact_class: Application\Mremi\ContactBundle\Model\Contact
 
 form:
-    type:              mremi_contact_form_type
-    name:              mremi_contact_contact_form
-    validation_groups: [Default]
+    type:              application_mremi_contact_form_type
+    name:              application_mremi_contact_contact_form
+    validation_groups: [Default, Foo]
 EOF;
         $parser = new Parser;
 
@@ -198,6 +232,19 @@ EOF;
     }
 
     /**
+     * Asserts the given key is an alias of value
+     *
+     * @param string $value The aliased service identifier
+     * @param string $key   The alias key
+     */
+    private function assertAlias($value, $key)
+    {
+        $this->assertEquals($value, (string) $this->configuration->getAlias($key), sprintf('%s alias is correct', $key));
+    }
+
+    /**
+     * Asserts the given identifier matched a definition
+     *
      * @param string $id
      */
     private function assertHasDefinition($id)

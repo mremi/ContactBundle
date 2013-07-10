@@ -57,7 +57,7 @@ class EmailConfirmationListener implements EventSubscriberInterface
      */
     public function onSubmitSuccess(FormEvent $event)
     {
-        $this->mailer->sendConfirmationEmailMessage($event->getForm()->getData());
+        $this->mailer->sendMessage($event->getForm()->getData());
 
         $url = $this->router->generate('mremi_contact_confirmation');
 

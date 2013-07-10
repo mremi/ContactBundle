@@ -5,11 +5,11 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="mremi_contact.listener.email_confirmation" class="Mremi\ContactBundle\EventListener\EmailConfirmationListener">
-            <tag name="kernel.event_subscriber" />
-
-            <argument type="service" id="mremi_contact.mailer" />
-            <argument type="service" id="router" />
+        <service id="mremi_contact.mailer.twig_swift" class="Mremi\ContactBundle\Mailer\TwigSwiftMailer" public="false">
+            <argument type="service" id="mailer" />
+            <argument type="service" id="twig" />
+            <argument />
+            <argument />
         </service>
     </services>
 

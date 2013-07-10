@@ -85,6 +85,7 @@ However you have to configure at least the recipient address.
 # app/config/config.yml
 mremi_contact:
     email:
+        mailer:            mremi_contact.mailer.twig_swift
         recipient_address: webmaster@example.com
         template:          MremiContactBundle:Contact:email.txt.twig
 

@@ -25,8 +25,14 @@ class MremiContactExtension extends Extension
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('contact.xml');
         $loader->load('form.xml');
-//        $loader->load('listeners.xml');
-//        $loader->load('mailer.xml');
+        $loader->load('listeners.xml');
+        $loader->load('mailer.xml');
+
+        $container->setAlias('mremi_contact.mailer', $config['email']['mailer']);
+
+        if ('mremi_contact.mailer.twig_swift' === $config['email']['mailer']) {
+            $this->configureMailer($container, $config);
+        }
 
         $this->configureContactManager($container, $config);
         $this->configureForm($container, $config);
@@ -59,5 +65,18 @@ class MremiContactExtension extends Extension
 
         $definition = $container->getDefinition('mremi_contact.contact_form_type');
         $definition->replaceArgument(0, $config['contact_class']);
+    }
+
+    /**
+     * Configures the mailer service
+     *
+     * @param ContainerBuilder $container A container builder instance
+     * @param array            $config    An array of configuration
+     */
+    private function configureMailer(ContainerBuilder $container, array $config)
+    {
+        $definition = $container->getDefinition('mremi_contact.mailer.twig_swift');
+        $definition->replaceArgument(2, $config['email']['recipient_address']);
+        $definition->replaceArgument(3, $config['email']['template']);
     }
 }
