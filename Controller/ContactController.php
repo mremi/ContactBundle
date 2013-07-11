@@ -10,6 +10,7 @@ use Mremi\ContactBundle\Event\FormEvent;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 /**
  * Contact controller class
@@ -23,7 +24,7 @@ class ContactController extends Controller
      *
      * @param Request $request
      *
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return \Symfony\Component\HttpFoundation\Response|RedirectResponse
      */
     public function indexAction(Request $request)
     {
@@ -45,6 +46,8 @@ class ContactController extends Controller
                     $response = new RedirectResponse($this->getRouter()->generate('mremi_contact_confirmation'));
                 }
 
+                $this->getSession()->set('mremi_contact_data', $contact);
+
                 $dispatcher->dispatch(ContactEvents::FORM_COMPLETED, new FilterContactResponseEvent($contact, $request, $response));
 
                 return $response;
@@ -52,7 +55,29 @@ class ContactController extends Controller
         }
 
         return $this->render('MremiContactBundle:Contact:index.html.twig', array(
-            'form' => $form->createView()
+            'form' => $form->createView(),
+        ));
+    }
+
+    /**
+     * Confirm action in charge to render a confirmation message
+     *
+     * @param Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     *
+     * @throws AccessDeniedHttpException If no contact stored in session
+     */
+    public function confirmAction(Request $request)
+    {
+        $contact = $this->getSession()->get('mremi_contact_data');
+
+        if (!$contact) {
+            throw new AccessDeniedHttpException('Please fill the contact form');
+        }
+
+        return $this->render('MremiContactBundle:Contact:confirm.html.twig', array(
+            'contact' => $contact,
         ));
     }
 
@@ -94,5 +119,15 @@ class ContactController extends Controller
     private function getRouter()
     {
         return $this->container->get('router');
+    }
+
+    /**
+     * Gets the session
+     *
+     * @return \Symfony\Component\HttpFoundation\Session\SessionInterface
+     */
+    private function getSession()
+    {
+        return $this->container->get('session');
     }
 }

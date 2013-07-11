@@ -135,4 +135,18 @@ interface ContactInterface
      * @return array
      */
     public static function getTitles();
+
+    /**
+     * Gets an array representation
+     *
+     * @return array
+     */
+    public function toArray();
+
+    /**
+     * Loads the object by the given data
+     *
+     * @param array $data
+     */
+    public function fromArray(array $data);
 }

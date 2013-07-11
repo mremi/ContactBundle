@@ -3,10 +3,11 @@ MremiContactBundle
 
 This bundle provides a contact form in Symfony2.
 
-**Warning:**
+**Note:**
 
-> This bundle is not yet complete and functional. I'm still working on it.
-> However you can contribute if you want ;-) .
+> This bundle is not yet complete but is functional. I'm still working on it.
+> However you can contribute if you want.
+> I'm also interested by your feedback ;-) .
 
 ## Prerequisites
 
@@ -89,7 +90,7 @@ mremi_contact:
         recipient_address: webmaster@example.com
         template:          MremiContactBundle:Contact:email.txt.twig
 
-    contact_class: Mremi\ContactBundle\Model\Contact
+    contact_class:         Mremi\ContactBundle\Model\Contact
 
     form:
         type:              mremi_contact_form_type

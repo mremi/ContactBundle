@@ -7,4 +7,9 @@
     <route id="mremi_contact_form" pattern="/contact">
         <default key="_controller">MremiContactBundle:Contact:index</default>
     </route>
+
+    <route id="mremi_contact_confirmation" pattern="/contact/confirmation">
+        <default key="_controller">MremiContactBundle:Contact:confirm</default>
+        <requirement key="_method">GET</requirement>
+    </route>
 </routes>

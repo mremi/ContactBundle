@@ -94,6 +94,14 @@ A user has filled the contact form:
 Regards
 ]]></target>
             </trans-unit>
+            <trans-unit id="mremi_contact.confirm_title">
+                <source>mremi_contact.confirm_title</source>
+                <target>Thank you %title% %fullName%</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.confirm_message">
+                <source>mremi_contact.confirm_message</source>
+                <target>Your request has been submitted successfully and will be considered quickly.</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

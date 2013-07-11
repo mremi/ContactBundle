@@ -94,6 +94,14 @@ Un internaute a fait une demande de contact :
 Cordialement
 ]]></target>
             </trans-unit>
+            <trans-unit id="mremi_contact.confirm_title">
+                <source>mremi_contact.confirm_title</source>
+                <target>Merci %title% %fullName%</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.confirm_message">
+                <source>mremi_contact.confirm_message</source>
+                <target>Votre demande a été transmise et sera prise en compte rapidement.</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

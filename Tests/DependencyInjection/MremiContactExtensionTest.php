@@ -219,7 +219,7 @@ email:
     recipient_address: foo@example.com
     template:          ApplicationMremiContactBundle:Contact:email.txt.twig
 
-contact_class: Application\Mremi\ContactBundle\Model\Contact
+contact_class:         Application\Mremi\ContactBundle\Model\Contact
 
 form:
     type:              application_mremi_contact_form_type

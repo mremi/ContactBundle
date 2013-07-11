@@ -1,12 +1,14 @@
 {% extends "::base.html.twig" %}
 
+{% trans_default_domain 'MremiContactBundle' %}
+
 {% block body %}
-    <h1>{{ 'mremi_contact.form_title'|trans({}, 'MremiContactBundle') }}</h1>
+    <h1>{{ 'mremi_contact.form_title'|trans }}</h1>
 
     <form action="{{ path('mremi_contact_form') }}" {{ form_enctype(form) }} method="POST"{{ app.request.get('novalidate') ? 'novalidate="novalidate"' : '' }}>
         {{ form_widget(form) }}
         <div>
-            <input type="submit" id="contact_form_submit_button" value="{{ 'mremi_contact.form_submit'|trans({}, 'MremiContactBundle') }}" />
+            <input type="submit" id="contact_form_submit_button" value="{{ 'mremi_contact.form_submit'|trans }}" />
         </div>
     </form>
 {% endblock body %}

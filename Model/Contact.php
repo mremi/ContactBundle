@@ -7,7 +7,7 @@ namespace Mremi\ContactBundle\Model;
  *
  * @author Rémi Marseille <marseille.remi@gmail.com>
  */
-class Contact implements ContactInterface
+class Contact implements ContactInterface, \Serializable
 {
     /**
      * @var string
@@ -195,5 +195,49 @@ class Contact implements ContactInterface
             self::TITLE_MR  => 'mremi_contact.form.title_mr',
             self::TITLE_MRS => 'mremi_contact.form.title_mrs',
         );
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function toArray()
+    {
+        return array(
+            'title'     => $this->title,
+            'firstName' => $this->firstName,
+            'lastName'  => $this->lastName,
+            'email'     => $this->email,
+            'subject'   => $this->subject,
+            'message'   => $this->message,
+            'createdAt' => $this->createdAt->format('c'),
+        );
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function fromArray(array $data)
+    {
+        foreach ($data as $property => $value) {
+            $method = sprintf('set%s', ucfirst($property));
+
+            $this->$method('createdAt' === $property ? new \DateTime($value) : $value);
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function serialize()
+    {
+        return serialize($this->toArray());
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function unserialize($data)
+    {
+        $this->fromArray(unserialize($data));
     }
 }

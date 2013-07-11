@@ -1,0 +1,12 @@
+{% extends "::base.html.twig" %}
+
+{% trans_default_domain 'MremiContactBundle' %}
+
+{% block body %}
+    <h1>{{ 'mremi_contact.confirm_title'|trans({
+        '%title%':    contact.titleValue|trans,
+        '%fullName%': contact.fullName
+    }) }}</h1>
+
+    <p>{{ 'mremi_contact.confirm_message'|trans }}</p>
+{% endblock body %}
