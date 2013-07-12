@@ -6,14 +6,6 @@
                 <source>mremi_contact.title.blank</source>
                 <target>Please select a title</target>
             </trans-unit>
-            <trans-unit id="mremi_contact.title.short">
-                <source>mremi_contact.title.short</source>
-                <target>Please select a title</target>
-            </trans-unit>
-            <trans-unit id="mremi_contact.title.long">
-                <source>mremi_contact.title.long</source>
-                <target>Please select a title</target>
-            </trans-unit>
             <trans-unit id="mremi_contact.first_name.blank">
                 <source>mremi_contact.first_name.blank</source>
                 <target>Please enter a first name</target>

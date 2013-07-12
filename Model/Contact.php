@@ -200,6 +200,14 @@ class Contact implements ContactInterface, \Serializable
     /**
      * {@inheritdoc}
      */
+    public static function getTitleKeys()
+    {
+        return array_keys(self::getTitles());
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function toArray()
     {
         return array(

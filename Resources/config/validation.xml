@@ -10,11 +10,8 @@
             <constraint name="NotBlank">
                 <option name="message">mremi_contact.title.blank</option>
             </constraint>
-            <constraint name="Length">
-                <option name="min">2</option>
-                <option name="minMessage">mremi_contact.title.short</option>
-                <option name="max">4</option>
-                <option name="maxMessage">mremi_contact.title.long</option>
+            <constraint name="Choice">
+                <option name="callback">getTitleKeys</option>
             </constraint>
         </property>
 

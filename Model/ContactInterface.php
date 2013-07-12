@@ -137,6 +137,13 @@ interface ContactInterface
     public static function getTitles();
 
     /**
+     * Gets an array of possible title keys
+     *
+     * @return array
+     */
+    public static function getTitleKeys();
+
+    /**
      * Gets an array representation
      *
      * @return array
