@@ -137,6 +137,32 @@ class MremiContactExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests extension loading throws exception if captcha type is empty
+     *
+     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     */
+    public function testContactLoadThrowsExceptionIfCaptchaTypeEmpty()
+    {
+        $loader = new MremiContactExtension;
+        $config = $this->getEmptyConfig();
+        $config['form']['captcha_type'] = '';
+        $loader->load(array($config), new ContainerBuilder);
+    }
+
+    /**
+     * Tests extension loading throws exception if captcha type is invalid
+     *
+     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     */
+    public function testContactLoadThrowsExceptionIfCaptchaTypeInvalid()
+    {
+        $loader = new MremiContactExtension;
+        $config = $this->getEmptyConfig();
+        $config['form']['captcha_type'] = 'foo';
+        $loader->load(array($config), new ContainerBuilder);
+    }
+
+    /**
      * Tests services existence
      */
     public function testContactLoadServicesWithDefaults()
@@ -239,6 +265,7 @@ form:
     name:              application_mremi_contact_contact_form
     validation_groups: [Default, Foo]
     captcha_disabled:  true
+    captcha_type:      genemu_recaptcha
 EOF;
         $parser = new Parser;
 

@@ -26,15 +26,22 @@ class ContactType extends AbstractType
     private $captchaDisabled;
 
     /**
+     * @var string
+     */
+    private $captchaType;
+
+    /**
      * Constructor
      *
      * @param string  $class           The Contact class namespace
      * @param boolean $captchaDisabled TRUE whether you want disable the captcha
+     * @param string  $captchaType     The captcha type
      */
-    public function __construct($class, $captchaDisabled)
+    public function __construct($class, $captchaDisabled, $captchaType)
     {
         $this->class           = $class;
         $this->captchaDisabled = $captchaDisabled;
+        $this->captchaType     = $captchaType;
     }
 
     /**
@@ -56,7 +63,7 @@ class ContactType extends AbstractType
             ->add('message',   'textarea', array('label' => 'mremi_contact.form.message',    'translation_domain' => 'MremiContactBundle'));
 
         if (!$this->captchaDisabled) {
-            $builder->add('captcha', 'genemu_captcha', array(
+            $builder->add('captcha', $this->captchaType, array(
                 'label'              => 'mremi_contact.form.captcha',
                 'translation_domain' => 'MremiContactBundle',
                 'mapped'             => false,

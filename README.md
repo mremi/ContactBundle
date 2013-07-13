@@ -98,6 +98,7 @@ mremi_contact:
         name:              mremi_contact_contact_form
         validation_groups: [Default]
         captcha_disabled:  false
+        captcha_type:      genemu_captcha
 ```
 
 ### Step 4: Import MremiContactBundle routing

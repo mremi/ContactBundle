@@ -66,6 +66,7 @@ class MremiContactExtension extends Extension
         $definition = $container->getDefinition('mremi_contact.contact_form_type');
         $definition->replaceArgument(0, $config['contact_class']);
         $definition->replaceArgument(1, $config['form']['captcha_disabled']);
+        $definition->replaceArgument(2, $config['form']['captcha_type']);
     }
 
     /**
