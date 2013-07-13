@@ -43,6 +43,7 @@ class Configuration implements ConfigurationInterface
                             ->prototype('scalar')->end()
                             ->defaultValue(array('Default'))
                         ->end()
+                        ->booleanNode('captcha_disabled')->defaultFalse()->end()
                     ->end()
                 ->end()
             ->end();

@@ -124,6 +124,19 @@ class MremiContactExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests extension loading throws exception if captcha_disabled is not a boolean
+     *
+     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     */
+    public function testContactLoadThrowsExceptionIfCaptchaDisabledNotBoolean()
+    {
+        $loader = new MremiContactExtension;
+        $config = $this->getEmptyConfig();
+        $config['form']['captcha_disabled'] = 'foo';
+        $loader->load(array($config), new ContainerBuilder);
+    }
+
+    /**
      * Tests services existence
      */
     public function testContactLoadServicesWithDefaults()
@@ -225,6 +238,7 @@ form:
     type:              application_mremi_contact_form_type
     name:              application_mremi_contact_contact_form
     validation_groups: [Default, Foo]
+    captcha_disabled:  true
 EOF;
         $parser = new Parser;
 

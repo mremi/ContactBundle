@@ -29,7 +29,8 @@ For more information about translations, check [Symfony documentation](http://sy
 
 ### Extra form
 
-This bundle requires the [GenemuFormBundle](https://github.com/genemu/GenemuFormBundle), so you need to configure it.
+This bundle requires the [GenemuFormBundle](https://github.com/genemu/GenemuFormBundle) for an easy captcha integration,
+so you need to configure it.
 
 ## Installation
 
@@ -96,6 +97,7 @@ mremi_contact:
         type:              mremi_contact_form_type
         name:              mremi_contact_contact_form
         validation_groups: [Default]
+        captcha_disabled:  false
 ```
 
 ### Step 4: Import MremiContactBundle routing

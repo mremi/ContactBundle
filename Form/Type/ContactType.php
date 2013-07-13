@@ -21,13 +21,20 @@ class ContactType extends AbstractType
     private $class;
 
     /**
+     * @var boolean
+     */
+    private $captchaDisabled;
+
+    /**
      * Constructor
      *
-     * @param string $class The Contact class namespace
+     * @param string  $class           The Contact class namespace
+     * @param boolean $captchaDisabled TRUE whether you want disable the captcha
      */
-    public function __construct($class)
+    public function __construct($class, $captchaDisabled)
     {
-        $this->class = $class;
+        $this->class           = $class;
+        $this->captchaDisabled = $captchaDisabled;
     }
 
     /**
@@ -36,18 +43,25 @@ class ContactType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title',     'choice', array(
+            ->add('title', 'choice', array(
                 'choices'            => Contact::getTitles(),
                 'expanded'           => true,
                 'label'              => 'mremi_contact.form.title',
                 'translation_domain' => 'MremiContactBundle',
             ))
-            ->add('firstName', 'text',           array('label' => 'mremi_contact.form.first_name', 'translation_domain' => 'MremiContactBundle'))
-            ->add('lastName',  'text',           array('label' => 'mremi_contact.form.last_name',  'translation_domain' => 'MremiContactBundle'))
-            ->add('email',     'email',          array('label' => 'mremi_contact.form.email',      'translation_domain' => 'MremiContactBundle'))
-            ->add('subject',   'text',           array('label' => 'mremi_contact.form.subject',    'translation_domain' => 'MremiContactBundle'))
-            ->add('message',   'textarea',       array('label' => 'mremi_contact.form.message',    'translation_domain' => 'MremiContactBundle'))
-            ->add('captcha',   'genemu_captcha', array('label' => 'mremi_contact.form.captcha',    'translation_domain' => 'MremiContactBundle', 'mapped' => false));
+            ->add('firstName', 'text',     array('label' => 'mremi_contact.form.first_name', 'translation_domain' => 'MremiContactBundle'))
+            ->add('lastName',  'text',     array('label' => 'mremi_contact.form.last_name',  'translation_domain' => 'MremiContactBundle'))
+            ->add('email',     'email',    array('label' => 'mremi_contact.form.email',      'translation_domain' => 'MremiContactBundle'))
+            ->add('subject',   'text',     array('label' => 'mremi_contact.form.subject',    'translation_domain' => 'MremiContactBundle'))
+            ->add('message',   'textarea', array('label' => 'mremi_contact.form.message',    'translation_domain' => 'MremiContactBundle'));
+
+        if (!$this->captchaDisabled) {
+            $builder->add('captcha', 'genemu_captcha', array(
+                'label'              => 'mremi_contact.form.captcha',
+                'translation_domain' => 'MremiContactBundle',
+                'mapped'             => false,
+            ));
+        }
     }
 
     /**
