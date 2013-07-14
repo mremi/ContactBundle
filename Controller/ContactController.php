@@ -88,7 +88,7 @@ class ContactController extends Controller
      */
     private function getEventDispatcher()
     {
-        return $this->container->get('event_dispatcher');
+        return $this->get('event_dispatcher');
     }
 
     /**
@@ -98,7 +98,7 @@ class ContactController extends Controller
      */
     private function getFormFactory()
     {
-        return $this->container->get('mremi_contact.form_factory');
+        return $this->get('mremi_contact.form_factory');
     }
 
     /**
@@ -108,7 +108,7 @@ class ContactController extends Controller
      */
     private function getContactManager()
     {
-        return $this->container->get('mremi_contact.contact_manager');
+        return $this->get('mremi_contact.contact_manager');
     }
 
     /**
@@ -118,7 +118,7 @@ class ContactController extends Controller
      */
     private function getRouter()
     {
-        return $this->container->get('router');
+        return $this->get('router');
     }
 
     /**
@@ -128,6 +128,6 @@ class ContactController extends Controller
      */
     private function getSession()
     {
-        return $this->container->get('session');
+        return $this->get('session');
     }
 }
