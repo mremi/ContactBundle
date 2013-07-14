@@ -87,6 +87,6 @@ class ContactType extends AbstractType
      */
     public function getName()
     {
-        return 'mremi_contact_contact_form';
+        return 'mremi_contact';
     }
 }

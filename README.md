@@ -94,8 +94,8 @@ mremi_contact:
     contact_class:         Mremi\ContactBundle\Model\Contact
 
     form:
-        type:              mremi_contact_form_type
-        name:              mremi_contact_contact_form
+        type:              mremi_contact
+        name:              contact_form
         validation_groups: [Default]
         captcha_disabled:  false
         captcha_type:      genemu_captcha

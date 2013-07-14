@@ -54,11 +54,11 @@ class MremiContactExtension extends Extension
     private function configureForm(ContainerBuilder $container, array $config)
     {
         $definition = $container->getDefinition('mremi_contact.form_factory');
-        $definition->replaceArgument(1, $config['form']['type']);
-        $definition->replaceArgument(2, $config['form']['name']);
+        $definition->replaceArgument(1, $config['form']['name']);
+        $definition->replaceArgument(2, $config['form']['type']);
         $definition->replaceArgument(3, $config['form']['validation_groups']);
 
-        if ('mremi_contact_form_type' !== $config['form']['type']) {
+        if ('mremi_contact' !== $config['form']['type']) {
             $container->removeDefinition('mremi_contact.contact_form_type');
 
             return;

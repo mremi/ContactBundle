@@ -25,22 +25,22 @@ class ContactControllerTest extends WebTestCase
         $form = $crawler->selectButton('contact_form_submit_button')->form();
 
         $client->submit($form, array(
-            'mremi_contact_form_type[title]'     => 'mr',
-            'mremi_contact_form_type[firstName]' => 'Rémi',
-            'mremi_contact_form_type[lastName]'  => 'Marseille',
-            'mremi_contact_form_type[email]'     => 'marseille.remi@gmail.com',
-            'mremi_contact_form_type[subject]'   => 'Subject',
-            'mremi_contact_form_type[message]'   => '',  // do not set value to cause a validation error
-            'mremi_contact_form_type[captcha]'   => '1234',
+            'contact_form[title]'     => 'mr',
+            'contact_form[firstName]' => 'Rémi',
+            'contact_form[lastName]'  => 'Marseille',
+            'contact_form[email]'     => 'marseille.remi@gmail.com',
+            'contact_form[subject]'   => 'Subject',
+            'contact_form[message]'   => '',  // do not set value to cause a validation error
+            'contact_form[captcha]'   => '1234',
         ));
 
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
 
         $submittedValues = $form->getPhpValues();
 
-        $this->assertArrayHasKey('mremi_contact_form_type', $submittedValues);
+        $this->assertArrayHasKey('contact_form', $submittedValues);
 
-        $submittedValues = $submittedValues['mremi_contact_form_type'];
+        $submittedValues = $submittedValues['contact_form'];
 
         $this->assertCount(8, $submittedValues);
 

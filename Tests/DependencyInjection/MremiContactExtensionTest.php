@@ -261,8 +261,8 @@ email:
 contact_class:         Application\Mremi\ContactBundle\Model\Contact
 
 form:
-    type:              application_mremi_contact_form_type
-    name:              application_mremi_contact_contact_form
+    type:              application_contact
+    name:              application_contact_form
     validation_groups: [Default, Foo]
     captcha_disabled:  true
     captcha_type:      genemu_recaptcha
