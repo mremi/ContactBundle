@@ -28,14 +28,9 @@ class MremiContactExtension extends Extension
         $loader->load('listeners.xml');
         $loader->load('mailer.xml');
 
-        $container->setAlias('mremi_contact.mailer', $config['email']['mailer']);
-
-        if ('mremi_contact.mailer.twig_swift' === $config['email']['mailer']) {
-            $this->configureMailer($container, $config);
-        }
-
         $this->configureContactManager($container, $config);
         $this->configureForm($container, $config);
+        $this->configureMailer($container, $config);
     }
 
     /**
@@ -63,6 +58,12 @@ class MremiContactExtension extends Extension
         $definition->replaceArgument(2, $config['form']['name']);
         $definition->replaceArgument(3, $config['form']['validation_groups']);
 
+        if ('mremi_contact_form_type' !== $config['form']['type']) {
+            $container->removeDefinition('mremi_contact.contact_form_type');
+
+            return;
+        }
+
         $definition = $container->getDefinition('mremi_contact.contact_form_type');
         $definition->replaceArgument(0, $config['contact_class']);
         $definition->replaceArgument(1, $config['form']['captcha_disabled']);
@@ -77,6 +78,14 @@ class MremiContactExtension extends Extension
      */
     private function configureMailer(ContainerBuilder $container, array $config)
     {
+        $container->setAlias('mremi_contact.mailer', $config['email']['mailer']);
+
+        if ('mremi_contact.mailer.twig_swift' !== $config['email']['mailer']) {
+            $container->removeDefinition('mremi_contact.mailer.twig_swift');
+
+            return;
+        }
+
         $definition = $container->getDefinition('mremi_contact.mailer.twig_swift');
         $definition->replaceArgument(2, $config['email']['recipient_address']);
         $definition->replaceArgument(3, $config['email']['template']);
