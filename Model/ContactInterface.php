@@ -7,7 +7,7 @@ namespace Mremi\ContactBundle\Model;
  *
  * @author Rémi Marseille <marseille.remi@gmail.com>
  */
-interface ContactInterface
+interface ContactInterface extends \Serializable
 {
     /**
      * Possible title values

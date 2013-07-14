@@ -7,7 +7,7 @@ namespace Mremi\ContactBundle\Model;
  *
  * @author Rémi Marseille <marseille.remi@gmail.com>
  */
-class Contact implements ContactInterface, \Serializable
+class Contact implements ContactInterface
 {
     /**
      * @var string
