@@ -31,4 +31,12 @@ class ContactManager implements ContactManagerInterface
     {
         return new $this->class;
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function save(ContactInterface $contact, $flush = false)
+    {
+        // nothing to do, just to be compliant with the created alias
+    }
 }

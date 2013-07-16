@@ -5,7 +5,7 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="mremi_contact.contact_manager" class="Mremi\ContactBundle\Model\ContactManager">
+        <service id="mremi_contact.contact_manager.default" class="Mremi\ContactBundle\Model\ContactManager" public="false">
             <argument />
         </service>
     </services>

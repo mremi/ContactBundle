@@ -34,12 +34,14 @@ so you need to configure it.
 
 ## Installation
 
-Installation is a quick 4 step process:
+Installation is a quick 6 step process:
 
 1. Download MremiContactBundle using composer
 2. Enable the Bundle
-3. Configure the MremiContactBundle
-4. Import MremiContactBundle routing
+3. Create your Contact class (optional)
+4. Configure the MremiContactBundle
+5. Import MremiContactBundle routing
+6. Update your database schema (optional)
 
 ### Step 1: Download MremiContactBundle using composer
 
@@ -78,7 +80,65 @@ public function registerBundles()
 }
 ```
 
-### Step 3: Configure the MremiContactBundle
+### Step 3: Create your Contact class (optional)
+
+The goal of this bundle is not to persist some `Contact` class to a database,
+but you can if you want just by setting the `store_data` parameter to `true`
+(default `false`).
+So if you don't need to do this, you can jump to the next step.
+
+Your first job, then, is to create the `Contact` class for your application.
+This class can look and act however you want: add any properties or methods you
+find useful. This is *your* `Contact` class.
+
+The bundle provides base classes which are already mapped for most fields
+to make it easier to create your entity. Here is how you use it:
+
+1. Extend the base `Contact` class from the ``Entity`` folder
+2. Map the `id` field. It must be protected as it is inherited from the parent class.
+
+**Note:**
+
+> For now, only Doctrine ORM is handled by this bundle (any PR will be
+> appreciated :) ).
+
+``` php
+<?php
+// src/Acme/ContactBundle/Entity/Contact.php
+
+namespace Acme\ContactBundle\Entity;
+
+use Mremi\ContactBundle\Entity\Contact as BaseContact;
+
+class Contact extends BaseContact
+{
+    /**
+     * @var integer
+     */
+    protected $id;
+}
+```
+
+``` xml
+<!-- src/Acme/ContactBundle/Resources/config/doctrine/Contact.orm.xml -->
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                  http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="Acme\ContactBundle\Entity\Contact"
+            table="contact">
+
+        <id name="id" column="id" type="integer">
+            <generator strategy="AUTO" />
+        </id>
+
+    </entity>
+</doctrine-mapping>
+```
+
+### Step 4: Configure the MremiContactBundle
 
 The bundle comes with a sensible default configuration, which is listed below.
 However you have to configure at least the recipient address.
@@ -86,11 +146,7 @@ However you have to configure at least the recipient address.
 ```yaml
 # app/config/config.yml
 mremi_contact:
-    email:
-        mailer:            mremi_contact.mailer.twig_swift
-        recipient_address: webmaster@example.com
-        template:          MremiContactBundle:Contact:email.txt.twig
-
+    store_data:            false
     contact_class:         Mremi\ContactBundle\Model\Contact
 
     form:
@@ -99,9 +155,14 @@ mremi_contact:
         validation_groups: [Default]
         captcha_disabled:  false
         captcha_type:      genemu_captcha
+
+    email:
+        mailer:            mremi_contact.mailer.twig_swift
+        recipient_address: webmaster@example.com
+        template:          MremiContactBundle:Contact:email.txt.twig
 ```
 
-### Step 4: Import MremiContactBundle routing
+### Step 5: Import MremiContactBundle routing
 
 Now that you have activated and configured the bundle, all that is left to do is
 import the MremiContactBundle routing file.
@@ -127,6 +188,23 @@ Or if you prefer XML:
 
 > In order to use the built-in email functionality, you must activate and
 > configure the SwiftmailerBundle.
+
+### Step 6: Update your database schema (optional)
+
+If you configured the data storage (step 3), you can now update your database
+schema.
+
+If you want to first see the create table query:
+
+``` bash
+$ app/console doctrine:schema:update --dump-sql
+```
+
+Then you can run it:
+
+``` bash
+$ app/console doctrine:schema:update --force
+```
 
 You can now access to the contact form at `http://example.com/app_dev.php/contact`!
 

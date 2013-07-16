@@ -5,7 +5,7 @@ namespace Mremi\ContactBundle\DependencyInjection;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
-use Symfony\Component\DependencyInjection\Loader;
+use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 
 /**
  * This is the class that loads and manages your bundle configuration
@@ -22,15 +22,13 @@ class MremiContactExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
-        $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
-        $loader->load('contact.xml');
+        $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('form.xml');
         $loader->load('listeners.xml');
-        $loader->load('mailer.xml');
 
-        $this->configureContactManager($container, $config);
+        $this->configureContactManager($container, $config, $loader);
         $this->configureForm($container, $config);
-        $this->configureMailer($container, $config);
+        $this->configureMailer($container, $config, $loader);
     }
 
     /**
@@ -38,10 +36,23 @@ class MremiContactExtension extends Extension
      *
      * @param ContainerBuilder $container A container builder instance
      * @param array            $config    An array of configuration
+     * @param XmlFileLoader    $loader    An XML file loader instance
      */
-    private function configureContactManager(ContainerBuilder $container, array $config)
+    private function configureContactManager(ContainerBuilder $container, array $config, XmlFileLoader $loader)
     {
-        $definition = $container->getDefinition('mremi_contact.contact_manager');
+        if (true === $config['store_data']) {
+            $loader->load('orm.xml');
+
+            $suffix = 'doctrine';
+        } else {
+            $loader->load('contact.xml');
+
+            $suffix = 'default';
+        }
+
+        $container->setAlias('mremi_contact.contact_manager', sprintf('mremi_contact.contact_manager.%s', $suffix));
+
+        $definition = $container->findDefinition('mremi_contact.contact_manager');
         $definition->replaceArgument(0, $config['contact_class']);
     }
 
@@ -75,18 +86,19 @@ class MremiContactExtension extends Extension
      *
      * @param ContainerBuilder $container A container builder instance
      * @param array            $config    An array of configuration
+     * @param XmlFileLoader    $loader    An XML file loader instance
      */
-    private function configureMailer(ContainerBuilder $container, array $config)
+    private function configureMailer(ContainerBuilder $container, array $config, XmlFileLoader $loader)
     {
         $container->setAlias('mremi_contact.mailer', $config['email']['mailer']);
 
         if ('mremi_contact.mailer.twig_swift' !== $config['email']['mailer']) {
-            $container->removeDefinition('mremi_contact.mailer.twig_swift');
-
             return;
         }
 
-        $definition = $container->getDefinition('mremi_contact.mailer.twig_swift');
+        $loader->load('mailer.xml');
+
+        $definition = $container->findDefinition('mremi_contact.mailer');
         $definition->replaceArgument(2, $config['email']['recipient_address']);
         $definition->replaceArgument(3, $config['email']['template']);
     }

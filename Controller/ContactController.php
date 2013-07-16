@@ -46,6 +46,7 @@ class ContactController extends Controller
                     $response = new RedirectResponse($this->getRouter()->generate('mremi_contact_confirmation'));
                 }
 
+                $this->getContactManager()->save($contact, true);
                 $this->getSession()->set('mremi_contact_data', $contact);
 
                 $dispatcher->dispatch(ContactEvents::FORM_COMPLETED, new FilterContactResponseEvent($contact, $request, $response));

@@ -20,67 +20,15 @@ class MremiContactExtensionTest extends \PHPUnit_Framework_TestCase
     private $configuration;
 
     /**
-     * Tests extension loading throws exception if email is not set
+     * Tests extension loading throws exception if store_data is not a boolean
      *
      * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      */
-    public function testContactLoadThrowsExceptionUnlessEmailSet()
+    public function testContactLoadThrowsExceptionIfStoreDataNotBoolean()
     {
         $loader = new MremiContactExtension;
         $config = $this->getEmptyConfig();
-        unset($config['email']);
-        $loader->load(array($config), new ContainerBuilder);
-    }
-
-    /**
-     * Tests extension loading throws exception if mailer is empty
-     *
-     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
-     */
-    public function testContactLoadThrowsExceptionIfMailerEmpty()
-    {
-        $loader = new MremiContactExtension;
-        $config = $this->getEmptyConfig();
-        $config['email']['mailer'] = '';
-        $loader->load(array($config), new ContainerBuilder);
-    }
-
-    /**
-     * Tests extension loading throws exception if recipient address is not set
-     *
-     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
-     */
-    public function testContactLoadThrowsExceptionUnlessRecipientAddressSet()
-    {
-        $loader = new MremiContactExtension;
-        $config = $this->getEmptyConfig();
-        unset($config['email']['recipient_address']);
-        $loader->load(array($config), new ContainerBuilder);
-    }
-
-    /**
-     * Tests extension loading throws exception if recipient address is empty
-     *
-     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
-     */
-    public function testContactLoadThrowsExceptionIfRecipientAddressEmpty()
-    {
-        $loader = new MremiContactExtension;
-        $config = $this->getEmptyConfig();
-        $config['email']['recipient_address'] = '';
-        $loader->load(array($config), new ContainerBuilder);
-    }
-
-    /**
-     * Tests extension loading throws exception if template is empty
-     *
-     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
-     */
-    public function testContactLoadThrowsExceptionIfTemplateEmpty()
-    {
-        $loader = new MremiContactExtension;
-        $config = $this->getEmptyConfig();
-        $config['email']['template'] = '';
+        $config['store_data'] = 'foo';
         $loader->load(array($config), new ContainerBuilder);
     }
 
@@ -163,6 +111,71 @@ class MremiContactExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests extension loading throws exception if email is not set
+     *
+     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     */
+    public function testContactLoadThrowsExceptionUnlessEmailSet()
+    {
+        $loader = new MremiContactExtension;
+        $config = $this->getEmptyConfig();
+        unset($config['email']);
+        $loader->load(array($config), new ContainerBuilder);
+    }
+
+    /**
+     * Tests extension loading throws exception if mailer is empty
+     *
+     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     */
+    public function testContactLoadThrowsExceptionIfMailerEmpty()
+    {
+        $loader = new MremiContactExtension;
+        $config = $this->getEmptyConfig();
+        $config['email']['mailer'] = '';
+        $loader->load(array($config), new ContainerBuilder);
+    }
+
+    /**
+     * Tests extension loading throws exception if recipient address is not set
+     *
+     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     */
+    public function testContactLoadThrowsExceptionUnlessRecipientAddressSet()
+    {
+        $loader = new MremiContactExtension;
+        $config = $this->getEmptyConfig();
+        unset($config['email']['recipient_address']);
+        $loader->load(array($config), new ContainerBuilder);
+    }
+
+    /**
+     * Tests extension loading throws exception if recipient address is empty
+     *
+     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     */
+    public function testContactLoadThrowsExceptionIfRecipientAddressEmpty()
+    {
+        $loader = new MremiContactExtension;
+        $config = $this->getEmptyConfig();
+        $config['email']['recipient_address'] = '';
+        $loader->load(array($config), new ContainerBuilder);
+    }
+
+    /**
+     * Tests extension loading throws exception if template is empty
+     *
+     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     */
+    public function testContactLoadThrowsExceptionIfTemplateEmpty()
+    {
+        $loader = new MremiContactExtension;
+        $config = $this->getEmptyConfig();
+        $config['email']['template'] = '';
+        $loader->load(array($config), new ContainerBuilder);
+    }
+
+    /**
      * Tests services existence
      */
     public function testContactLoadServicesWithDefaults()
@@ -175,6 +188,8 @@ class MremiContactExtensionTest extends \PHPUnit_Framework_TestCase
         $this->assertHasDefinition('mremi_contact.listener.email_confirmation');
         $this->assertHasDefinition('mremi_contact.mailer.twig_swift');
         $this->assertHasDefinition('mremi_contact.mailer');
+        $this->assertHasDefinition('mremi_contact.contact_manager.default');
+        $this->assertHasDefinition('mremi_contact.contact_manager');
     }
 
     /**
@@ -185,6 +200,7 @@ class MremiContactExtensionTest extends \PHPUnit_Framework_TestCase
         $this->createEmptyConfiguration();
 
         $this->assertAlias('mremi_contact.mailer.twig_swift', 'mremi_contact.mailer');
+        $this->assertAlias('mremi_contact.contact_manager.default', 'mremi_contact.contact_manager');
     }
 
     /**
@@ -195,6 +211,7 @@ class MremiContactExtensionTest extends \PHPUnit_Framework_TestCase
         $this->createFullConfiguration();
 
         $this->assertAlias('application_mremi_contact.mailer', 'mremi_contact.mailer');
+        $this->assertAlias('mremi_contact.contact_manager.doctrine', 'mremi_contact.contact_manager');
     }
 
     /**
@@ -253,12 +270,8 @@ EOF;
     protected function getFullConfig()
     {
         $yaml = <<<EOF
-email:
-    mailer:            application_mremi_contact.mailer
-    recipient_address: foo@example.com
-    template:          ApplicationMremiContactBundle:Contact:email.txt.twig
-
-contact_class:         Application\Mremi\ContactBundle\Model\Contact
+store_data:            true
+contact_class:         Application\Mremi\ContactBundle\Entity\Contact
 
 form:
     type:              application_contact
@@ -266,6 +279,11 @@ form:
     validation_groups: [Default, Foo]
     captcha_disabled:  true
     captcha_type:      genemu_recaptcha
+
+email:
+    mailer:            application_mremi_contact.mailer
+    recipient_address: foo@example.com
+    template:          ApplicationMremiContactBundle:Contact:email.txt.twig
 EOF;
         $parser = new Parser;
 
