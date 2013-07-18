@@ -183,7 +183,9 @@ class Contact implements ContactInterface
      */
     public function getTitleValue()
     {
-        return self::getTitles()[$this->title];
+        $titles = self::getTitles();
+
+        return $titles[$this->title];
     }
 
     /**

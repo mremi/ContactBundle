@@ -71,7 +71,7 @@ class ContactTest extends \PHPUnit_Framework_TestCase
         $contact->setEmail('marseille.remi@gmail.com');
         $contact->setSubject('subject');
         $contact->setMessage('message');
-        $contact->setCreatedAt(new \DateTime('2013-07-11 10:07:00'));
+        $contact->setCreatedAt(new \DateTime('2013-07-11T10:07:00+02:00'));
 
         $expected = array(
             'title'     => 'mr',

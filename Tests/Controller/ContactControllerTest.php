@@ -16,6 +16,10 @@ class ContactControllerTest extends WebTestCase
      */
     public function testIndex()
     {
+        if (!isset($_SERVER['KERNEL_DIR'])) {
+            $this->markTestSkipped('KERNEL_DIR is not set in phpunit.xml, considers not in a Symfony project (no app directory, src, etc.).');
+        }
+
         $client = static::createClient();
 
         $crawler = $client->request('GET', '/contact');
