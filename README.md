@@ -1,6 +1,10 @@
 MremiContactBundle
 ==================
 
+[![Build Status](https://api.travis-ci.org/mremi/ContactBundle.png?branch=master)](https://travis-ci.org/mremi/ContactBundle)
+[![Total Downloads](https://poser.pugx.org/mremi/contact-bundle/downloads.png)](https://packagist.org/packages/mremi/contact-bundle)
+[![Latest Stable Version](https://poser.pugx.org/mremi/contact-bundle/v/stable.png)](https://packagist.org/packages/mremi/contact-bundle)
+
 This bundle provides a contact form in Symfony2.
 
 **Note:**
