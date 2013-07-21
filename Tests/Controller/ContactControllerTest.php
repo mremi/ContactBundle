@@ -71,4 +71,20 @@ class ContactControllerTest extends WebTestCase
 
         $this->assertArrayHasKey('_token', $submittedValues);
     }
+
+    /**
+     * Tests the confirm action
+     */
+    public function testConfirm()
+    {
+        if (!isset($_SERVER['KERNEL_DIR'])) {
+            $this->markTestSkipped('KERNEL_DIR is not set in phpunit.xml, considers not in a Symfony project (no app directory, src, etc.).');
+        }
+
+        $client = static::createClient();
+
+        $crawler = $client->request('GET', '/contact/confirmation');
+
+        $this->assertEquals(500, $client->getResponse()->getStatusCode());
+    }
 }

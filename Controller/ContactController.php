@@ -10,7 +10,7 @@ use Mremi\ContactBundle\Event\FormEvent;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 /**
  * Contact controller class
@@ -67,14 +67,14 @@ class ContactController extends Controller
      *
      * @return \Symfony\Component\HttpFoundation\Response
      *
-     * @throws AccessDeniedHttpException If no contact stored in session
+     * @throws AccessDeniedException If no contact stored in session
      */
     public function confirmAction(Request $request)
     {
         $contact = $this->getSession()->get('mremi_contact_data');
 
         if (!$contact) {
-            throw new AccessDeniedHttpException('Please fill the contact form');
+            throw new AccessDeniedException('Please fill the contact form');
         }
 
         return $this->render('MremiContactBundle:Contact:confirm.html.twig', array(
