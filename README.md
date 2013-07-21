@@ -7,12 +7,6 @@ MremiContactBundle
 
 This bundle provides a contact form in Symfony2.
 
-**Note:**
-
-> This bundle is not yet complete but is functional. I'm still working on it.
-> However you can contribute if you want.
-> I'm also interested by your feedback ;-) .
-
 ## Prerequisites
 
 This version of the bundle requires Symfony 2.1+.
