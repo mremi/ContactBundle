@@ -36,7 +36,8 @@ class ContactTest extends \PHPUnit_Framework_TestCase
     /**
      * Tests the setTitle method
      *
-     * @expectedException \InvalidArgumentException
+     * @expectedException        \InvalidArgumentException
+     * @expectedExceptionMessage Invalid title foo, possible values are: mr, mrs
      */
     public function testSetTitle()
     {

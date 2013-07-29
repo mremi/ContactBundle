@@ -22,7 +22,8 @@ class MremiContactExtensionTest extends \PHPUnit_Framework_TestCase
     /**
      * Tests extension loading throws exception if store_data is not a boolean
      *
-     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     * @expectedException        \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     * @expectedExceptionMessage Invalid type for path "mremi_contact.store_data". Expected boolean, but got string.
      */
     public function testContactLoadThrowsExceptionIfStoreDataNotBoolean()
     {
@@ -35,7 +36,8 @@ class MremiContactExtensionTest extends \PHPUnit_Framework_TestCase
     /**
      * Tests extension loading throws exception if contact model class is empty
      *
-     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     * @expectedException        \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     * @expectedExceptionMessage The path "mremi_contact.contact_class" cannot contain an empty value, but got "".
      */
     public function testContactLoadThrowsExceptionIfContactModelClassEmpty()
     {
@@ -48,7 +50,8 @@ class MremiContactExtensionTest extends \PHPUnit_Framework_TestCase
     /**
      * Tests extension loading throws exception if form type is empty
      *
-     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     * @expectedException        \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     * @expectedExceptionMessage The path "mremi_contact.form.type" cannot contain an empty value, but got "".
      */
     public function testContactLoadThrowsExceptionIfFormTypeEmpty()
     {
@@ -61,7 +64,8 @@ class MremiContactExtensionTest extends \PHPUnit_Framework_TestCase
     /**
      * Tests extension loading throws exception if form name is empty
      *
-     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     * @expectedException        \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     * @expectedExceptionMessage The path "mremi_contact.form.name" cannot contain an empty value, but got "".
      */
     public function testContactLoadThrowsExceptionIfFormNameEmpty()
     {
@@ -74,7 +78,8 @@ class MremiContactExtensionTest extends \PHPUnit_Framework_TestCase
     /**
      * Tests extension loading throws exception if captcha_disabled is not a boolean
      *
-     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     * @expectedException        \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     * @expectedExceptionMessage Invalid type for path "mremi_contact.form.captcha_disabled". Expected boolean, but got string.
      */
     public function testContactLoadThrowsExceptionIfCaptchaDisabledNotBoolean()
     {
@@ -87,7 +92,8 @@ class MremiContactExtensionTest extends \PHPUnit_Framework_TestCase
     /**
      * Tests extension loading throws exception if captcha type is empty
      *
-     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     * @expectedException        \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     * @expectedExceptionMessage The path "mremi_contact.form.captcha_type" cannot contain an empty value, but got "".
      */
     public function testContactLoadThrowsExceptionIfCaptchaTypeEmpty()
     {
@@ -100,7 +106,8 @@ class MremiContactExtensionTest extends \PHPUnit_Framework_TestCase
     /**
      * Tests extension loading throws exception if captcha type is invalid
      *
-     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     * @expectedException        \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     * @expectedExceptionMessage Invalid configuration for path "mremi_contact.form.captcha_type": Invalid captcha type "foo"
      */
     public function testContactLoadThrowsExceptionIfCaptchaTypeInvalid()
     {
@@ -113,7 +120,8 @@ class MremiContactExtensionTest extends \PHPUnit_Framework_TestCase
     /**
      * Tests extension loading throws exception if email is not set
      *
-     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     * @expectedException        \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     * @expectedExceptionMessage The child node "email" at path "mremi_contact" must be configured.
      */
     public function testContactLoadThrowsExceptionUnlessEmailSet()
     {
@@ -126,7 +134,8 @@ class MremiContactExtensionTest extends \PHPUnit_Framework_TestCase
     /**
      * Tests extension loading throws exception if mailer is empty
      *
-     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     * @expectedException        \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     * @expectedExceptionMessage The path "mremi_contact.email.mailer" cannot contain an empty value, but got "".
      */
     public function testContactLoadThrowsExceptionIfMailerEmpty()
     {
@@ -139,7 +148,8 @@ class MremiContactExtensionTest extends \PHPUnit_Framework_TestCase
     /**
      * Tests extension loading throws exception if recipient address is not set
      *
-     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     * @expectedException        \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     * @expectedExceptionMessage The child node "recipient_address" at path "mremi_contact.email" must be configured.
      */
     public function testContactLoadThrowsExceptionUnlessRecipientAddressSet()
     {
@@ -152,7 +162,8 @@ class MremiContactExtensionTest extends \PHPUnit_Framework_TestCase
     /**
      * Tests extension loading throws exception if recipient address is empty
      *
-     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     * @expectedException        \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     * @expectedExceptionMessage The path "mremi_contact.email.recipient_address" cannot contain an empty value, but got "".
      */
     public function testContactLoadThrowsExceptionIfRecipientAddressEmpty()
     {
@@ -165,7 +176,8 @@ class MremiContactExtensionTest extends \PHPUnit_Framework_TestCase
     /**
      * Tests extension loading throws exception if template is empty
      *
-     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     * @expectedException        \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     * @expectedExceptionMessage The path "mremi_contact.email.template" cannot contain an empty value, but got "".
      */
     public function testContactLoadThrowsExceptionIfTemplateEmpty()
     {
