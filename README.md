@@ -208,4 +208,5 @@ You can now access to the contact form at `http://example.com/app_dev.php/contac
 
 **Note:**
 
-> The HTML5 validation can be disabled by adding `?novalidate=1` to the URL.
+> If your are in debug mode (see your front controller), the HTML5 validation
+> can be disabled by adding `?novalidate=1` to the URL.
