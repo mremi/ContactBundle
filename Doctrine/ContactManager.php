@@ -33,7 +33,7 @@ class ContactManager extends BaseContactManager
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function save(ContactInterface $contact, $flush = false)
     {

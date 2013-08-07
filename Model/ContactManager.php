@@ -25,7 +25,7 @@ class ContactManager implements ContactManagerInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function create()
     {
@@ -33,7 +33,7 @@ class ContactManager implements ContactManagerInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function save(ContactInterface $contact, $flush = false)
     {

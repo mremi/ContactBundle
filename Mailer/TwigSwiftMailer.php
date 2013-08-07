@@ -48,7 +48,7 @@ class TwigSwiftMailer implements MailerInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function sendMessage(ContactInterface $contact)
     {
