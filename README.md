@@ -1,6 +1,8 @@
 MremiContactBundle
 ==================
 
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/7c3f02d7-cfc4-4e6a-9892-28ba24a8ecd2/big.png)](https://insight.sensiolabs.com/projects/7c3f02d7-cfc4-4e6a-9892-28ba24a8ecd2)
+
 [![Build Status](https://api.travis-ci.org/mremi/ContactBundle.png?branch=master)](https://travis-ci.org/mremi/ContactBundle)
 [![Total Downloads](https://poser.pugx.org/mremi/contact-bundle/downloads.png)](https://packagist.org/packages/mremi/contact-bundle)
 [![Latest Stable Version](https://poser.pugx.org/mremi/contact-bundle/v/stable.png)](https://packagist.org/packages/mremi/contact-bundle)
