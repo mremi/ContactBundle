@@ -213,7 +213,14 @@ You can now access to the contact form at `http://example.com/app_dev.php/contac
 > If your are in debug mode (see your front controller), the HTML5 validation
 > can be disabled by adding `?novalidate=1` to the URL.
 
-## Events
+## Customization
+
+### Templating
+
+If you want to customize some parts of this bundle (views for instance), read
+the [Symfony documentation](http://symfony.com/doc/current/cookbook/bundles/inheritance.html).
+
+### Events
 
 The contact controller dispatches 3 events during the index action:
 
