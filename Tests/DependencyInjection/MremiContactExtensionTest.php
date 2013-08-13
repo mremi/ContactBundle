@@ -188,6 +188,20 @@ class MremiContactExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests extension loading throws exception if store_data is TRUE and contact_class is not configured
+     *
+     * @expectedException        \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     * @expectedExceptionMessage You must configure the "contact_class" node with your extended entity.
+     */
+    public function testContactLoadThrowsExceptionIfContactClassNotConfigured()
+    {
+        $loader = new MremiContactExtension;
+        $config = $this->getEmptyConfig();
+        $config['store_data'] = true;
+        $loader->load(array($config), new ContainerBuilder);
+    }
+
+    /**
      * Tests services existence
      */
     public function testContactLoadServicesWithDefaults()

@@ -55,6 +55,10 @@ class Configuration implements ConfigurationInterface
                         ->scalarNode('template')->defaultValue('MremiContactBundle:Contact:email.txt.twig')->cannotBeEmpty()->end()
                     ->end()
                 ->end()
+            ->end()
+            ->validate()
+                ->ifTrue(function($v) { return true === $v['store_data'] && 'Mremi\ContactBundle\Model\Contact' === $v['contact_class']; })
+                ->thenInvalid('You must configure the "contact_class" node with your extended entity.')
             ->end();
 
         return $treeBuilder;
