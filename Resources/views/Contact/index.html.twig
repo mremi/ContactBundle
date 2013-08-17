@@ -10,7 +10,15 @@
 {% endblock %}
 
 {% block body %}
-    <form class="form-horizontal" action="{{ path('mremi_contact_form') }}" {{ form_enctype(form) }} method="POST"{{ app.debug and app.request.get('novalidate') ? ' novalidate="novalidate"' : '' }}>
+    {% set novalidate = app.debug and app.request.get('novalidate') %}
+
+    {% if novalidate %}
+        {% set form_action = path('mremi_contact_form', {'novalidate': 1}) %}
+    {% else %}
+        {% set form_action = path('mremi_contact_form') %}
+    {% endif %}
+
+    <form class="form-horizontal" action="{{ form_action }}" {{ form_enctype(form) }} method="POST"{{ novalidate ? ' novalidate="novalidate"' : '' }}>
         <fieldset>
             <legend>{{ 'mremi_contact.form_title'|trans }}</legend>
 
