@@ -213,6 +213,13 @@ You can now access to the contact form at `http://example.com/app_dev.php/contac
 > If your are in debug mode (see your front controller), the HTML5 validation
 > can be disabled by adding `?novalidate=1` to the URL.
 
+## Bootstrap
+
+[Bootstrap framework](http://getbootstrap.com/) is loaded and used in templates
+provided by this bundle.
+
+![Screenshot](https://raw.github.com/mremi/ContactBundle/master/Resources/doc/images/form.png)
+
 ## Customization
 
 ### Templating

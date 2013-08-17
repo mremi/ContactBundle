@@ -1,0 +1,62 @@
+{% extends "form_div_layout.html.twig" %}
+
+{% block form_label %}
+{% spaceless %}
+    {% set label_attr = label_attr|merge({'class': label_attr.class|default('') ~ ' control-label' }) %}
+
+    {% if not compound %}
+        {% set label_attr = label_attr|merge({'for': id}) %}
+    {% endif %}
+
+    {% if required %}
+        {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' required')|trim}) %}
+    {% endif %}
+
+    {% if label is empty %}
+        {% set label = name|humanize %}
+    {% endif %}
+
+    <label{% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>
+        {{ label|trans({}, translation_domain) }}
+        {% if required %} *{% endif %}
+    </label>
+{% endspaceless %}
+{% endblock %}
+
+{% block form_row %}
+    {% spaceless %}
+        <div class="control-group{% if errors|length > 0 %} error{% endif %}">
+            {{ form_label(form, label|default(null)) }}
+
+            <div class="controls">
+                {{ form_widget(form) }}
+                {{ form_errors(form) }}
+            </div>
+        </div>
+    {% endspaceless %}
+{% endblock form_row %}
+
+{% block choice_widget_expanded %}
+    {% spaceless %}
+        {% set attr = attr|merge({'class': attr.class|default('') ~ ' radio inline'}) %}
+
+        {% for child in form %}
+            <label{% for attrname, attrvalue in attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>
+                {{ form_widget(child) }}
+                {{ child.vars.label|trans({}, translation_domain) }}
+            </label>
+        {% endfor %}
+    {% endspaceless %}
+{% endblock choice_widget_expanded %}
+
+{% block form_errors %}
+{% spaceless %}
+    {% if errors|length > 0 %}
+        <span class="help-inline">
+            {% for error in errors %}
+                {{ error.messageTemplate|trans(error.messageParameters, 'validators') }}<br />
+            {% endfor %}
+        </span>
+    {% endif %}
+{% endspaceless %}
+{% endblock form_errors %}

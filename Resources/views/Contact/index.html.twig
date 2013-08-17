@@ -2,13 +2,23 @@
 
 {% trans_default_domain 'MremiContactBundle' %}
 
-{% block body %}
-    <h1>{{ 'mremi_contact.form_title'|trans }}</h1>
+{% form_theme form 'MremiContactBundle:Contact:bootstrap_form_theme.html.twig' %}
 
-    <form action="{{ path('mremi_contact_form') }}" {{ form_enctype(form) }} method="POST"{{ app.debug and app.request.get('novalidate') ? 'novalidate="novalidate"' : '' }}>
-        {{ form_widget(form) }}
-        <div>
-            <input type="submit" id="contact_form_submit_button" value="{{ 'mremi_contact.form_submit'|trans }}" />
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/mremicontact/bootstrap/css/bootstrap.min.css') }}" type="text/css" media="all"  />
+    <link rel="stylesheet" href="{{ asset('bundles/mremicontact/bootstrap/css/bootstrap-responsive.min.css') }}" type="text/css" media="all" />
+{% endblock %}
+
+{% block body %}
+    <form class="form-horizontal" action="{{ path('mremi_contact_form') }}" {{ form_enctype(form) }} method="POST"{{ app.debug and app.request.get('novalidate') ? ' novalidate="novalidate"' : '' }}>
+        <fieldset>
+            <legend>{{ 'mremi_contact.form_title'|trans }}</legend>
+
+            {{ form_widget(form) }}
+        </fieldset>
+
+        <div class="form-actions">
+            <button type="submit" class="btn" id="contact_form_submit_button">{{ 'mremi_contact.form_submit'|trans }}</button>
         </div>
     </form>
 {% endblock body %}

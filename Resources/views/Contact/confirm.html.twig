@@ -2,11 +2,18 @@
 
 {% trans_default_domain 'MremiContactBundle' %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/mremicontact/bootstrap/css/bootstrap.min.css') }}" type="text/css" media="all"  />
+    <link rel="stylesheet" href="{{ asset('bundles/mremicontact/bootstrap/css/bootstrap-responsive.min.css') }}" type="text/css" media="all" />
+{% endblock %}
+
 {% block body %}
-    <h1>{{ 'mremi_contact.confirm_title'|trans({
-        '%title%':    contact.titleValue|trans,
-        '%fullName%': contact.fullName
-    }) }}</h1>
+    <section>
+        <h3>{{ 'mremi_contact.confirm_title'|trans({
+            '%title%':    contact.titleValue|trans,
+            '%fullName%': contact.fullName
+        }) }}</h3>
+    </section>
 
     <p>{{ 'mremi_contact.confirm_message'|trans }}</p>
 {% endblock body %}
