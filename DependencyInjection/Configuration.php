@@ -35,6 +35,7 @@ class Configuration implements ConfigurationInterface
                             ->prototype('scalar')->end()
                             ->defaultValue(array('Default'))
                         ->end()
+                        ->scalarNode('subject_provider')->defaultValue('mremi_contact.subject_provider.noop')->cannotBeEmpty()->end()
                         ->booleanNode('captcha_disabled')->defaultFalse()->end()
                         ->scalarNode('captcha_type')
                             ->defaultValue('genemu_captcha')

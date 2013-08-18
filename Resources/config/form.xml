@@ -17,6 +17,10 @@
             <argument />
             <argument />
             <argument />
+            <argument />
+        </service>
+
+        <service id="mremi_contact.subject_provider.noop" class="Mremi\ContactBundle\Provider\NoopSubjectProvider">
         </service>
     </services>
 

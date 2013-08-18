@@ -153,6 +153,7 @@ mremi_contact:
         type:              mremi_contact
         name:              contact_form
         validation_groups: [Default]
+        subject_provider:  mremi_contact.subject_provider.noop
         captcha_disabled:  false
         captcha_type:      genemu_captcha
 

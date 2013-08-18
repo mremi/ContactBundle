@@ -76,6 +76,20 @@ class MremiContactExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests extension loading throws exception if subject provider is empty
+     *
+     * @expectedException        \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     * @expectedExceptionMessage The path "mremi_contact.form.subject_provider" cannot contain an empty value, but got "".
+     */
+    public function testContactLoadThrowsExceptionIfSubjectProviderEmpty()
+    {
+        $loader = new MremiContactExtension;
+        $config = $this->getEmptyConfig();
+        $config['form']['subject_provider'] = '';
+        $loader->load(array($config), new ContainerBuilder);
+    }
+
+    /**
      * Tests extension loading throws exception if captcha_disabled is not a boolean
      *
      * @expectedException        \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
@@ -208,14 +222,14 @@ class MremiContactExtensionTest extends \PHPUnit_Framework_TestCase
     {
         $this->createEmptyConfiguration();
 
+        $this->assertHasDefinition('mremi_contact.contact_manager.default');
         $this->assertHasDefinition('mremi_contact.contact_manager');
         $this->assertHasDefinition('mremi_contact.form_factory');
         $this->assertHasDefinition('mremi_contact.contact_form_type');
+        $this->assertHasDefinition('mremi_contact.subject_provider.noop');
         $this->assertHasDefinition('mremi_contact.listener.email_confirmation');
         $this->assertHasDefinition('mremi_contact.mailer.twig_swift');
         $this->assertHasDefinition('mremi_contact.mailer');
-        $this->assertHasDefinition('mremi_contact.contact_manager.default');
-        $this->assertHasDefinition('mremi_contact.contact_manager');
     }
 
     /**
@@ -303,6 +317,7 @@ form:
     type:              application_contact
     name:              application_contact_form
     validation_groups: [Default, Foo]
+    subject_provider:  mremi_contact.subject_provider.noop
     captcha_disabled:  true
     captcha_type:      genemu_recaptcha
 
