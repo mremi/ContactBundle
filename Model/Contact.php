@@ -161,7 +161,7 @@ class Contact implements ContactInterface
      */
     public function setTitle($title)
     {
-        $validTitles = array_keys(self::getTitles());
+        $validTitles = self::getTitleKeys();
 
         if (!in_array($title, $validTitles)) {
             throw new \InvalidArgumentException(sprintf('Invalid title %s, possible values are: %s', $title, implode(', ', $validTitles)));
