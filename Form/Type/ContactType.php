@@ -15,6 +15,8 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
  */
 class ContactType extends AbstractType
 {
+    const TRANSLATION_DOMAIN = 'MremiContactBundle';
+
     /**
      * @var string
      */
@@ -54,18 +56,18 @@ class ContactType extends AbstractType
                 'choices'            => Contact::getTitles(),
                 'expanded'           => true,
                 'label'              => 'mremi_contact.form.title',
-                'translation_domain' => 'MremiContactBundle',
+                'translation_domain' => self::TRANSLATION_DOMAIN,
             ))
-            ->add('firstName', 'text',     array('label' => 'mremi_contact.form.first_name', 'translation_domain' => 'MremiContactBundle'))
-            ->add('lastName',  'text',     array('label' => 'mremi_contact.form.last_name',  'translation_domain' => 'MremiContactBundle'))
-            ->add('email',     'email',    array('label' => 'mremi_contact.form.email',      'translation_domain' => 'MremiContactBundle'))
-            ->add('subject',   'text',     array('label' => 'mremi_contact.form.subject',    'translation_domain' => 'MremiContactBundle'))
-            ->add('message',   'textarea', array('label' => 'mremi_contact.form.message',    'translation_domain' => 'MremiContactBundle'));
+            ->add('firstName', 'text',     array('label' => 'mremi_contact.form.first_name', 'translation_domain' => self::TRANSLATION_DOMAIN))
+            ->add('lastName',  'text',     array('label' => 'mremi_contact.form.last_name',  'translation_domain' => self::TRANSLATION_DOMAIN))
+            ->add('email',     'email',    array('label' => 'mremi_contact.form.email',      'translation_domain' => self::TRANSLATION_DOMAIN))
+            ->add('subject',   'text',     array('label' => 'mremi_contact.form.subject',    'translation_domain' => self::TRANSLATION_DOMAIN))
+            ->add('message',   'textarea', array('label' => 'mremi_contact.form.message',    'translation_domain' => self::TRANSLATION_DOMAIN));
 
         if (!$this->captchaDisabled) {
             $builder->add('captcha', $this->captchaType, array(
                 'label'              => 'mremi_contact.form.captcha',
-                'translation_domain' => 'MremiContactBundle',
+                'translation_domain' => self::TRANSLATION_DOMAIN,
                 'mapped'             => false,
             ));
         }
