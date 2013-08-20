@@ -24,29 +24,29 @@
 {% endblock %}
 
 {% block form_row %}
-    {% spaceless %}
-        <div class="control-group{% if errors|length > 0 %} error{% endif %}">
-            {{ form_label(form, label|default(null)) }}
+{% spaceless %}
+    <div class="control-group{% if errors|length > 0 %} error{% endif %}">
+        {{ form_label(form, label|default(null)) }}
 
-            <div class="controls">
-                {{ form_widget(form) }}
-                {{ form_errors(form) }}
-            </div>
+        <div class="controls">
+            {{ form_widget(form) }}
+            {{ form_errors(form) }}
         </div>
-    {% endspaceless %}
+    </div>
+{% endspaceless %}
 {% endblock form_row %}
 
 {% block choice_widget_expanded %}
-    {% spaceless %}
-        {% set attr = attr|merge({'class': attr.class|default('') ~ ' radio inline'}) %}
+{% spaceless %}
+    {% set attr = attr|merge({'class': attr.class|default('') ~ ' radio inline'}) %}
 
-        {% for child in form %}
-            <label{% for attrname, attrvalue in attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>
-                {{ form_widget(child) }}
-                {{ child.vars.label|trans({}, translation_domain) }}
-            </label>
-        {% endfor %}
-    {% endspaceless %}
+    {% for child in form %}
+        <label{% for attrname, attrvalue in attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>
+            {{ form_widget(child) }}
+            {{ child.vars.label|trans({}, translation_domain) }}
+        </label>
+    {% endfor %}
+{% endspaceless %}
 {% endblock choice_widget_expanded %}
 
 {% block form_errors %}
