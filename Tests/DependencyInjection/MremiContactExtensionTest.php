@@ -107,7 +107,7 @@ class MremiContactExtensionTest extends \PHPUnit_Framework_TestCase
      * Tests extension loading throws exception if captcha type is empty
      *
      * @expectedException        \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
-     * @expectedExceptionMessage The path "mremi_contact.form.captcha_type" cannot contain an empty value, but got "".
+     * @expectedExceptionMessage The value "" is not allowed for path "mremi_contact.form.captcha_type". Permissible values: "genemu_captcha", "genemu_recaptcha"
      */
     public function testContactLoadThrowsExceptionIfCaptchaTypeEmpty()
     {
@@ -121,7 +121,7 @@ class MremiContactExtensionTest extends \PHPUnit_Framework_TestCase
      * Tests extension loading throws exception if captcha type is invalid
      *
      * @expectedException        \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
-     * @expectedExceptionMessage Invalid configuration for path "mremi_contact.form.captcha_type": Invalid captcha type "foo"
+     * @expectedExceptionMessage The value "foo" is not allowed for path "mremi_contact.form.captcha_type". Permissible values: "genemu_captcha", "genemu_recaptcha"
      */
     public function testContactLoadThrowsExceptionIfCaptchaTypeInvalid()
     {
