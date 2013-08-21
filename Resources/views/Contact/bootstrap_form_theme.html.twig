@@ -38,10 +38,10 @@
 
 {% block choice_widget_expanded %}
 {% spaceless %}
-    {% set attr = attr|merge({'class': attr.class|default('') ~ ' radio inline'}) %}
+    {% set label_attr = label_attr|merge({'class': label_attr.class|default('') ~ ' radio inline'}) %}
 
     {% for child in form %}
-        <label{% for attrname, attrvalue in attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>
+        <label{% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>
             {{ form_widget(child) }}
             {{ child.vars.label|trans({}, translation_domain) }}
         </label>
