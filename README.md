@@ -11,7 +11,7 @@ This bundle provides a contact form in Symfony2.
 
 ## Prerequisites
 
-This version of the bundle requires Symfony 2.1+.
+This version of the bundle requires Symfony 2.3+.
 
 ### Translations
 
