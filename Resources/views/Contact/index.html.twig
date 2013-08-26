@@ -11,18 +11,26 @@
 
 {% block body %}
     {% set novalidate = app.debug and app.request.get('novalidate') %}
+    {% set form_attr = {
+        'class': 'form-horizontal',
+        'role':  'form'
+    } %}
 
     {% if novalidate %}
-        {% set form_action = path('mremi_contact_form', {'novalidate': 1}) %}
+        {{ form_start(form, {
+            'action': path('mremi_contact_form', {'novalidate': 1}),
+            'attr':   form_attr|merge({'novalidate': 'novalidate'})
+        }) }}
     {% else %}
-        {% set form_action = path('mremi_contact_form') %}
+        {{ form_start(form, {
+            'action': path('mremi_contact_form'),
+            'attr':   form_attr
+        }) }}
     {% endif %}
-
-    <form class="form-horizontal" action="{{ form_action }}" {{ form_enctype(form) }} method="POST"{{ novalidate ? ' novalidate="novalidate"' : '' }}>
         <fieldset>
             <legend>{{ 'mremi_contact.form_title'|trans }}</legend>
 
             {{ form_widget(form) }}
         </fieldset>
-    </form>
+    {{ form_end(form) }}
 {% endblock body %}
