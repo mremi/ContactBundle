@@ -216,7 +216,7 @@ You can now access to the contact form at `http://example.com/app_dev.php/contac
 
 ## Bootstrap
 
-[Bootstrap framework](http://getbootstrap.com/) is loaded and used in templates
+[Bootstrap framework](http://getbootstrap.com/) v3.0.0 is loaded and used in templates
 provided by this bundle.
 
 ![Screenshot](https://raw.github.com/mremi/ContactBundle/master/Resources/doc/images/form.png)
