@@ -26,7 +26,7 @@ class ContactControllerTest extends WebTestCase
 
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
 
-        $form = $crawler->selectButton('contact_form_submit_button')->form();
+        $form = $crawler->selectButton('contact_form_save')->form();
 
         $client->submit($form, array(
             'contact_form[title]'     => 'mr',
@@ -46,7 +46,7 @@ class ContactControllerTest extends WebTestCase
 
         $submittedValues = $submittedValues['contact_form'];
 
-        $this->assertCount(8, $submittedValues);
+        $this->assertCount(9, $submittedValues);
 
         $this->assertArrayHasKey('title', $submittedValues);
         $this->assertEquals('mr', $submittedValues['title']);
@@ -70,6 +70,8 @@ class ContactControllerTest extends WebTestCase
         $this->assertEquals(1234, $submittedValues['captcha']);
 
         $this->assertArrayHasKey('_token', $submittedValues);
+
+        $this->assertArrayHasKey('save', $submittedValues);
     }
 
     /**

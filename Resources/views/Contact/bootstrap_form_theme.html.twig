@@ -49,6 +49,16 @@
 {% endspaceless %}
 {% endblock choice_widget_expanded %}
 
+{% block button_row %}
+{% spaceless %}
+    <div class="form-actions">
+        {% set attr = attr|merge({'class': attr.class|default('') ~ ' btn'}) %}
+
+        {{ form_widget(form, {'attr': attr}) }}
+    </div>
+{% endspaceless %}
+{% endblock button_row %}
+
 {% block form_errors %}
 {% spaceless %}
     {% if errors|length > 0 %}

@@ -90,6 +90,8 @@ class ContactType extends AbstractType
                 'mapped'             => false,
             ));
         }
+
+        $builder->add('save', 'submit', array('label' => 'mremi_contact.form_submit', 'translation_domain' => self::TRANSLATION_DOMAIN));
     }
 
     /**
