@@ -2,6 +2,10 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file source-language="en" datatype="plaintext" original="file.ext">
         <body>
+            <trans-unit id="mremi_contact.form_page_title">
+                <source>mremi_contact.form_page_title</source>
+                <target>Contact</target>
+            </trans-unit>
             <trans-unit id="mremi_contact.form_title">
                 <source>mremi_contact.form_title</source>
                 <target>Contact form</target>
@@ -93,6 +97,10 @@ A user has filled the contact form:
 <br/>
 Regards
 ]]></target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.confirm_page_title">
+                <source>mremi_contact.confirm_page_title</source>
+                <target>Confirmation</target>
             </trans-unit>
             <trans-unit id="mremi_contact.confirm_title">
                 <source>mremi_contact.confirm_title</source>
