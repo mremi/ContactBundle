@@ -2,7 +2,7 @@
     "name": "mremi/contact-bundle",
     "type": "symfony-bundle",
     "description": "Implementation of a contact form for Symfony2",
-    "keywords": ["contact", "form"],
+    "keywords": ["Symfony2", "contact", "form"],
     "homepage": "https://github.com/mremi/ContactBundle",
     "license": "MIT",
     "authors": [
