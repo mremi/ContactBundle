@@ -237,3 +237,14 @@ The contact controller dispatches 3 events during the index action:
 3. ContactEvents::FORM_COMPLETED occurs after saving the contact in the contact form process
 
 Each one allows you to customize the default workflow provided by this bundle.
+
+## Contribution
+
+Any question or feedback? Open an issue and I will try to reply quickly.
+
+A feature is missing here? Feel free to create a pull request to solve it!
+
+I hope this has been useful and has helped you. If so, share it and recommend
+it! :)
+
+[@mremitsme](https://twitter.com/mremitsme)
