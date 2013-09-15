@@ -13,6 +13,7 @@
     ],
     "require": {
         "php": ">=5.3.3",
+        "mremi/bootstrap-bundle": "~3.0",
         "symfony/framework-bundle": "~2.3",
         "symfony/form": "~2.3",
         "genemu/form-bundle": "~2.2"
