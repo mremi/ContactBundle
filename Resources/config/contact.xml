@@ -8,6 +8,15 @@
         <service id="mremi_contact.contact_manager.default" class="Mremi\ContactBundle\Model\ContactManager" public="false">
             <argument />
         </service>
+
+        <service id="mremi_contact.contact_controller" class="Mremi\ContactBundle\Controller\ContactController">
+            <argument type="service" id="event_dispatcher" />
+            <argument type="service" id="mremi_contact.form_factory" />
+            <argument type="service" id="mremi_contact.contact_manager" />
+            <argument type="service" id="router" />
+            <argument type="service" id="session" />
+            <argument type="service" id="templating" />
+        </service>
     </services>
 
 </container>

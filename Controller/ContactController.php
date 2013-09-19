@@ -6,10 +6,15 @@ use Mremi\ContactBundle\ContactEvents;
 use Mremi\ContactBundle\Event\ContactEvent;
 use Mremi\ContactBundle\Event\FilterContactResponseEvent;
 use Mremi\ContactBundle\Event\FormEvent;
+use Mremi\ContactBundle\Form\Factory\FormFactory;
+use Mremi\ContactBundle\Model\ContactManagerInterface;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 /**
@@ -17,8 +22,58 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
  *
  * @author Rémi Marseille <marseille.remi@gmail.com>
  */
-class ContactController extends Controller
+class ContactController
 {
+    /**
+     * @var EventDispatcherInterface
+     */
+    private $eventDispatcher;
+
+    /**
+     * @var FormFactory
+     */
+    private $formFactory;
+
+    /**
+     * @var ContactManagerInterface
+     */
+    private $contactManager;
+
+    /**
+     * @var RouterInterface
+     */
+    private $router;
+
+    /**
+     * @var SessionInterface
+     */
+    private $session;
+
+    /**
+     * @var EngineInterface
+     */
+    private $templating;
+
+    /**
+     * Constructor
+     *
+     * @param EventDispatcherInterface $eventDispatcher An event dispatcher instance
+     * @param FormFactory              $formFactory     A form factory instance
+     * @param ContactManagerInterface  $contactManager  A contact manager instance
+     * @param RouterInterface          $router          A router instance
+     * @param SessionInterface         $session         A session instance
+     * @param EngineInterface          $templating      A templating instance
+     */
+    public function __construct(EventDispatcherInterface $eventDispatcher, FormFactory $formFactory, ContactManagerInterface $contactManager, RouterInterface $router, SessionInterface $session, EngineInterface $templating)
+    {
+        $this->eventDispatcher = $eventDispatcher;
+        $this->formFactory     = $formFactory;
+        $this->contactManager  = $contactManager;
+        $this->router          = $router;
+        $this->session         = $session;
+        $this->templating      = $templating;
+    }
+
     /**
      * Index action in charge to render the form
      *
@@ -28,34 +83,33 @@ class ContactController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $dispatcher = $this->getEventDispatcher();
-        $contact = $this->getContactManager()->create();
+        $contact = $this->contactManager->create();
 
-        $dispatcher->dispatch(ContactEvents::FORM_INITIALIZE, new ContactEvent($contact, $request));
+        $this->eventDispatcher->dispatch(ContactEvents::FORM_INITIALIZE, new ContactEvent($contact, $request));
 
-        $form = $this->getFormFactory()->createForm($contact);
+        $form = $this->formFactory->createForm($contact);
 
         if ($request->isMethod('POST')) {
             $form->bind($request);
 
             if ($form->isValid()) {
                 $event = new FormEvent($form, $request);
-                $dispatcher->dispatch(ContactEvents::FORM_SUCCESS, $event);
+                $this->eventDispatcher->dispatch(ContactEvents::FORM_SUCCESS, $event);
 
                 if (null === $response = $event->getResponse()) {
-                    $response = new RedirectResponse($this->getRouter()->generate('mremi_contact_confirmation'));
+                    $response = new RedirectResponse($this->router->generate('mremi_contact_confirmation'));
                 }
 
-                $this->getContactManager()->save($contact, true);
-                $this->getSession()->set('mremi_contact_data', $contact);
+                $this->contactManager->save($contact, true);
+                $this->session->set('mremi_contact_data', $contact);
 
-                $dispatcher->dispatch(ContactEvents::FORM_COMPLETED, new FilterContactResponseEvent($contact, $request, $response));
+                $this->eventDispatcher->dispatch(ContactEvents::FORM_COMPLETED, new FilterContactResponseEvent($contact, $request, $response));
 
                 return $response;
             }
         }
 
-        return $this->render('MremiContactBundle:Contact:index.html.twig', array(
+        return $this->templating->renderResponse('MremiContactBundle:Contact:index.html.twig', array(
             'form' => $form->createView(),
         ));
     }
@@ -63,72 +117,20 @@ class ContactController extends Controller
     /**
      * Confirm action in charge to render a confirmation message
      *
-     * @param Request $request
-     *
      * @return \Symfony\Component\HttpFoundation\Response
      *
      * @throws AccessDeniedException If no contact stored in session
      */
-    public function confirmAction(Request $request)
+    public function confirmAction()
     {
-        $contact = $this->getSession()->get('mremi_contact_data');
+        $contact = $this->session->get('mremi_contact_data');
 
         if (!$contact) {
             throw new AccessDeniedException('Please fill the contact form');
         }
 
-        return $this->render('MremiContactBundle:Contact:confirm.html.twig', array(
+        return $this->templating->renderResponse('MremiContactBundle:Contact:confirm.html.twig', array(
             'contact' => $contact,
         ));
-    }
-
-    /**
-     * Gets the event dispatcher
-     *
-     * @return \Symfony\Component\EventDispatcher\EventDispatcherInterface
-     */
-    private function getEventDispatcher()
-    {
-        return $this->get('event_dispatcher');
-    }
-
-    /**
-     * Gets the form factory
-     *
-     * @return \Mremi\ContactBundle\Form\Factory\FormFactory
-     */
-    private function getFormFactory()
-    {
-        return $this->get('mremi_contact.form_factory');
-    }
-
-    /**
-     * Gets the contact manager
-     *
-     * @return \Mremi\ContactBundle\Model\ContactManagerInterface
-     */
-    private function getContactManager()
-    {
-        return $this->get('mremi_contact.contact_manager');
-    }
-
-    /**
-     * Gets the router
-     *
-     * @return \Symfony\Component\Routing\RouterInterface
-     */
-    private function getRouter()
-    {
-        return $this->get('router');
-    }
-
-    /**
-     * Gets the session
-     *
-     * @return \Symfony\Component\HttpFoundation\Session\SessionInterface
-     */
-    private function getSession()
-    {
-        return $this->get('session');
     }
 }
