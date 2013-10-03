@@ -9,6 +9,10 @@ MremiContactBundle
 
 This bundle provides a contact form in Symfony2.
 
+## License
+
+This bundle is available under the [MIT license](Resources/meta/LICENSE).
+
 ## Prerequisites
 
 This version of the bundle requires Symfony 2.3+.
