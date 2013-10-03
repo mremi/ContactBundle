@@ -20,7 +20,7 @@ interface ContactManagerInterface
      * Saves the given contact in configured storage system
      *
      * @param ContactInterface $contact A contact instance
-     * @param boolean          $flush   TRUE whether you want synchronize with the database
+     * @param boolean          $flush   TRUE whether you want to synchronize with the database
      */
     public function save(ContactInterface $contact, $flush = false);
 }

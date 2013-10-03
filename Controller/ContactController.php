@@ -89,24 +89,22 @@ class ContactController
 
         $form = $this->formFactory->createForm($contact);
 
-        if ($request->isMethod('POST')) {
-            $form->bind($request);
+        $form->handleRequest($request);
 
-            if ($form->isValid()) {
-                $event = new FormEvent($form, $request);
-                $this->eventDispatcher->dispatch(ContactEvents::FORM_SUCCESS, $event);
+        if ($form->isValid()) {
+            $event = new FormEvent($form, $request);
+            $this->eventDispatcher->dispatch(ContactEvents::FORM_SUCCESS, $event);
 
-                if (null === $response = $event->getResponse()) {
-                    $response = new RedirectResponse($this->router->generate('mremi_contact_confirmation'));
-                }
-
-                $this->contactManager->save($contact, true);
-                $this->session->set('mremi_contact_data', $contact);
-
-                $this->eventDispatcher->dispatch(ContactEvents::FORM_COMPLETED, new FilterContactResponseEvent($contact, $request, $response));
-
-                return $response;
+            if (null === $response = $event->getResponse()) {
+                $response = new RedirectResponse($this->router->generate('mremi_contact_confirmation'));
             }
+
+            $this->contactManager->save($contact, true);
+            $this->session->set('mremi_contact_data', $contact);
+
+            $this->eventDispatcher->dispatch(ContactEvents::FORM_COMPLETED, new FilterContactResponseEvent($contact, $request, $response));
+
+            return $response;
         }
 
         return $this->templating->renderResponse('MremiContactBundle:Contact:index.html.twig', array(
