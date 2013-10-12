@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the Mremi\ContactBundle Symfony bundle.
+ *
+ * (c) Rémi Marseille <marseille.remi@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 $autoloads = array(
     __DIR__.'/../vendor/autoload.php',                // travis or standalone test
     __DIR__.'/../../../../../../vendor/autoload.php', // symfony & composer test
