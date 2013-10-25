@@ -18,6 +18,9 @@
         "symfony/form": "~2.3",
         "genemu/form-bundle": "~2.2"
     },
+    "suggest": {
+        "mremi/templating-extra-bundle": "In order to profile pages, get some statistics and enhance front office development"
+    },
     "autoload": {
         "psr-0": { "Mremi\\ContactBundle": "" }
     },
