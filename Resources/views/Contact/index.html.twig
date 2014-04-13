@@ -23,23 +23,7 @@ file that was distributed with this source code.
 {% endblock %}
 
 {% block body %}
-    {% set novalidate = app.debug and app.request.get('novalidate') %}
-    {% set form_attr = {
-        'class': 'form-horizontal',
-        'role':  'form'
-    } %}
-
-    {% if novalidate %}
-        {{ form_start(form, {
-            'action': path('mremi_contact_form', {'novalidate': 1}),
-            'attr':   form_attr|merge({'novalidate': 'novalidate'})
-        }) }}
-    {% else %}
-        {{ form_start(form, {
-            'action': path('mremi_contact_form'),
-            'attr':   form_attr
-        }) }}
-    {% endif %}
+    {{ form_start(form, {'action': path('mremi_contact_form')}) }}
         <fieldset>
             <legend>{{ 'mremi_contact.form_title'|trans }}</legend>
 

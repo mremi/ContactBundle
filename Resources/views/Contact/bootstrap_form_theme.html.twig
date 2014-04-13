@@ -11,6 +11,32 @@ file that was distributed with this source code.
 
 {% extends "form_div_layout.html.twig" %}
 
+{% block form_start %}
+{% spaceless %}
+    {% set method = method|upper %}
+
+    {% if method in ["GET", "POST"] %}
+        {% set form_method = method %}
+    {% else %}
+        {% set form_method = "POST" %}
+    {% endif %}
+
+    {% set attr = attr|merge({'class': attr.class|default('') ~ ' form-horizontal', 'role': 'form'}) %}
+
+    {% if app.debug and app.request.query.get('novalidate') %}
+        {% set action = action|default('') ~ '?novalidate=1' %}
+
+        {% set attr = attr|merge({'novalidate': 'novalidate'}) %}
+    {% endif %}
+
+    <form method="{{ form_method|lower }}" action="{{ action }}"{% for attrname, attrvalue in attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}{% if multipart %} enctype="multipart/form-data"{% endif %}>
+
+    {% if form_method != method %}
+        <input type="hidden" name="_method" value="{{ method }}" />
+    {% endif %}
+{% endspaceless %}
+{% endblock form_start %}
+
 {% block form_label %}
 {% spaceless %}
     {% set label_attr = label_attr|merge({'class': label_attr.class|default('') ~ ' col-lg-2 control-label' }) %}
