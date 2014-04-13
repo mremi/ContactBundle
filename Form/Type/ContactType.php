@@ -25,8 +25,6 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
  */
 class ContactType extends AbstractType
 {
-    const TRANSLATION_DOMAIN = 'MremiContactBundle';
-
     /**
      * @var SubjectProviderInterface
      */
@@ -70,37 +68,34 @@ class ContactType extends AbstractType
     {
         $builder
             ->add('title', 'choice', array(
-                'choices'            => Contact::getTitles(),
-                'expanded'           => true,
-                'label'              => 'mremi_contact.form.title',
-                'translation_domain' => self::TRANSLATION_DOMAIN,
+                'choices'  => Contact::getTitles(),
+                'expanded' => true,
+                'label'    => 'mremi_contact.form.title',
             ))
-            ->add('firstName', 'text',  array('label' => 'mremi_contact.form.first_name', 'translation_domain' => self::TRANSLATION_DOMAIN))
-            ->add('lastName',  'text',  array('label' => 'mremi_contact.form.last_name',  'translation_domain' => self::TRANSLATION_DOMAIN))
-            ->add('email',     'email', array('label' => 'mremi_contact.form.email',      'translation_domain' => self::TRANSLATION_DOMAIN));
+            ->add('firstName', 'text',  array('label' => 'mremi_contact.form.first_name'))
+            ->add('lastName',  'text',  array('label' => 'mremi_contact.form.last_name'))
+            ->add('email',     'email', array('label' => 'mremi_contact.form.email'));
 
         if ($subjects = $this->subjectProvider->getSubjects()) {
             $builder
                 ->add('subject', 'choice', array(
-                    'choices'            => $subjects,
-                    'label'              => 'mremi_contact.form.subject',
-                    'translation_domain' => self::TRANSLATION_DOMAIN,
+                    'choices' => $subjects,
+                    'label'   => 'mremi_contact.form.subject',
                 ));
         } else {
-            $builder->add('subject', 'text', array('label' => 'mremi_contact.form.subject', 'translation_domain' => self::TRANSLATION_DOMAIN));
+            $builder->add('subject', 'text', array('label' => 'mremi_contact.form.subject'));
         }
 
-        $builder->add('message', 'textarea', array('label' => 'mremi_contact.form.message', 'translation_domain' => self::TRANSLATION_DOMAIN));
+        $builder->add('message', 'textarea', array('label' => 'mremi_contact.form.message'));
 
         if (!$this->captchaDisabled) {
             $builder->add('captcha', $this->captchaType, array(
-                'label'              => 'mremi_contact.form.captcha',
-                'translation_domain' => self::TRANSLATION_DOMAIN,
-                'mapped'             => false,
+                'label'  => 'mremi_contact.form.captcha',
+                'mapped' => false,
             ));
         }
 
-        $builder->add('save', 'submit', array('label' => 'mremi_contact.form_submit', 'translation_domain' => self::TRANSLATION_DOMAIN));
+        $builder->add('save', 'submit', array('label' => 'mremi_contact.form_submit'));
     }
 
     /**
@@ -109,8 +104,9 @@ class ContactType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => $this->class,
-            'intention'  => 'contact',
+            'data_class'         => $this->class,
+            'intention'          => 'contact',
+            'translation_domain' => 'MremiContactBundle',
         ));
     }
 
