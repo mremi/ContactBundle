@@ -161,7 +161,7 @@ mremi_contact:
         validation_groups: [Default]
         subject_provider:  mremi_contact.subject_provider.noop
         captcha_disabled:  false
-        captcha_type:      genemu_captcha
+        captcha_type:      genemu_captcha # or genemu_recaptcha
 
     email:
         mailer:            mremi_contact.mailer.twig_swift
@@ -194,7 +194,7 @@ Or if you prefer XML:
 **Note:**
 
 > In order to use the built-in email functionality, you must activate and
-> configure the SwiftmailerBundle.
+> configure the [SwiftmailerBundle](https://github.com/symfony/SwiftmailerBundle).
 
 ### Step 6: Update your database schema (optional)
 
