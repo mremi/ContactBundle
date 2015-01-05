@@ -35,8 +35,13 @@ For more information about translations, check [Symfony documentation](http://sy
 
 ### Extra form
 
-This bundle requires the [GenemuFormBundle](https://github.com/genemu/GenemuFormBundle) for an easy captcha integration,
-so you need to configure it.
+This bundle requires external captcha field type. You can get one from this bundles:
+
+* [GenemuFormBundle](https://github.com/genemu/GenemuFormBundle)
+* [EWZRecaptchaBundle](https://github.com/excelwebzone/EWZRecaptchaBundle)
+* [CaptchaBundle](https://github.com/Gregwar/CaptchaBundle)
+
+Or even implement your own.
 
 ## Installation
 
@@ -145,9 +150,7 @@ class Contact extends BaseContact
 ```
 
 ### Step 4: Configure the MremiContactBundle
-
 The bundle comes with a sensible default configuration, which is listed below.
-However you have to configure at least the recipient address.
 
 ```yaml
 # app/config/config.yml
@@ -160,13 +163,22 @@ mremi_contact:
         name:              contact_form
         validation_groups: [Default]
         subject_provider:  mremi_contact.subject_provider.noop
-        captcha_disabled:  false
-        captcha_type:      genemu_captcha # or genemu_recaptcha
 
     email:
         mailer:            mremi_contact.mailer.twig_swift
-        recipient_address: webmaster@example.com
+        recipient_address: # Required
         template:          MremiContactBundle:Contact:email.txt.twig
+```
+However you have to configure at least a recipient address.
+
+```yaml
+# app/config/config.yml
+mremi_contact:
+    form:
+        captcha_type:      genemu_captcha # or any other
+
+    email:
+        recipient_address: recipient@example.com
 ```
 
 ### Step 5: Import MremiContactBundle routing

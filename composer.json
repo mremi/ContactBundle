@@ -15,8 +15,7 @@
         "php": ">=5.3.3",
         "mremi/bootstrap-bundle": "~3.0",
         "symfony/framework-bundle": "~2.3",
-        "symfony/form": "~2.3",
-        "genemu/form-bundle": "~2.2"
+        "symfony/form": "~2.3"
     },
     "suggest": {
         "mremi/templating-extra-bundle": "In order to profile pages, get some statistics and enhance front office development"

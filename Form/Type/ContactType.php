@@ -36,11 +36,6 @@ class ContactType extends AbstractType
     private $class;
 
     /**
-     * @var boolean
-     */
-    private $captchaDisabled;
-
-    /**
      * @var string
      */
     private $captchaType;
@@ -50,14 +45,12 @@ class ContactType extends AbstractType
      *
      * @param SubjectProviderInterface $subjectProvider A subject provider instance
      * @param string                   $class           The Contact class namespace
-     * @param boolean                  $captchaDisabled TRUE whether you want disable the captcha
      * @param string                   $captchaType     The captcha type
      */
-    public function __construct(SubjectProviderInterface $subjectProvider, $class, $captchaDisabled, $captchaType)
+    public function __construct(SubjectProviderInterface $subjectProvider, $class, $captchaType)
     {
         $this->subjectProvider = $subjectProvider;
         $this->class           = $class;
-        $this->captchaDisabled = $captchaDisabled;
         $this->captchaType     = $captchaType;
     }
 
@@ -88,7 +81,7 @@ class ContactType extends AbstractType
 
         $builder->add('message', 'textarea', array('label' => 'mremi_contact.form.message'));
 
-        if (!$this->captchaDisabled) {
+        if ($this->captchaType) {
             $builder->add('captcha', $this->captchaType, array(
                 'label'  => 'mremi_contact.form.captcha',
                 'mapped' => false,
