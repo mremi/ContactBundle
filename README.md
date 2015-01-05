@@ -35,8 +35,13 @@ For more information about translations, check [Symfony documentation](http://sy
 
 ### Extra form
 
-This bundle requires the [GenemuFormBundle](https://github.com/genemu/GenemuFormBundle) for an easy captcha integration,
-so you need to configure it.
+This bundle requires external captcha field type. You can get one from this bundles:
+
+* [GenemuFormBundle](https://github.com/genemu/GenemuFormBundle)
+* [EWZRecaptchaBundle](https://github.com/excelwebzone/EWZRecaptchaBundle)
+* [CaptchaBundle](https://github.com/Gregwar/CaptchaBundle)
+
+Or even implement your own.
 
 ## Installation
 
