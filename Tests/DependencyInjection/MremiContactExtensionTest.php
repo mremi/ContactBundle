@@ -99,44 +99,16 @@ class MremiContactExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests extension loading throws exception if captcha_disabled is not a boolean
-     *
-     * @expectedException        \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
-     * @expectedExceptionMessage Invalid type for path "mremi_contact.form.captcha_disabled". Expected boolean, but got string.
-     */
-    public function testContactLoadThrowsExceptionIfCaptchaDisabledNotBoolean()
-    {
-        $loader = new MremiContactExtension;
-        $config = $this->getEmptyConfig();
-        $config['form']['captcha_disabled'] = 'foo';
-        $loader->load(array($config), new ContainerBuilder);
-    }
-
-    /**
      * Tests extension loading throws exception if captcha type is empty
      *
      * @expectedException        \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
-     * @expectedExceptionMessage The value "" is not allowed for path "mremi_contact.form.captcha_type". Permissible values: "genemu_captcha", "genemu_recaptcha"
+     * @expectedExceptionMessage The path "mremi_contact.form.captcha_type" cannot contain an empty value, but got "".
      */
     public function testContactLoadThrowsExceptionIfCaptchaTypeEmpty()
     {
         $loader = new MremiContactExtension;
         $config = $this->getEmptyConfig();
         $config['form']['captcha_type'] = '';
-        $loader->load(array($config), new ContainerBuilder);
-    }
-
-    /**
-     * Tests extension loading throws exception if captcha type is invalid
-     *
-     * @expectedException        \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
-     * @expectedExceptionMessage The value "foo" is not allowed for path "mremi_contact.form.captcha_type". Permissible values: "genemu_captcha", "genemu_recaptcha"
-     */
-    public function testContactLoadThrowsExceptionIfCaptchaTypeInvalid()
-    {
-        $loader = new MremiContactExtension;
-        $config = $this->getEmptyConfig();
-        $config['form']['captcha_type'] = 'foo';
         $loader->load(array($config), new ContainerBuilder);
     }
 
@@ -327,7 +299,6 @@ form:
     name:              application_contact_form
     validation_groups: [Default, Foo]
     subject_provider:  mremi_contact.subject_provider.noop
-    captcha_disabled:  true
     captcha_type:      genemu_recaptcha
 
 email:
