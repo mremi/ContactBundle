@@ -41,19 +41,26 @@ class TwigSwiftMailer implements MailerInterface
     private $template;
 
     /**
+     * @var array
+     */
+    private $from;
+
+    /**
      * Constructor
      *
      * @param \Swift_Mailer     $mailer           A mailer instance
      * @param \Twig_Environment $twig             A Twig instance
      * @param string            $recipientAddress The recipient email
      * @param string            $template         The template used for email content
+     * @param array             $from             The From address
      */
-    public function __construct(\Swift_Mailer $mailer, \Twig_Environment $twig, $recipientAddress, $template)
+    public function __construct(\Swift_Mailer $mailer, \Twig_Environment $twig, $recipientAddress, $template, array $from = array())
     {
         $this->mailer           = $mailer;
         $this->twig             = $twig;
         $this->recipientAddress = $recipientAddress;
         $this->template         = $template;
+        $this->from             = $from;
     }
 
     /**
@@ -71,7 +78,7 @@ class TwigSwiftMailer implements MailerInterface
 
         $message = \Swift_Message::newInstance()
             ->setSubject($contact->getSubject())
-            ->setFrom($contact->getEmail(), $contact->getFullName())
+            ->setFrom($this->from ?: array($contact->getEmail() => $contact->getFullName()))
             ->setTo($this->recipientAddress);
 
         if (!empty($htmlBody)) {

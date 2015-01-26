@@ -155,11 +155,24 @@ mremi_contact:
         name:              contact_form
         validation_groups: [Default]
         subject_provider:  mremi_contact.subject_provider.noop
+        captcha_type:      ~
 
     email:
         mailer:            mremi_contact.mailer.twig_swift
+        from:              []
         recipient_address: # Required
         template:          MremiContactBundle:Contact:email.txt.twig
+```
+
+`mremi_contact.email.from` allows you to set the From address of the message:
+
+```yaml
+# app/config/config.yml
+mremi_contact:
+    email:
+        from:
+            - { address: john.doe@example.com, name: "John Doe" }
+            - { address: foo.bar@example.com }
 ```
 
 You can also configure your favorite captcha. You have to install it by
