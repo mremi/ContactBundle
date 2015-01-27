@@ -160,7 +160,7 @@ mremi_contact:
     email:
         mailer:            mremi_contact.mailer.twig_swift
         from:              []
-        recipient_address: # Required
+        to:                [] # Required
         template:          MremiContactBundle:Contact:email.txt.twig
 ```
 
@@ -173,6 +173,17 @@ mremi_contact:
         from:
             - { address: john.doe@example.com, name: "John Doe" }
             - { address: foo.bar@example.com }
+```
+
+`mremi_contact.email.to` allows you to set the To address of the message:
+
+```yaml
+# app/config/config.yml
+mremi_contact:
+    email:
+        to:
+            - { address: webmaster@example.com, name: "Webmaster" }
+            - { address: moderator@example.com }
 ```
 
 You can also configure your favorite captcha. You have to install it by

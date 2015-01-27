@@ -115,9 +115,15 @@ class MremiContactExtension extends Extension
             $from[$data['address']] = isset($data['name']) ? $data['name'] : null;
         }
 
+        $to = array();
+
+        foreach ($config['email']['to'] as $data) {
+            $to[$data['address']] = isset($data['name']) ? $data['name'] : null;
+        }
+
         $definition = $container->findDefinition('mremi_contact.mailer');
-        $definition->replaceArgument(2, $config['email']['recipient_address']);
-        $definition->replaceArgument(3, $config['email']['template']);
+        $definition->replaceArgument(2, $config['email']['template']);
+        $definition->replaceArgument(3, $to);
         $definition->replaceArgument(4, $from);
     }
 }

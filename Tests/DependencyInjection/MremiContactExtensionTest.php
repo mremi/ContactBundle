@@ -141,6 +141,47 @@ class MremiContactExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests extension loading throws exception if to address is not set
+     *
+     * @expectedException        \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     * @expectedExceptionMessage The child node "address" at path "mremi_contact.email.to.0" must be configured.
+     */
+    public function testContactLoadThrowsExceptionUnlessToAddressSet()
+    {
+        $loader = new MremiContactExtension;
+        $config = $this->getFullConfig();
+        unset($config['email']['to'][0]['address']);
+        $loader->load(array($config), new ContainerBuilder);
+    }
+
+    /**
+     * Tests extension loading throws exception if to address is empty
+     *
+     * @expectedException        \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     * @expectedExceptionMessage The path "mremi_contact.email.to.0.address" cannot contain an empty value, but got "".
+     */
+    public function testContactLoadThrowsExceptionIfToAddressEmpty()
+    {
+        $loader = new MremiContactExtension;
+        $config = $this->getFullConfig();
+        $config['email']['to'][0]['address'] = '';
+        $loader->load(array($config), new ContainerBuilder);
+    }
+
+    /**
+     * Tests extension loading throws exception if to address is not set
+     *
+     * @expectedException        \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     * @expectedExceptionMessage The child node "to" at path "mremi_contact.email" must be configured.
+     */
+    public function testContactLoadThrowsExceptionIfToAddressNotDefined()
+    {
+        $loader = new MremiContactExtension;
+        $config = $this->getFullConfig();
+        unset($config['email']['to']);
+        $loader->load(array($config), new ContainerBuilder);
+    }
+    /**
      * Tests extension loading throws exception if from address is not set
      *
      * @expectedException        \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
@@ -165,34 +206,6 @@ class MremiContactExtensionTest extends \PHPUnit_Framework_TestCase
         $loader = new MremiContactExtension;
         $config = $this->getFullConfig();
         $config['email']['from'][0]['address'] = '';
-        $loader->load(array($config), new ContainerBuilder);
-    }
-
-    /**
-     * Tests extension loading throws exception if recipient address is not set
-     *
-     * @expectedException        \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
-     * @expectedExceptionMessage The child node "recipient_address" at path "mremi_contact.email" must be configured.
-     */
-    public function testContactLoadThrowsExceptionUnlessRecipientAddressSet()
-    {
-        $loader = new MremiContactExtension;
-        $config = $this->getEmptyConfig();
-        unset($config['email']['recipient_address']);
-        $loader->load(array($config), new ContainerBuilder);
-    }
-
-    /**
-     * Tests extension loading throws exception if recipient address is empty
-     *
-     * @expectedException        \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
-     * @expectedExceptionMessage The path "mremi_contact.email.recipient_address" cannot contain an empty value, but got "".
-     */
-    public function testContactLoadThrowsExceptionIfRecipientAddressEmpty()
-    {
-        $loader = new MremiContactExtension;
-        $config = $this->getEmptyConfig();
-        $config['email']['recipient_address'] = '';
         $loader->load(array($config), new ContainerBuilder);
     }
 
@@ -304,7 +317,8 @@ class MremiContactExtensionTest extends \PHPUnit_Framework_TestCase
     {
         $yaml = <<<EOF
 email:
-    recipient_address: webmaster@example.com
+     to:
+        - { address: webmaster@example.com, name: "Webmaster" }
 EOF;
         $parser = new Parser;
 
@@ -335,7 +349,10 @@ email:
         - { address: john.doe@example.com, name: "John Doe" }
         - { address: foo.bar@example.com, name: "" }
         - { address: test@example.com }
-    recipient_address: foo@example.com
+    to:
+        - { address: webmaster@example.com, name: "Webmaster" }
+        - { address: moderator@example.com, name: "" }
+        - { address: other.moderator@example.com }
     template:          ApplicationMremiContactBundle:Contact:email.txt.twig
 EOF;
         $parser = new Parser;
