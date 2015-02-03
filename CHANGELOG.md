@@ -10,4 +10,4 @@ CHANGELOG
 
 * Allow any captcha form field type.
 * [BC BREAK] Removed Genemu dependency.
-* [BC BREAK] Removed captcha_disabled configuration option.
+* [BC BREAK] Removed ``mremi_contact.form.captcha_disabled`` configuration option.
