@@ -138,6 +138,17 @@ class Contact extends BaseContact
     </entity>
 </doctrine-mapping>
 ```
+YML Version : 
+```
+Acme\ContactBundle\Entity\Contact:
+  type: entity
+  table: contact
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+```
 
 ### Step 4: Configure the MremiContactBundle
 
