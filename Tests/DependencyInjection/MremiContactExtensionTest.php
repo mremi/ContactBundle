@@ -141,47 +141,6 @@ class MremiContactExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests extension loading throws exception if to address is not set
-     *
-     * @expectedException        \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
-     * @expectedExceptionMessage The child node "address" at path "mremi_contact.email.to.0" must be configured.
-     */
-    public function testContactLoadThrowsExceptionUnlessToAddressSet()
-    {
-        $loader = new MremiContactExtension;
-        $config = $this->getFullConfig();
-        unset($config['email']['to'][0]['address']);
-        $loader->load(array($config), new ContainerBuilder);
-    }
-
-    /**
-     * Tests extension loading throws exception if to address is empty
-     *
-     * @expectedException        \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
-     * @expectedExceptionMessage The path "mremi_contact.email.to.0.address" cannot contain an empty value, but got "".
-     */
-    public function testContactLoadThrowsExceptionIfToAddressEmpty()
-    {
-        $loader = new MremiContactExtension;
-        $config = $this->getFullConfig();
-        $config['email']['to'][0]['address'] = '';
-        $loader->load(array($config), new ContainerBuilder);
-    }
-
-    /**
-     * Tests extension loading throws exception if to address is not set
-     *
-     * @expectedException        \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
-     * @expectedExceptionMessage The child node "to" at path "mremi_contact.email" must be configured.
-     */
-    public function testContactLoadThrowsExceptionIfToAddressNotDefined()
-    {
-        $loader = new MremiContactExtension;
-        $config = $this->getFullConfig();
-        unset($config['email']['to']);
-        $loader->load(array($config), new ContainerBuilder);
-    }
-    /**
      * Tests extension loading throws exception if from address is not set
      *
      * @expectedException        \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
@@ -206,6 +165,48 @@ class MremiContactExtensionTest extends \PHPUnit_Framework_TestCase
         $loader = new MremiContactExtension;
         $config = $this->getFullConfig();
         $config['email']['from'][0]['address'] = '';
+        $loader->load(array($config), new ContainerBuilder);
+    }
+
+    /**
+     * Tests extension loading throws exception if to address is not set
+     *
+     * @expectedException        \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     * @expectedExceptionMessage The child node "to" at path "mremi_contact.email" must be configured.
+     */
+    public function testContactLoadThrowsExceptionIfToAddressNotDefined()
+    {
+        $loader = new MremiContactExtension;
+        $config = $this->getEmptyConfig();
+        unset($config['email']['to']);
+        $loader->load(array($config), new ContainerBuilder);
+    }
+
+    /**
+     * Tests extension loading throws exception if to address is not set
+     *
+     * @expectedException        \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     * @expectedExceptionMessage The child node "address" at path "mremi_contact.email.to.0" must be configured.
+     */
+    public function testContactLoadThrowsExceptionUnlessToAddressSet()
+    {
+        $loader = new MremiContactExtension;
+        $config = $this->getEmptyConfig();
+        unset($config['email']['to'][0]['address']);
+        $loader->load(array($config), new ContainerBuilder);
+    }
+
+    /**
+     * Tests extension loading throws exception if to address is empty
+     *
+     * @expectedException        \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     * @expectedExceptionMessage The path "mremi_contact.email.to.0.address" cannot contain an empty value, but got "".
+     */
+    public function testContactLoadThrowsExceptionIfToAddressEmpty()
+    {
+        $loader = new MremiContactExtension;
+        $config = $this->getEmptyConfig();
+        $config['email']['to'][0]['address'] = '';
         $loader->load(array($config), new ContainerBuilder);
     }
 

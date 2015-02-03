@@ -33,11 +33,6 @@ class TwigSwiftMailer implements MailerInterface
     /**
      * @var string
      */
-    private $recipientAddress;
-
-    /**
-     * @var string
-     */
     private $template;
 
     /**
@@ -53,19 +48,19 @@ class TwigSwiftMailer implements MailerInterface
     /**
      * Constructor
      *
-     * @param \Swift_Mailer     $mailer           A mailer instance
-     * @param \Twig_Environment $twig             A Twig instance
-     * @param string            $template         The template used for email content
-     * @param array             $to               The To address
-     * @param array             $from             The From address
+     * @param \Swift_Mailer     $mailer   A mailer instance
+     * @param \Twig_Environment $twig     A Twig instance
+     * @param string            $template The template used for email content
+     * @param array             $to       The To address
+     * @param array             $from     The From address
      */
-    public function __construct(\Swift_Mailer $mailer, \Twig_Environment $twig, $template,array $to, array $from = array())
+    public function __construct(\Swift_Mailer $mailer, \Twig_Environment $twig, $template, array $to, array $from = array())
     {
-        $this->mailer           = $mailer;
-        $this->twig             = $twig;
-        $this->template         = $template;
-        $this->to               = $to;
-        $this->from             = $from;
+        $this->mailer   = $mailer;
+        $this->twig     = $twig;
+        $this->template = $template;
+        $this->to       = $to;
+        $this->from     = $from;
     }
 
     /**
