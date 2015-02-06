@@ -120,8 +120,8 @@ class Contact extends BaseContact
 }
 ```
 
-``` yaml
-#src/Acme/ContactBundle/Resources/config/doctrine/Contact.orm.xml
+``` xml
+<!--src/Acme/ContactBundle/Resources/config/doctrine/Contact.orm.xml -->
 <?xml version="1.0" encoding="UTF-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -139,8 +139,8 @@ class Contact extends BaseContact
 </doctrine-mapping>
 ```
 YML Version : 
-```
-<!-- src/Acme/ContactBundle/Resources/config/doctrine/Contact.orm.yml -->
+``` yaml
+src/Acme/ContactBundle/Resources/config/doctrine/Contact.orm.yml
 Acme\ContactBundle\Entity\Contact:
   type: entity
   table: contact
