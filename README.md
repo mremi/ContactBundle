@@ -140,7 +140,7 @@ class Contact extends BaseContact
 ```
 YML Version : 
 ``` yaml
-src/Acme/ContactBundle/Resources/config/doctrine/Contact.orm.yml
+# src/Acme/ContactBundle/Resources/config/doctrine/Contact.orm.yml
 Acme\ContactBundle\Entity\Contact:
   type: entity
   table: contact
