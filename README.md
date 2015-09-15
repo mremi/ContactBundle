@@ -138,7 +138,7 @@ class Contact extends BaseContact
     </entity>
 </doctrine-mapping>
 ```
-YML Version : 
+YML Version:
 ``` yaml
 # src/Acme/ContactBundle/Resources/config/doctrine/Contact.orm.yml
 Acme\ContactBundle\Entity\Contact:
@@ -167,7 +167,6 @@ mremi_contact:
         name:              contact_form
         validation_groups: [Default]
         subject_provider:  mremi_contact.subject_provider.noop
-        captcha_type:      ~
 
     email:
         mailer:            mremi_contact.mailer.twig_swift
@@ -264,13 +263,6 @@ You can now access to the contact form at `http://example.com/app_dev.php/contac
 
 > If your are in debug mode (see your front controller), the HTML5 validation
 > can be disabled by adding `?novalidate=1` to the URL.
-
-## Bootstrap
-
-[Bootstrap framework](http://getbootstrap.com/) v3.0.2 is loaded and used in templates
-provided by this bundle.
-
-![Screenshot](https://raw.github.com/mremi/ContactBundle/master/Resources/doc/images/form.png)
 
 ## Customization
 

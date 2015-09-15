@@ -9,16 +9,11 @@ file that was distributed with this source code.
 
 #}
 
-{% extends "::base.html.twig" %}
+{% extends "MremiContactBundle::layout.html.twig" %}
 
 {% trans_default_domain 'MremiContactBundle' %}
 
 {% block title %}{{ 'mremi_contact.confirm_page_title'|trans }}{% endblock %}
-
-{% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('bundles/mremibootstrap/css/bootstrap.min.css') }}" type="text/css" media="screen"  />
-    <link rel="stylesheet" href="{{ asset('bundles/mremibootstrap/css/bootstrap-theme.min.css') }}" type="text/css" media="all" />
-{% endblock %}
 
 {% block body %}
     <section>
@@ -29,4 +24,4 @@ file that was distributed with this source code.
     </section>
 
     <p>{{ 'mremi_contact.confirm_message'|trans }}</p>
-{% endblock body %}
+{% endblock %}
