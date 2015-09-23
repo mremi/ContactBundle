@@ -25,6 +25,20 @@ interface ContactInterface extends \Serializable
     const TITLE_MRS = 'mrs';
 
     /**
+     * Sets the captcha
+     *
+     * @param mixed $captcha
+     */
+    public function setCaptcha($captcha);
+
+    /**
+     * Gets the captcha
+     *
+     * @return mixed
+     */
+    public function getCaptcha();
+
+    /**
      * Sets the created at
      *
      * @param \DateTime $createdAt

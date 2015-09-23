@@ -84,8 +84,7 @@ class ContactType extends AbstractType
 
         if ($this->captchaType) {
             $builder->add('captcha', $this->captchaType, array(
-                'label'  => 'mremi_contact.form.captcha',
-                'mapped' => false,
+                'label' => 'mremi_contact.form.captcha',
             ));
         }
 

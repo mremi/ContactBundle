@@ -49,6 +49,11 @@ class Contact implements ContactInterface
     protected $message;
 
     /**
+     * @var mixed
+     */
+    protected $captcha;
+
+    /**
      * @var \DateTime
      */
     protected $createdAt;
@@ -59,6 +64,22 @@ class Contact implements ContactInterface
     public function __construct()
     {
         $this->setCreatedAt(new \DateTime);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setCaptcha($captcha)
+    {
+        $this->captcha = $captcha;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getCaptcha()
+    {
+        return $this->captcha;
     }
 
     /**
