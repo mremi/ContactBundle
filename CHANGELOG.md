@@ -1,6 +1,10 @@
 CHANGELOG
 =========
 
+### master (2015-09-15)
+
+* [BC BREAK] Removed ``mremi/bootstrap-bundle`` dependency.
+
 ### master (2015-01-28)
 
 * Allow multiple To for Swift mailer
@@ -11,7 +15,3 @@ CHANGELOG
 * Allow any captcha form field type.
 * [BC BREAK] Removed Genemu dependency.
 * [BC BREAK] Removed ``mremi_contact.form.captcha_disabled`` configuration option.
-
-### master (2015-09-15)
-
-* [BC BREAK] Removed ``mremi/bootstrap-bundle`` dependency.
