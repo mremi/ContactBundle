@@ -1,6 +1,10 @@
 CHANGELOG
 =========
 
+### master (2015-09-25)
+
+* The fields are now optionals for doctrine. So you can remove some fields if you don't want them and store in database.
+
 ### master (2015-09-15)
 
 * [BC BREAK] Removed ``mremi/bootstrap-bundle`` dependency.
