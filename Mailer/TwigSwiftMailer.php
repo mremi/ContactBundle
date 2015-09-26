@@ -23,27 +23,27 @@ class TwigSwiftMailer implements MailerInterface
     /**
      * @var \Swift_Mailer
      */
-    private $mailer;
+    protected $mailer;
 
     /**
      * @var \Twig_Environment
      */
-    private $twig;
+    protected $twig;
 
     /**
      * @var string
      */
-    private $template;
+    protected $template;
 
     /**
      * @var array
      */
-    private $from;
+    protected $from;
 
     /**
      * @var array
      */
-    private $to;
+    protected $to;
 
     /**
      * Constructor
