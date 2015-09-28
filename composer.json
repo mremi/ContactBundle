@@ -13,8 +13,10 @@
     ],
     "require": {
         "php": ">=5.3.3",
+        "swiftmailer/swiftmailer": "~4.3|~5",
+        "symfony/form": "~2.3",
         "symfony/framework-bundle": "~2.3",
-        "symfony/form": "~2.3"
+        "twig/twig": "~1.20"
     },
     "suggest": {
         "mremi/templating-extra-bundle": "In order to profile pages, get some statistics and enhance front office development"
