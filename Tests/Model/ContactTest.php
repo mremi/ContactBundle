@@ -143,6 +143,13 @@ class ContactTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('subject', $contact->getSubject());
         $this->assertEquals('message', $contact->getMessage());
         $this->assertEquals('2013-07-11T10:07:00+02:00', $contact->getCreatedAt()->format('c'));
+
+        $contact = new Contact;
+        $contact->fromArray(array(
+            'title' => null,
+        ));
+
+        $this->assertNull($contact->getTitle());
     }
 
     /**
