@@ -73,11 +73,12 @@ class TwigSwiftMailer implements MailerInterface
         );
 
         $template = $this->twig->loadTemplate($this->template);
+        $subject  = $template->renderBlock('subject', $context);
         $textBody = $template->renderBlock('body_text', $context);
         $htmlBody = $template->renderBlock('body_html', $context);
 
-        $message = \Swift_Message::newInstance()
-            ->setSubject($contact->getSubject())
+        $message = $this->createMessage()
+            ->setSubject($subject ?: $contact->getSubject())
             ->setFrom($this->from ?: array($contact->getEmail() => $contact->getFullName()))
             ->setTo($this->to);
 
@@ -89,5 +90,15 @@ class TwigSwiftMailer implements MailerInterface
         }
 
         return $this->mailer->send($message);
+    }
+
+    /**
+     * Creates a new message
+     *
+     * @return \Swift_Message
+     */
+    protected function createMessage()
+    {
+        return \Swift_Message::newInstance();
     }
 }
