@@ -259,6 +259,12 @@ class Contact implements ContactInterface
     public function fromArray(array $data)
     {
         foreach ($data as $property => $value) {
+            if (!$value) {
+                // prevent to call setters which raise an exception if value is not valid (title for instance)
+                // data can be null if associated field is removed from the form
+                continue;
+            }
+
             $method = sprintf('set%s', ucfirst($property));
 
             $this->$method('createdAt' === $property ? new \DateTime($value) : $value);
