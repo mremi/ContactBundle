@@ -18,6 +18,11 @@
         "symfony/framework-bundle": "~2.3",
         "twig/twig": "~1.20"
     },
+    "require-dev": {
+        "fabpot/php-cs-fixer": "~0.1|~1.0",
+        "phpunit/phpunit": "~4.8",
+        "symfony/phpunit-bridge": "~2.7|~3.0"
+    },
     "suggest": {
         "mremi/templating-extra-bundle": "In order to profile pages, get some statistics and enhance front office development"
     },
