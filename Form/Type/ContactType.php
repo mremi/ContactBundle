@@ -13,14 +13,13 @@ namespace Mremi\ContactBundle\Form\Type;
 
 use Mremi\ContactBundle\Model\Contact;
 use Mremi\ContactBundle\Provider\SubjectProviderInterface;
-
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
- * Contact type class
+ * Contact type class.
  *
  * @author Rémi Marseille <marseille.remi@gmail.com>
  */
@@ -42,7 +41,7 @@ class ContactType extends AbstractType
     private $captchaType;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param SubjectProviderInterface $subjectProvider A subject provider instance
      * @param string                   $class           The Contact class namespace

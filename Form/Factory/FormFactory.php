@@ -14,7 +14,7 @@ namespace Mremi\ContactBundle\Form\Factory;
 use Symfony\Component\Form\FormFactoryInterface;
 
 /**
- * Form factory class
+ * Form factory class.
  *
  * @author Rémi Marseille <marseille.remi@gmail.com>
  */
@@ -26,7 +26,7 @@ class FormFactory
     private $formFactory;
 
     /**
-     * @var string|integer
+     * @var string|int
      */
     private $name;
 
@@ -41,10 +41,10 @@ class FormFactory
     private $validationGroups;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param FormFactoryInterface                             $formFactory      A form factory instance
-     * @param string|integer                                   $name             The name of the form
+     * @param string|int                                       $name             The name of the form
      * @param string|\Symfony\Component\Form\FormTypeInterface $type             The type of the form
      * @param array                                            $validationGroups An array of validation groups
      */
@@ -57,7 +57,7 @@ class FormFactory
     }
 
     /**
-     * Creates a form and returns it
+     * Creates a form and returns it.
      *
      * @param mixed $data The initial data, optional
      *
@@ -66,7 +66,7 @@ class FormFactory
     public function createForm($data = null)
     {
         return $this->formFactory->createNamed($this->name, $this->type, $data, array(
-            'validation_groups' => $this->validationGroups
+            'validation_groups' => $this->validationGroups,
         ));
     }
 }

@@ -12,12 +12,11 @@
 namespace Mremi\ContactBundle\Tests\DependencyInjection;
 
 use Mremi\ContactBundle\DependencyInjection\MremiContactExtension;
-
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Yaml\Parser;
 
 /**
- * Mremi contact extension test class
+ * Mremi contact extension test class.
  *
  * @author Rémi Marseille <marseille.remi@gmail.com>
  */
@@ -29,217 +28,217 @@ class MremiContactExtensionTest extends \PHPUnit_Framework_TestCase
     private $configuration;
 
     /**
-     * Tests extension loading throws exception if store_data is not a boolean
+     * Tests extension loading throws exception if store_data is not a boolean.
      *
      * @expectedException        \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      * @expectedExceptionMessage Invalid type for path "mremi_contact.store_data". Expected boolean, but got string.
      */
     public function testContactLoadThrowsExceptionIfStoreDataNotBoolean()
     {
-        $loader = new MremiContactExtension;
+        $loader = new MremiContactExtension();
         $config = $this->getEmptyConfig();
         $config['store_data'] = 'foo';
-        $loader->load(array($config), new ContainerBuilder);
+        $loader->load(array($config), new ContainerBuilder());
     }
 
     /**
-     * Tests extension loading throws exception if contact model class is empty
+     * Tests extension loading throws exception if contact model class is empty.
      *
      * @expectedException        \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      * @expectedExceptionMessage The path "mremi_contact.contact_class" cannot contain an empty value, but got "".
      */
     public function testContactLoadThrowsExceptionIfContactModelClassEmpty()
     {
-        $loader = new MremiContactExtension;
+        $loader = new MremiContactExtension();
         $config = $this->getEmptyConfig();
         $config['contact_class'] = '';
-        $loader->load(array($config), new ContainerBuilder);
+        $loader->load(array($config), new ContainerBuilder());
     }
 
     /**
-     * Tests extension loading throws exception if form type is empty
+     * Tests extension loading throws exception if form type is empty.
      *
      * @expectedException        \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      * @expectedExceptionMessage The path "mremi_contact.form.type" cannot contain an empty value, but got "".
      */
     public function testContactLoadThrowsExceptionIfFormTypeEmpty()
     {
-        $loader = new MremiContactExtension;
+        $loader = new MremiContactExtension();
         $config = $this->getEmptyConfig();
         $config['form']['type'] = '';
-        $loader->load(array($config), new ContainerBuilder);
+        $loader->load(array($config), new ContainerBuilder());
     }
 
     /**
-     * Tests extension loading throws exception if form name is empty
+     * Tests extension loading throws exception if form name is empty.
      *
      * @expectedException        \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      * @expectedExceptionMessage The path "mremi_contact.form.name" cannot contain an empty value, but got "".
      */
     public function testContactLoadThrowsExceptionIfFormNameEmpty()
     {
-        $loader = new MremiContactExtension;
+        $loader = new MremiContactExtension();
         $config = $this->getEmptyConfig();
         $config['form']['name'] = '';
-        $loader->load(array($config), new ContainerBuilder);
+        $loader->load(array($config), new ContainerBuilder());
     }
 
     /**
-     * Tests extension loading throws exception if subject provider is empty
+     * Tests extension loading throws exception if subject provider is empty.
      *
      * @expectedException        \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      * @expectedExceptionMessage The path "mremi_contact.form.subject_provider" cannot contain an empty value, but got "".
      */
     public function testContactLoadThrowsExceptionIfSubjectProviderEmpty()
     {
-        $loader = new MremiContactExtension;
+        $loader = new MremiContactExtension();
         $config = $this->getEmptyConfig();
         $config['form']['subject_provider'] = '';
-        $loader->load(array($config), new ContainerBuilder);
+        $loader->load(array($config), new ContainerBuilder());
     }
 
     /**
-     * Tests extension loading throws exception if captcha type is empty
+     * Tests extension loading throws exception if captcha type is empty.
      *
      * @expectedException        \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      * @expectedExceptionMessage The path "mremi_contact.form.captcha_type" cannot contain an empty value, but got "".
      */
     public function testContactLoadThrowsExceptionIfCaptchaTypeEmpty()
     {
-        $loader = new MremiContactExtension;
+        $loader = new MremiContactExtension();
         $config = $this->getEmptyConfig();
         $config['form']['captcha_type'] = '';
-        $loader->load(array($config), new ContainerBuilder);
+        $loader->load(array($config), new ContainerBuilder());
     }
 
     /**
-     * Tests extension loading throws exception if email is not set
+     * Tests extension loading throws exception if email is not set.
      *
      * @expectedException        \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      * @expectedExceptionMessage The child node "email" at path "mremi_contact" must be configured.
      */
     public function testContactLoadThrowsExceptionUnlessEmailSet()
     {
-        $loader = new MremiContactExtension;
+        $loader = new MremiContactExtension();
         $config = $this->getEmptyConfig();
         unset($config['email']);
-        $loader->load(array($config), new ContainerBuilder);
+        $loader->load(array($config), new ContainerBuilder());
     }
 
     /**
-     * Tests extension loading throws exception if mailer is empty
+     * Tests extension loading throws exception if mailer is empty.
      *
      * @expectedException        \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      * @expectedExceptionMessage The path "mremi_contact.email.mailer" cannot contain an empty value, but got "".
      */
     public function testContactLoadThrowsExceptionIfMailerEmpty()
     {
-        $loader = new MremiContactExtension;
+        $loader = new MremiContactExtension();
         $config = $this->getEmptyConfig();
         $config['email']['mailer'] = '';
-        $loader->load(array($config), new ContainerBuilder);
+        $loader->load(array($config), new ContainerBuilder());
     }
 
     /**
-     * Tests extension loading throws exception if from address is not set
+     * Tests extension loading throws exception if from address is not set.
      *
      * @expectedException        \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      * @expectedExceptionMessage The child node "address" at path "mremi_contact.email.from.0" must be configured.
      */
     public function testContactLoadThrowsExceptionUnlessFromAddressSet()
     {
-        $loader = new MremiContactExtension;
+        $loader = new MremiContactExtension();
         $config = $this->getFullConfig();
         unset($config['email']['from'][0]['address']);
-        $loader->load(array($config), new ContainerBuilder);
+        $loader->load(array($config), new ContainerBuilder());
     }
 
     /**
-     * Tests extension loading throws exception if from address is empty
+     * Tests extension loading throws exception if from address is empty.
      *
      * @expectedException        \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      * @expectedExceptionMessage The path "mremi_contact.email.from.0.address" cannot contain an empty value, but got "".
      */
     public function testContactLoadThrowsExceptionIfFromAddressEmpty()
     {
-        $loader = new MremiContactExtension;
+        $loader = new MremiContactExtension();
         $config = $this->getFullConfig();
         $config['email']['from'][0]['address'] = '';
-        $loader->load(array($config), new ContainerBuilder);
+        $loader->load(array($config), new ContainerBuilder());
     }
 
     /**
-     * Tests extension loading throws exception if to address is not set
+     * Tests extension loading throws exception if to address is not set.
      *
      * @expectedException        \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      * @expectedExceptionMessage The child node "to" at path "mremi_contact.email" must be configured.
      */
     public function testContactLoadThrowsExceptionIfToAddressNotDefined()
     {
-        $loader = new MremiContactExtension;
+        $loader = new MremiContactExtension();
         $config = $this->getEmptyConfig();
         unset($config['email']['to']);
-        $loader->load(array($config), new ContainerBuilder);
+        $loader->load(array($config), new ContainerBuilder());
     }
 
     /**
-     * Tests extension loading throws exception if to address is not set
+     * Tests extension loading throws exception if to address is not set.
      *
      * @expectedException        \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      * @expectedExceptionMessage The child node "address" at path "mremi_contact.email.to.0" must be configured.
      */
     public function testContactLoadThrowsExceptionUnlessToAddressSet()
     {
-        $loader = new MremiContactExtension;
+        $loader = new MremiContactExtension();
         $config = $this->getEmptyConfig();
         unset($config['email']['to'][0]['address']);
-        $loader->load(array($config), new ContainerBuilder);
+        $loader->load(array($config), new ContainerBuilder());
     }
 
     /**
-     * Tests extension loading throws exception if to address is empty
+     * Tests extension loading throws exception if to address is empty.
      *
      * @expectedException        \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      * @expectedExceptionMessage The path "mremi_contact.email.to.0.address" cannot contain an empty value, but got "".
      */
     public function testContactLoadThrowsExceptionIfToAddressEmpty()
     {
-        $loader = new MremiContactExtension;
+        $loader = new MremiContactExtension();
         $config = $this->getEmptyConfig();
         $config['email']['to'][0]['address'] = '';
-        $loader->load(array($config), new ContainerBuilder);
+        $loader->load(array($config), new ContainerBuilder());
     }
 
     /**
-     * Tests extension loading throws exception if template is empty
+     * Tests extension loading throws exception if template is empty.
      *
      * @expectedException        \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      * @expectedExceptionMessage The path "mremi_contact.email.template" cannot contain an empty value, but got "".
      */
     public function testContactLoadThrowsExceptionIfTemplateEmpty()
     {
-        $loader = new MremiContactExtension;
+        $loader = new MremiContactExtension();
         $config = $this->getEmptyConfig();
         $config['email']['template'] = '';
-        $loader->load(array($config), new ContainerBuilder);
+        $loader->load(array($config), new ContainerBuilder());
     }
 
     /**
-     * Tests extension loading throws exception if store_data is TRUE and contact_class is not configured
+     * Tests extension loading throws exception if store_data is TRUE and contact_class is not configured.
      *
      * @expectedException        \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      * @expectedExceptionMessage You must configure the "contact_class" node with your extended entity.
      */
     public function testContactLoadThrowsExceptionIfContactClassNotConfigured()
     {
-        $loader = new MremiContactExtension;
+        $loader = new MremiContactExtension();
         $config = $this->getEmptyConfig();
         $config['store_data'] = true;
-        $loader->load(array($config), new ContainerBuilder);
+        $loader->load(array($config), new ContainerBuilder());
     }
 
     /**
-     * Tests services existence
+     * Tests services existence.
      */
     public function testContactLoadServicesWithDefaults()
     {
@@ -256,7 +255,7 @@ class MremiContactExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests default mailer
+     * Tests default mailer.
      */
     public function testContactLoadDefaultMailer()
     {
@@ -267,7 +266,7 @@ class MremiContactExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests custom mailer
+     * Tests custom mailer.
      */
     public function testContactLoadCustomMailer()
     {
@@ -278,7 +277,7 @@ class MremiContactExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Cleanups the configuration
+     * Cleanups the configuration.
      */
     protected function tearDown()
     {
@@ -286,31 +285,31 @@ class MremiContactExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Creates an empty configuration
+     * Creates an empty configuration.
      */
     protected function createEmptyConfiguration()
     {
-        $this->configuration = new ContainerBuilder;
-        $loader = new MremiContactExtension;
+        $this->configuration = new ContainerBuilder();
+        $loader = new MremiContactExtension();
         $config = $this->getEmptyConfig();
         $loader->load(array($config), $this->configuration);
         $this->assertTrue($this->configuration instanceof ContainerBuilder);
     }
 
     /**
-     * Creates a full configuration
+     * Creates a full configuration.
      */
     protected function createFullConfiguration()
     {
-        $this->configuration = new ContainerBuilder;
-        $loader = new MremiContactExtension;
+        $this->configuration = new ContainerBuilder();
+        $loader = new MremiContactExtension();
         $config = $this->getFullConfig();
         $loader->load(array($config), $this->configuration);
         $this->assertTrue($this->configuration instanceof ContainerBuilder);
     }
 
     /**
-     * Gets an empty config
+     * Gets an empty config.
      *
      * @return array
      */
@@ -321,13 +320,13 @@ email:
      to:
         - { address: webmaster@example.com, name: "Webmaster" }
 EOF;
-        $parser = new Parser;
+        $parser = new Parser();
 
         return $parser->parse($yaml);
     }
 
     /**
-     * Gets a full config
+     * Gets a full config.
      *
      * @return array
      */
@@ -356,24 +355,24 @@ email:
         - { address: other.moderator@example.com }
     template:          ApplicationMremiContactBundle:Contact:email.txt.twig
 EOF;
-        $parser = new Parser;
+        $parser = new Parser();
 
         return $parser->parse($yaml);
     }
 
     /**
-     * Asserts the given key is an alias of value
+     * Asserts the given key is an alias of value.
      *
      * @param string $value The aliased service identifier
      * @param string $key   The alias key
      */
     private function assertAlias($value, $key)
     {
-        $this->assertEquals($value, (string) $this->configuration->getAlias($key), sprintf('%s alias is correct', $key));
+        $this->assertSame($value, (string) $this->configuration->getAlias($key), sprintf('%s alias is correct', $key));
     }
 
     /**
-     * Asserts the given identifier matched a definition
+     * Asserts the given identifier matched a definition.
      *
      * @param string $id
      */

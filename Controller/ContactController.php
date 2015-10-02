@@ -17,7 +17,6 @@ use Mremi\ContactBundle\Event\FilterContactResponseEvent;
 use Mremi\ContactBundle\Event\FormEvent;
 use Mremi\ContactBundle\Form\Factory\FormFactory;
 use Mremi\ContactBundle\Model\ContactManagerInterface;
-
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -27,7 +26,7 @@ use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 /**
- * Contact controller class
+ * Contact controller class.
  *
  * @author Rémi Marseille <marseille.remi@gmail.com>
  */
@@ -64,7 +63,7 @@ class ContactController
     private $templating;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param EventDispatcherInterface $eventDispatcher An event dispatcher instance
      * @param FormFactory              $formFactory     A form factory instance
@@ -84,7 +83,7 @@ class ContactController
     }
 
     /**
-     * Index action in charge to render the form
+     * Index action in charge to render the form.
      *
      * @param Request $request
      *
@@ -122,7 +121,7 @@ class ContactController
     }
 
     /**
-     * Confirm action in charge to render a confirmation message
+     * Confirm action in charge to render a confirmation message.
      *
      * @return \Symfony\Component\HttpFoundation\Response
      *

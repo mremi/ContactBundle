@@ -12,7 +12,7 @@
 namespace Mremi\ContactBundle;
 
 /**
- * Contains all events thrown in the MremiContactBundle
+ * Contains all events thrown in the MremiContactBundle.
  *
  * @author Rémi Marseille <marseille.remi@gmail.com>
  */

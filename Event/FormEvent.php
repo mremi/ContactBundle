@@ -17,7 +17,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * Form event class
+ * Form event class.
  *
  * @author Rémi Marseille <marseille.remi@gmail.com>
  */
@@ -39,7 +39,7 @@ class FormEvent extends Event
     private $response;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param FormInterface $form    A form instance
      * @param Request       $request A request instance
@@ -51,7 +51,7 @@ class FormEvent extends Event
     }
 
     /**
-     * Gets the form
+     * Gets the form.
      *
      * @return FormInterface
      */
@@ -61,7 +61,7 @@ class FormEvent extends Event
     }
 
     /**
-     * Gets the request
+     * Gets the request.
      *
      * @return Request
      */
@@ -71,7 +71,7 @@ class FormEvent extends Event
     }
 
     /**
-     * Sets the response
+     * Sets the response.
      *
      * @param Response $response
      */
@@ -81,7 +81,7 @@ class FormEvent extends Event
     }
 
     /**
-     * Gets the response
+     * Gets the response.
      *
      * @return Response|null
      */

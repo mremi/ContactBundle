@@ -12,12 +12,11 @@
 namespace Mremi\ContactBundle\Doctrine;
 
 use Doctrine\Common\Persistence\ObjectManager;
-
 use Mremi\ContactBundle\Model\ContactInterface;
 use Mremi\ContactBundle\Model\ContactManager as BaseContactManager;
 
 /**
- * Contact manager class
+ * Contact manager class.
  *
  * @author Rémi Marseille <marseille.remi@gmail.com>
  */
@@ -29,7 +28,7 @@ class ContactManager extends BaseContactManager
     protected $objectManager;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param string        $class         The Contact class namespace
      * @param ObjectManager $objectManager An object manager instance

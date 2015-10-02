@@ -14,14 +14,14 @@ namespace Mremi\ContactBundle\Tests\Model;
 use Mremi\ContactBundle\Model\ContactManager;
 
 /**
- * Tests ContactManager class
+ * Tests ContactManager class.
  *
  * @author Rémi Marseille <marseille.remi@gmail.com>
  */
 class ContactManagerTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * Tests the create method
+     * Tests the create method.
      */
     public function testCreate()
     {

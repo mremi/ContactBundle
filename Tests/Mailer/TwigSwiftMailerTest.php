@@ -14,7 +14,7 @@ namespace Mremi\ContactBundle\Tests\Mailer;
 use Mremi\ContactBundle\Model\Contact;
 
 /**
- * Tests the TwigSwiftMailer
+ * Tests the TwigSwiftMailer.
  *
  * @author Rémi Marseille <marseille.remi@gmail.com>
  */
@@ -41,7 +41,7 @@ class TwigSwiftMailerTest extends \PHPUnit_Framework_TestCase
     private $serviceMailer;
 
     /**
-     * Initializes the properties used by tests
+     * Initializes the properties used by tests.
      */
     protected function setUp()
     {
@@ -53,14 +53,14 @@ class TwigSwiftMailerTest extends \PHPUnit_Framework_TestCase
                 $this->mailer,
                 $this->twig,
                 'MremiContactBundle:Contact:email.txt.twig',
-                array('webmaster@example.com' => 'Webmaster')
+                array('webmaster@example.com' => 'Webmaster'),
             ))
             ->setMethods(array('createMessage'))
             ->getMock();
     }
 
     /**
-     * Cleanups the properties used by tests
+     * Cleanups the properties used by tests.
      */
     protected function tearDown()
     {
@@ -71,7 +71,7 @@ class TwigSwiftMailerTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests the sendMessage method
+     * Tests the sendMessage method.
      */
     public function testSendMessage()
     {
@@ -107,7 +107,7 @@ class TwigSwiftMailerTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests the sendMessage method with no subject block
+     * Tests the sendMessage method with no subject block.
      */
     public function testSendMessageWithNoSubjectBlock()
     {
@@ -129,7 +129,7 @@ class TwigSwiftMailerTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests the sendMessage method with default from
+     * Tests the sendMessage method with default from.
      */
     public function testSendMessageWithDefaultFrom()
     {
@@ -139,7 +139,7 @@ class TwigSwiftMailerTest extends \PHPUnit_Framework_TestCase
                 $this->twig,
                 'MremiContactBundle:Contact:email.txt.twig',
                 array('webmaster@example.com' => 'Webmaster'),
-                array('no-reply@unit.tests' => 'Unit tests')
+                array('no-reply@unit.tests'   => 'Unit tests'),
             ))
             ->setMethods(array('createMessage'))
             ->getMock();
@@ -161,7 +161,7 @@ class TwigSwiftMailerTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests the sendMessage method with no body_html block
+     * Tests the sendMessage method with no body_html block.
      */
     public function testSendMessageWithNoBodyHtmlBlock()
     {

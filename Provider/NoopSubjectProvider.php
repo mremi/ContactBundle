@@ -12,7 +12,7 @@
 namespace Mremi\ContactBundle\Provider;
 
 /**
- * Noop subject provider class
+ * Noop subject provider class.
  *
  * @author Rémi Marseille <marseille.remi@gmail.com>
  */

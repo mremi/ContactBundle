@@ -14,13 +14,12 @@ namespace Mremi\ContactBundle\EventListener;
 use Mremi\ContactBundle\ContactEvents;
 use Mremi\ContactBundle\Event\FormEvent;
 use Mremi\ContactBundle\Mailer\MailerInterface;
-
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 /**
- * Email confirmation listener class
+ * Email confirmation listener class.
  *
  * @author Rémi Marseille <marseille.remi@gmail.com>
  */
@@ -37,7 +36,7 @@ class EmailConfirmationListener implements EventSubscriberInterface
     private $router;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param MailerInterface       $mailer A mailer instance
      * @param UrlGeneratorInterface $router An URL generator instance

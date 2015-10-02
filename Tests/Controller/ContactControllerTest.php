@@ -14,14 +14,14 @@ namespace Mremi\ContactBundle\Tests\Controller;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 /**
- * Contact controller test class
+ * Contact controller test class.
  *
  * @author Rémi Marseille <marseille.remi@gmail.com>
  */
 class ContactControllerTest extends WebTestCase
 {
     /**
-     * Tests the index action
+     * Tests the index action.
      */
     public function testIndex()
     {
@@ -29,7 +29,7 @@ class ContactControllerTest extends WebTestCase
 
         $crawler = $client->request('GET', '/contact');
 
-        $this->assertEquals(200, $client->getResponse()->getStatusCode());
+        $this->assertSame(200, $client->getResponse()->getStatusCode());
 
         $form = $crawler->selectButton('contact_form_save')->form();
 
@@ -43,7 +43,7 @@ class ContactControllerTest extends WebTestCase
             'contact_form[captcha]'   => '1234',
         ));
 
-        $this->assertEquals(200, $client->getResponse()->getStatusCode());
+        $this->assertSame(200, $client->getResponse()->getStatusCode());
 
         $submittedValues = $form->getPhpValues();
 
@@ -54,25 +54,25 @@ class ContactControllerTest extends WebTestCase
         $this->assertCount(9, $submittedValues);
 
         $this->assertArrayHasKey('title', $submittedValues);
-        $this->assertEquals('mr', $submittedValues['title']);
+        $this->assertSame('mr', $submittedValues['title']);
 
         $this->assertArrayHasKey('firstName', $submittedValues);
-        $this->assertEquals('Rémi', $submittedValues['firstName']);
+        $this->assertSame('Rémi', $submittedValues['firstName']);
 
         $this->assertArrayHasKey('lastName', $submittedValues);
-        $this->assertEquals('Marseille', $submittedValues['lastName']);
+        $this->assertSame('Marseille', $submittedValues['lastName']);
 
         $this->assertArrayHasKey('email', $submittedValues);
-        $this->assertEquals('marseille.remi@gmail.com', $submittedValues['email']);
+        $this->assertSame('marseille.remi@gmail.com', $submittedValues['email']);
 
         $this->assertArrayHasKey('subject', $submittedValues);
-        $this->assertEquals('Subject', $submittedValues['subject']);
+        $this->assertSame('Subject', $submittedValues['subject']);
 
         $this->assertArrayHasKey('message', $submittedValues);
-        $this->assertEquals('', $submittedValues['message']);
+        $this->assertSame('', $submittedValues['message']);
 
         $this->assertArrayHasKey('captcha', $submittedValues);
-        $this->assertEquals(1234, $submittedValues['captcha']);
+        $this->assertSame(1234, $submittedValues['captcha']);
 
         $this->assertArrayHasKey('_token', $submittedValues);
 
@@ -80,7 +80,7 @@ class ContactControllerTest extends WebTestCase
     }
 
     /**
-     * Tests the confirm action
+     * Tests the confirm action.
      */
     public function testConfirm()
     {
@@ -88,11 +88,11 @@ class ContactControllerTest extends WebTestCase
 
         $crawler = $client->request('GET', '/contact/confirmation');
 
-        $this->assertEquals(500, $client->getResponse()->getStatusCode());
+        $this->assertSame(500, $client->getResponse()->getStatusCode());
     }
 
     /**
-     * Sets up tests
+     * Sets up tests.
      */
     protected function setUp()
     {

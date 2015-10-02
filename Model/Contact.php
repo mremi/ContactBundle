@@ -12,7 +12,7 @@
 namespace Mremi\ContactBundle\Model;
 
 /**
- * Contact class
+ * Contact class.
  *
  * @author Rémi Marseille <marseille.remi@gmail.com>
  */
@@ -59,11 +59,11 @@ class Contact implements ContactInterface
     protected $createdAt;
 
     /**
-     * Constructor
+     * Constructor.
      */
     public function __construct()
     {
-        $this->setCreatedAt(new \DateTime);
+        $this->setCreatedAt(new \DateTime());
     }
 
     /**

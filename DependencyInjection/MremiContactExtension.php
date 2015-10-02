@@ -11,14 +11,14 @@
 
 namespace Mremi\ContactBundle\DependencyInjection;
 
-use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
-use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 
 /**
- * This is the class that loads and manages your bundle configuration
+ * This is the class that loads and manages your bundle configuration.
  *
  * To learn more see {@link http://symfony.com/doc/current/cookbook/bundles/extension.html}
  */
@@ -43,7 +43,7 @@ class MremiContactExtension extends Extension
     }
 
     /**
-     * Configures the contact manager service
+     * Configures the contact manager service.
      *
      * @param ContainerBuilder $container A container builder instance
      * @param array            $config    An array of configuration
@@ -68,7 +68,7 @@ class MremiContactExtension extends Extension
     }
 
     /**
-     * Configures the form services
+     * Configures the form services.
      *
      * @param ContainerBuilder $container A container builder instance
      * @param array            $config    An array of configuration
@@ -93,7 +93,7 @@ class MremiContactExtension extends Extension
     }
 
     /**
-     * Configures the mailer service
+     * Configures the mailer service.
      *
      * @param ContainerBuilder $container A container builder instance
      * @param array            $config    An array of configuration

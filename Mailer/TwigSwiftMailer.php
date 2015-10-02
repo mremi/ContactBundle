@@ -14,7 +14,7 @@ namespace Mremi\ContactBundle\Mailer;
 use Mremi\ContactBundle\Model\ContactInterface;
 
 /**
- * Twig Swift mailer class
+ * Twig Swift mailer class.
  *
  * @author Rémi Marseille <marseille.remi@gmail.com>
  */
@@ -46,7 +46,7 @@ class TwigSwiftMailer implements MailerInterface
     protected $to;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param \Swift_Mailer     $mailer   A mailer instance
      * @param \Twig_Environment $twig     A Twig instance
@@ -93,7 +93,7 @@ class TwigSwiftMailer implements MailerInterface
     }
 
     /**
-     * Creates a new message
+     * Creates a new message.
      *
      * @return \Swift_Message
      */

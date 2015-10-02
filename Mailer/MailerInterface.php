@@ -14,18 +14,18 @@ namespace Mremi\ContactBundle\Mailer;
 use Mremi\ContactBundle\Model\ContactInterface;
 
 /**
- * Mailer interface
+ * Mailer interface.
  *
  * @author Rémi Marseille <marseille.remi@gmail.com>
  */
 interface MailerInterface
 {
     /**
-     * Sends an email
+     * Sends an email.
      *
      * @param ContactInterface $contact
      *
-     * @return integer
+     * @return int
      */
     public function sendMessage(ContactInterface $contact);
 }

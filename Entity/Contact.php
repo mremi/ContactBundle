@@ -14,7 +14,7 @@ namespace Mremi\ContactBundle\Entity;
 use Mremi\ContactBundle\Model\Contact as BaseContact;
 
 /**
- * Abstract Contact class
+ * Abstract Contact class.
  *
  * @author Rémi Marseille <marseille.remi@gmail.com>
  */

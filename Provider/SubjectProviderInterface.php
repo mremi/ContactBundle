@@ -12,7 +12,7 @@
 namespace Mremi\ContactBundle\Provider;
 
 /**
- * Subject provider interface
+ * Subject provider interface.
  *
  * @author Rémi Marseille <marseille.remi@gmail.com>
  */

@@ -12,12 +12,11 @@
 namespace Mremi\ContactBundle\Event;
 
 use Mremi\ContactBundle\Model\ContactInterface;
-
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * Filter contact response event class
+ * Filter contact response event class.
  *
  * @author Rémi Marseille <marseille.remi@gmail.com>
  */
@@ -29,7 +28,7 @@ class FilterContactResponseEvent extends ContactEvent
     private $response;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param ContactInterface $contact  A contact instance
      * @param Request          $request  A request instance
@@ -43,7 +42,7 @@ class FilterContactResponseEvent extends ContactEvent
     }
 
     /**
-     * Gets the response
+     * Gets the response.
      *
      * @return Response
      */

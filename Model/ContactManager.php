@@ -12,7 +12,7 @@
 namespace Mremi\ContactBundle\Model;
 
 /**
- * Contact manager class
+ * Contact manager class.
  *
  * @author Rémi Marseille <marseille.remi@gmail.com>
  */
@@ -24,7 +24,7 @@ class ContactManager implements ContactManagerInterface
     protected $class;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param string $class The Contact class namespace
      */
@@ -38,7 +38,7 @@ class ContactManager implements ContactManagerInterface
      */
     public function create()
     {
-        return new $this->class;
+        return new $this->class();
     }
 
     /**

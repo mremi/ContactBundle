@@ -14,63 +14,63 @@ namespace Mremi\ContactBundle\Tests\Model;
 use Mremi\ContactBundle\Model\Contact;
 
 /**
- * Tests Contact class
+ * Tests Contact class.
  *
  * @author Rémi Marseille <marseille.remi@gmail.com>
  */
 class ContactTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * Tests the createdAt property
+     * Tests the createdAt property.
      */
     public function testCreatedAt()
     {
-        $contact = new Contact;
+        $contact = new Contact();
 
         $this->assertInstanceOf('\DateTime', $contact->getCreatedAt());
     }
 
     /**
-     * Tests the getFullName method
+     * Tests the getFullName method.
      */
     public function testFullName()
     {
-        $contact = new Contact;
+        $contact = new Contact();
         $contact->setFirstName('Rémi');
         $contact->setLastName('Marseille');
 
-        $this->assertEquals('Rémi Marseille', $contact->getFullName());
+        $this->assertSame('Rémi Marseille', $contact->getFullName());
     }
 
     /**
-     * Tests the setTitle method throws an exception with an invalid title
+     * Tests the setTitle method throws an exception with an invalid title.
      *
      * @expectedException        \InvalidArgumentException
      * @expectedExceptionMessage Invalid title foo, possible values are: mr, mrs
      */
     public function testSetTitleThrowsExceptionIfInvalid()
     {
-        $contact = new Contact;
+        $contact = new Contact();
         $contact->setTitle('foo');
     }
 
     /**
-     * Tests the getTitleValue method
+     * Tests the getTitleValue method.
      */
     public function testGetTitleValue()
     {
-        $contact = new Contact;
+        $contact = new Contact();
         $contact->setTitle(Contact::TITLE_MR);
 
-        $this->assertEquals('mremi_contact.form.title_mr', $contact->getTitleValue());
+        $this->assertSame('mremi_contact.form.title_mr', $contact->getTitleValue());
 
         $contact->setTitle(Contact::TITLE_MRS);
 
-        $this->assertEquals('mremi_contact.form.title_mrs', $contact->getTitleValue());
+        $this->assertSame('mremi_contact.form.title_mrs', $contact->getTitleValue());
     }
 
     /**
-     * Tests the getTitles method
+     * Tests the getTitles method.
      */
     public function testGetTitles()
     {
@@ -81,7 +81,7 @@ class ContactTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests the getTitleKeys method
+     * Tests the getTitleKeys method.
      */
     public function testGetTitleKeys()
     {
@@ -89,16 +89,16 @@ class ContactTest extends \PHPUnit_Framework_TestCase
 
         $this->assertTrue(is_array($keys));
         $this->assertCount(2, $keys);
-        $this->assertEquals(Contact::TITLE_MR, $keys[0]);
-        $this->assertEquals(Contact::TITLE_MRS, $keys[1]);
+        $this->assertSame(Contact::TITLE_MR, $keys[0]);
+        $this->assertSame(Contact::TITLE_MRS, $keys[1]);
     }
 
     /**
-     * Tests the toArray method
+     * Tests the toArray method.
      */
     public function testToArray()
     {
-        $contact = new Contact;
+        $contact = new Contact();
         $contact->setTitle(Contact::TITLE_MR);
         $contact->setFirstName('Rémi');
         $contact->setLastName('Marseille');
@@ -117,15 +117,15 @@ class ContactTest extends \PHPUnit_Framework_TestCase
             'createdAt' => '2013-07-11T10:07:00+02:00',
         );
 
-        $this->assertEquals($expected, $contact->toArray());
+        $this->assertSame($expected, $contact->toArray());
     }
 
     /**
-     * Tests the fromArray method
+     * Tests the fromArray method.
      */
     public function testFromArray()
     {
-        $contact = new Contact;
+        $contact = new Contact();
         $contact->fromArray(array(
             'title'     => 'mr',
             'firstName' => 'Rémi',
@@ -136,15 +136,15 @@ class ContactTest extends \PHPUnit_Framework_TestCase
             'createdAt' => '2013-07-11T10:07:00+02:00',
         ));
 
-        $this->assertEquals('mr', $contact->getTitle());
-        $this->assertEquals('Rémi', $contact->getFirstName());
-        $this->assertEquals('Marseille', $contact->getLastName());
-        $this->assertEquals('marseille.remi@gmail.com', $contact->getEmail());
-        $this->assertEquals('subject', $contact->getSubject());
-        $this->assertEquals('message', $contact->getMessage());
-        $this->assertEquals('2013-07-11T10:07:00+02:00', $contact->getCreatedAt()->format('c'));
+        $this->assertSame('mr', $contact->getTitle());
+        $this->assertSame('Rémi', $contact->getFirstName());
+        $this->assertSame('Marseille', $contact->getLastName());
+        $this->assertSame('marseille.remi@gmail.com', $contact->getEmail());
+        $this->assertSame('subject', $contact->getSubject());
+        $this->assertSame('message', $contact->getMessage());
+        $this->assertSame('2013-07-11T10:07:00+02:00', $contact->getCreatedAt()->format('c'));
 
-        $contact = new Contact;
+        $contact = new Contact();
         $contact->fromArray(array(
             'title' => null,
         ));
@@ -153,11 +153,11 @@ class ContactTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests the serialize method
+     * Tests the serialize method.
      */
     public function testSerialize()
     {
-        $contact = new Contact;
+        $contact = new Contact();
         $contact->setTitle(Contact::TITLE_MR);
         $contact->setFirstName('Rémi');
         $contact->setLastName('Marseille');
@@ -168,23 +168,23 @@ class ContactTest extends \PHPUnit_Framework_TestCase
 
         $expected = 'a:7:{s:5:"title";s:2:"mr";s:9:"firstName";s:5:"Rémi";s:8:"lastName";s:9:"Marseille";s:5:"email";s:24:"marseille.remi@gmail.com";s:7:"subject";s:7:"subject";s:7:"message";s:7:"message";s:9:"createdAt";s:25:"2013-07-11T10:07:00+02:00";}';
 
-        $this->assertEquals($expected, $contact->serialize());
+        $this->assertSame($expected, $contact->serialize());
     }
 
     /**
-     * Tests the unserialize method
+     * Tests the unserialize method.
      */
     public function testUnserialize()
     {
-        $contact = new Contact;
+        $contact = new Contact();
         $contact->unserialize('a:7:{s:5:"title";s:2:"mr";s:9:"firstName";s:5:"Rémi";s:8:"lastName";s:9:"Marseille";s:5:"email";s:24:"marseille.remi@gmail.com";s:7:"subject";s:7:"subject";s:7:"message";s:7:"message";s:9:"createdAt";s:25:"2013-07-11T10:07:00+02:00";}');
 
-        $this->assertEquals('mr', $contact->getTitle());
-        $this->assertEquals('Rémi', $contact->getFirstName());
-        $this->assertEquals('Marseille', $contact->getLastName());
-        $this->assertEquals('marseille.remi@gmail.com', $contact->getEmail());
-        $this->assertEquals('subject', $contact->getSubject());
-        $this->assertEquals('message', $contact->getMessage());
-        $this->assertEquals('2013-07-11T10:07:00+02:00', $contact->getCreatedAt()->format('c'));
+        $this->assertSame('mr', $contact->getTitle());
+        $this->assertSame('Rémi', $contact->getFirstName());
+        $this->assertSame('Marseille', $contact->getLastName());
+        $this->assertSame('marseille.remi@gmail.com', $contact->getEmail());
+        $this->assertSame('subject', $contact->getSubject());
+        $this->assertSame('message', $contact->getMessage());
+        $this->assertSame('2013-07-11T10:07:00+02:00', $contact->getCreatedAt()->format('c'));
     }
 }
