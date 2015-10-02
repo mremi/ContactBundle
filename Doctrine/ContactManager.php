@@ -11,7 +11,7 @@
 
 namespace Mremi\ContactBundle\Doctrine;
 
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Common\Persistence\ManagerRegistry;
 use Mremi\ContactBundle\Model\ContactInterface;
 use Mremi\ContactBundle\Model\ContactManager as BaseContactManager;
 
@@ -23,21 +23,39 @@ use Mremi\ContactBundle\Model\ContactManager as BaseContactManager;
 class ContactManager extends BaseContactManager
 {
     /**
-     * @var ObjectManager
+     * @var ManagerRegistry
      */
-    protected $objectManager;
+    protected $registry;
 
     /**
      * Constructor.
      *
-     * @param string        $class         The Contact class namespace
-     * @param ObjectManager $objectManager An object manager instance
+     * @param string          $class    The Contact class namespace
+     * @param ManagerRegistry $registry A manager registry instance
      */
-    public function __construct($class, ObjectManager $objectManager)
+    public function __construct($class, ManagerRegistry $registry)
     {
         parent::__construct($class);
 
-        $this->objectManager = $objectManager;
+        $this->registry = $registry;
+    }
+
+    /**
+     * Gets the object manager.
+     *
+     * @return \Doctrine\Common\Persistence\ObjectManager
+     */
+    public function getObjectManager()
+    {
+        $manager = $this->registry->getManagerForClass($this->class);
+
+        if (!$manager) {
+            throw new \RuntimeException(sprintf('Unable to find the mapping information for the class %s.'
+                ." Please check the 'auto_mapping' option (http://symfony.com/doc/current/reference/configuration/doctrine.html#configuration-overview)"
+                ." or add the bundle to the 'mappings' section in the doctrine configuration.", $this->class));
+        }
+
+        return $manager;
     }
 
     /**
@@ -45,10 +63,10 @@ class ContactManager extends BaseContactManager
      */
     public function save(ContactInterface $contact, $flush = false)
     {
-        $this->objectManager->persist($contact);
+        $this->getObjectManager()->persist($contact);
 
         if ($flush) {
-            $this->objectManager->flush();
+            $this->getObjectManager()->flush();
         }
     }
 }

@@ -1,6 +1,10 @@
 CHANGELOG
 =========
 
+### master (2015-10-02)
+
+* [BC BREAK] The Doctrine manager registry is now injected in the ``ContactManager`` to fix Symfony 3.0 compatibility.
+
 ### master (2015-09-25)
 
 * The fields are now optionals for doctrine. So you can remove some fields if you don't want them and store in database.

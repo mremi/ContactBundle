@@ -5,12 +5,9 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="mremi_contact.entity_manager" factory-service="doctrine" factory-method="getManager" class="Doctrine\ORM\EntityManager" public="false">
-        </service>
-
         <service id="mremi_contact.contact_manager.doctrine" class="Mremi\ContactBundle\Doctrine\ContactManager" public="false">
             <argument />
-            <argument type="service" id="mremi_contact.entity_manager" />
+            <argument type="service" id="doctrine" />
         </service>
     </services>
 
