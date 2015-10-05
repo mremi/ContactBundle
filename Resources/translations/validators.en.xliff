@@ -12,11 +12,11 @@
             </trans-unit>
             <trans-unit id="mremi_contact.first_name.short">
                 <source>mremi_contact.first_name.short</source>
-                <target>[-Inf,Inf]The first name is too short</target>
+                <target>[-Inf,Inf]The first name must be at least {{ limit }} characters long</target>
             </trans-unit>
             <trans-unit id="mremi_contact.first_name.long">
                 <source>mremi_contact.first_name.long</source>
-                <target>[-Inf,Inf]The first name is too long</target>
+                <target>[-Inf,Inf]The first name cannot be longer than {{ limit }} characters</target>
             </trans-unit>
             <trans-unit id="mremi_contact.last_name.blank">
                 <source>mremi_contact.last_name.blank</source>
@@ -24,11 +24,11 @@
             </trans-unit>
             <trans-unit id="mremi_contact.last_name.short">
                 <source>mremi_contact.last_name.short</source>
-                <target>[-Inf,Inf]The last name is too short</target>
+                <target>[-Inf,Inf]The last name must be at least {{ limit }} characters long</target>
             </trans-unit>
             <trans-unit id="mremi_contact.last_name.long">
                 <source>mremi_contact.last_name.long</source>
-                <target>[-Inf,Inf]The last name is too long</target>
+                <target>[-Inf,Inf]The last name cannot be longer than {{ limit }} characters</target>
             </trans-unit>
             <trans-unit id="mremi_contact.email.blank">
                 <source>mremi_contact.email.blank</source>
@@ -36,11 +36,11 @@
             </trans-unit>
             <trans-unit id="mremi_contact.email.short">
                 <source>mremi_contact.email.short</source>
-                <target>[-Inf,Inf]The email is too short</target>
+                <target>[-Inf,Inf]The email must be at least {{ limit }} characters long</target>
             </trans-unit>
             <trans-unit id="mremi_contact.email.long">
                 <source>mremi_contact.email.long</source>
-                <target>[-Inf,Inf]The email is too long</target>
+                <target>[-Inf,Inf]The email cannot be longer than {{ limit }} characters</target>
             </trans-unit>
             <trans-unit id="mremi_contact.email.invalid">
                 <source>mremi_contact.email.invalid</source>
@@ -52,11 +52,11 @@
             </trans-unit>
             <trans-unit id="mremi_contact.subject.short">
                 <source>mremi_contact.subject.short</source>
-                <target>[-Inf,Inf]The subject is too short</target>
+                <target>[-Inf,Inf]The subject must be at least {{ limit }} characters long</target>
             </trans-unit>
             <trans-unit id="mremi_contact.subject.long">
                 <source>mremi_contact.subject.long</source>
-                <target>[-Inf,Inf]The subject is too long</target>
+                <target>[-Inf,Inf]The subject cannot be longer than {{ limit }} characters</target>
             </trans-unit>
             <trans-unit id="mremi_contact.message.blank">
                 <source>mremi_contact.message.blank</source>
@@ -64,11 +64,11 @@
             </trans-unit>
             <trans-unit id="mremi_contact.message.short">
                 <source>mremi_contact.message.short</source>
-                <target>[-Inf,Inf]The message is too short</target>
+                <target>[-Inf,Inf]The message must be at least {{ limit }} characters long</target>
             </trans-unit>
             <trans-unit id="mremi_contact.message.long">
                 <source>mremi_contact.message.long</source>
-                <target>[-Inf,Inf]The message is too long</target>
+                <target>[-Inf,Inf]The message cannot be longer than {{ limit }} characters</target>
             </trans-unit>
             <trans-unit id="mremi_contact.created_at.invalid">
                 <source>mremi_contact.created_at.invalid</source>
