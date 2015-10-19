@@ -90,7 +90,11 @@ Un usuario ha llenado el formulario de contacto:
 <strong><em>Correo:</em></strong> %email%
 <br/>
 <br/>
+<<<<<<< HEAD
 <strong><em>Message:</em></strong>
+=======
+<strong><em>Mensaje:</em></strong>
+>>>>>>> origin/master
 <br/>
 %message%
 <br/>
