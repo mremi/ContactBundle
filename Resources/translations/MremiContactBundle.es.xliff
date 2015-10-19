@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="es" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="mremi_contact.form_page_title">
+                <source>mremi_contact.form_page_title</source>
+                <target>Contacto</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.form_title">
+                <source>mremi_contact.form_title</source>
+                <target>Contacto form</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.form.title">
+                <source>mremi_contact.form.title</source>
+                <target>Título</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.form.title_mr">
+                <source>mremi_contact.form.title_mr</source>
+                <target>Sr.</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.form.title_mrs">
+                <source>mremi_contact.form.title_mrs</source>
+                <target>Sra.</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.form.first_name">
+                <source>mremi_contact.form.first_name</source>
+                <target>Nombre/s</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.form.last_name">
+                <source>mremi_contact.form.last_name</source>
+                <target>Apellido/s</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.form.email">
+                <source>mremi_contact.form.email</source>
+                <target>Correo</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.form.subject">
+                <source>mremi_contact.form.subject</source>
+                <target>Asunto</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.form.message">
+                <source>mremi_contact.form.message</source>
+                <target>Mensaje</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.form.captcha">
+                <source>mremi_contact.form.captcha</source>
+                <target>Código de seguridad</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.form_submit">
+                <source>mremi_contact.form_submit</source>
+                <target>Enviar</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.email_message_txt">
+                <source>mremi_contact.email_message_txt</source>
+                <target><![CDATA[Hola,
+Un usuario ha llenado el formulario de contacto:
+Título: %title%
+Nombre/s: %firstName%
+Apellidos: %lastName%
+Correo: %email%
+Mensaje:
+%message%
+Saludos
+]]></target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.email_message_html">
+                <source>mremi_contact.email_message_html</source>
+                <target><![CDATA[Hola,
+<br/>
+<br/
+Un usuario ha llenado el formulario de contacto:
+<br/>
+<br/>
+<strong><em>Título:</em></strong> %title%
+<br/>
+<br/>
+<strong><em>Nombre/s:</em></strong> %firstName%
+<br/>
+<br/>
+<strong><em>Apellidos:</em></strong> %lastName%
+<br/>
+<br/>
+<strong><em>Correo:</em></strong> %email%
+<br/>
+<br/>
+<strong><em>Mensaje:</em></strong>
+<br/>
+%message%
+<br/>
+<br/>
+Saludos
+]]></target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.confirm_page_title">
+                <source>mremi_contact.confirm_page_title</source>
+                <target>Confirmación</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.confirm_title">
+                <source>mremi_contact.confirm_title</source>
+                <target>Gracias %title% %fullName%</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.confirm_message">
+                <source>mremi_contact.confirm_message</source>
+                <target>Su correo ha sido recibido y será contestado lo más pronto posible.</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
