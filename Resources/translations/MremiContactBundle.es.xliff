@@ -16,11 +16,11 @@
             </trans-unit>
             <trans-unit id="mremi_contact.form.title_mr">
                 <source>mremi_contact.form.title_mr</source>
-                <target>Mr.</target>
+                <target>Sr.</target>
             </trans-unit>
             <trans-unit id="mremi_contact.form.title_mrs">
                 <source>mremi_contact.form.title_mrs</source>
-                <target>Mrs.</target>
+                <target>Sra.</target>
             </trans-unit>
             <trans-unit id="mremi_contact.form.first_name">
                 <source>mremi_contact.form.first_name</source>
