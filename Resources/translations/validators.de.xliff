@@ -12,11 +12,11 @@
             </trans-unit>
             <trans-unit id="mremi_contact.first_name.short">
                 <source>mremi_contact.first_name.short</source>
-                <target>[-Inf,Inf]Der Vorname muss mindestens {{ limit }} Buchstaben lang sein</target>
+                <target>[-Inf,Inf]Der Vorname muss mindestens {{ limit }} Zeichen lang sein</target>
             </trans-unit>
             <trans-unit id="mremi_contact.first_name.long">
                 <source>mremi_contact.first_name.long</source>
-                <target>[-Inf,Inf]Der Vorname darf nicht länger als {{ limit }} Buchstaben sein</target>
+                <target>[-Inf,Inf]Der Vorname darf nicht länger als {{ limit }} Zeichen sein</target>
             </trans-unit>
             <trans-unit id="mremi_contact.last_name.blank">
                 <source>mremi_contact.last_name.blank</source>
@@ -24,11 +24,11 @@
             </trans-unit>
             <trans-unit id="mremi_contact.last_name.short">
                 <source>mremi_contact.last_name.short</source>
-                <target>[-Inf,Inf]Der Nachname muss mindestens {{ limit }} Buchstaben lang sein</target>
+                <target>[-Inf,Inf]Der Nachname muss mindestens {{ limit }} Zeichen lang sein</target>
             </trans-unit>
             <trans-unit id="mremi_contact.last_name.long">
                 <source>mremi_contact.last_name.long</source>
-                <target>[-Inf,Inf]Der Vorname darf nicht länger als {{ limit }} Buchstaben sein</target>
+                <target>[-Inf,Inf]Der Vorname darf nicht länger als {{ limit }} Zeichen sein</target>
             </trans-unit>
             <trans-unit id="mremi_contact.email.blank">
                 <source>mremi_contact.email.blank</source>
@@ -36,11 +36,11 @@
             </trans-unit>
             <trans-unit id="mremi_contact.email.short">
                 <source>mremi_contact.email.short</source>
-                <target>[-Inf,Inf]Die Email muss mindestens {{ limit }} Buchstaben lang sein</target>
+                <target>[-Inf,Inf]Die Email muss mindestens {{ limit }} Zeichen lang sein</target>
             </trans-unit>
             <trans-unit id="mremi_contact.email.long">
                 <source>mremi_contact.email.long</source>
-                <target>[-Inf,Inf]Die Email darf nicht länger als {{ limit }} Buchstaben sein</target>
+                <target>[-Inf,Inf]Die Email darf nicht länger als {{ limit }} Zeichen sein</target>
             </trans-unit>
             <trans-unit id="mremi_contact.email.invalid">
                 <source>mremi_contact.email.invalid</source>
@@ -52,11 +52,11 @@
             </trans-unit>
             <trans-unit id="mremi_contact.subject.short">
                 <source>mremi_contact.subject.short</source>
-                <target>[-Inf,Inf]Der Betreff muss mindestens {{ limit }} Buchstaben lang sein</target>
+                <target>[-Inf,Inf]Der Betreff muss mindestens {{ limit }} Zeichen lang sein</target>
             </trans-unit>
             <trans-unit id="mremi_contact.subject.long">
                 <source>mremi_contact.subject.long</source>
-                <target>[-Inf,Inf]Der Betreff darf nicht länger als {{ limit }} Buchstaben sein</target>
+                <target>[-Inf,Inf]Der Betreff darf nicht länger als {{ limit }} Zeichen sein</target>
             </trans-unit>
             <trans-unit id="mremi_contact.message.blank">
                 <source>mremi_contact.message.blank</source>
@@ -64,11 +64,11 @@
             </trans-unit>
             <trans-unit id="mremi_contact.message.short">
                 <source>mremi_contact.message.short</source>
-                <target>[-Inf,Inf]Die Nachricht muss mindestens {{ limit }} Buchstaben lang sein</target>
+                <target>[-Inf,Inf]Die Nachricht muss mindestens {{ limit }} Zeichen lang sein</target>
             </trans-unit>
             <trans-unit id="mremi_contact.message.long">
                 <source>mremi_contact.message.long</source>
-                <target>[-Inf,Inf]Die Nachricht darf nicht länger als {{ limit }} Buchstaben sein</target>
+                <target>[-Inf,Inf]Die Nachricht darf nicht länger als {{ limit }} Zeichen sein</target>
             </trans-unit>
             <trans-unit id="mremi_contact.created_at.invalid">
                 <source>mremi_contact.created_at.invalid</source>
