@@ -28,7 +28,7 @@
             </trans-unit>
             <trans-unit id="mremi_contact.last_name.long">
                 <source>mremi_contact.last_name.long</source>
-                <target>[-Inf,Inf]Der Vorname darf nicht länger als {{ limit }} Zeichen sein</target>
+                <target>[-Inf,Inf]Der Nachname darf nicht länger als {{ limit }} Zeichen sein</target>
             </trans-unit>
             <trans-unit id="mremi_contact.email.blank">
                 <source>mremi_contact.email.blank</source>
