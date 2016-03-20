@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="mremi_contact.title.blank">
+                <source>mremi_contact.title.blank</source>
+                <target>Bitte wählen Sie eine Anrede aus</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.first_name.blank">
+                <source>mremi_contact.first_name.blank</source>
+                <target>Bitte geben Sie einen Vornamen ein</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.first_name.short">
+                <source>mremi_contact.first_name.short</source>
+                <target>[-Inf,Inf]Der Vorname muss mindestens {{ limit }} Zeichen lang sein</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.first_name.long">
+                <source>mremi_contact.first_name.long</source>
+                <target>[-Inf,Inf]Der Vorname darf nicht länger als {{ limit }} Zeichen sein</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.last_name.blank">
+                <source>mremi_contact.last_name.blank</source>
+                <target>Bitte geben Sie einen Nachnamen ein</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.last_name.short">
+                <source>mremi_contact.last_name.short</source>
+                <target>[-Inf,Inf]Der Nachname muss mindestens {{ limit }} Zeichen lang sein</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.last_name.long">
+                <source>mremi_contact.last_name.long</source>
+                <target>[-Inf,Inf]Der Nachname darf nicht länger als {{ limit }} Zeichen sein</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.email.blank">
+                <source>mremi_contact.email.blank</source>
+                <target>Bitte geben Sie eine Email an</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.email.short">
+                <source>mremi_contact.email.short</source>
+                <target>[-Inf,Inf]Die Email muss mindestens {{ limit }} Zeichen lang sein</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.email.long">
+                <source>mremi_contact.email.long</source>
+                <target>[-Inf,Inf]Die Email darf nicht länger als {{ limit }} Zeichen sein</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.email.invalid">
+                <source>mremi_contact.email.invalid</source>
+                <target>Die Email ist nicht valide</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.subject.blank">
+                <source>mremi_contact.subject.blank</source>
+                <target>Bitte geben Sie einen Betreff an</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.subject.short">
+                <source>mremi_contact.subject.short</source>
+                <target>[-Inf,Inf]Der Betreff muss mindestens {{ limit }} Zeichen lang sein</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.subject.long">
+                <source>mremi_contact.subject.long</source>
+                <target>[-Inf,Inf]Der Betreff darf nicht länger als {{ limit }} Zeichen sein</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.message.blank">
+                <source>mremi_contact.message.blank</source>
+                <target>Bitte geben Sie eine Nachricht an</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.message.short">
+                <source>mremi_contact.message.short</source>
+                <target>[-Inf,Inf]Die Nachricht muss mindestens {{ limit }} Zeichen lang sein</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.message.long">
+                <source>mremi_contact.message.long</source>
+                <target>[-Inf,Inf]Die Nachricht darf nicht länger als {{ limit }} Zeichen sein</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.created_at.invalid">
+                <source>mremi_contact.created_at.invalid</source>
+                <target>Das Erstellungsdatum ist nicht valide</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

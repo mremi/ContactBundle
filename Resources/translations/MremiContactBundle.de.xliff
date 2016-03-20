@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="mremi_contact.form_page_title">
+                <source>mremi_contact.form_page_title</source>
+                <target>Kontakt</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.form_title">
+                <source>mremi_contact.form_title</source>
+                <target>Kontaktformular</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.form.title">
+                <source>mremi_contact.form.title</source>
+                <target>Anrede</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.form.title_mr">
+                <source>mremi_contact.form.title_mr</source>
+                <target>Herr</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.form.title_mrs">
+                <source>mremi_contact.form.title_mrs</source>
+                <target>Frau</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.form.first_name">
+                <source>mremi_contact.form.first_name</source>
+                <target>Vorname</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.form.last_name">
+                <source>mremi_contact.form.last_name</source>
+                <target>Nachname</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.form.email">
+                <source>mremi_contact.form.email</source>
+                <target>Email</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.form.subject">
+                <source>mremi_contact.form.subject</source>
+                <target>Betreff</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.form.message">
+                <source>mremi_contact.form.message</source>
+                <target>Nachricht</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.form.captcha">
+                <source>mremi_contact.form.captcha</source>
+                <target>Sicherheitscode</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.form_submit">
+                <source>mremi_contact.form_submit</source>
+                <target>Absenden</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.email_message_txt">
+                <source>mremi_contact.email_message_txt</source>
+                <target><![CDATA[Hello,
+
+Ein Nutzer hat ein Kontaktformular abgesendet:
+
+Anrede: %title%
+
+Vorname: %firstName%
+
+Nachname: %lastName%
+
+Email: %email%
+
+Nachricht:
+%message%
+
+Viele Grüße
+]]></target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.email_message_html">
+                <source>mremi_contact.email_message_html</source>
+                <target><![CDATA[Hallo,
+<br/>
+<br/>
+Ein Nutzer hat ein Kontaktformular abgesendet:
+<br/>
+<br/>
+<strong><em>Anrede:</em></strong> %title%
+<br/>
+<br/>
+<strong><em>Vorname:</em></strong> %firstName%
+<br/>
+<br/>
+<strong><em>Nachname:</em></strong> %lastName%
+<br/>
+<br/>
+<strong><em>Email:</em></strong> %email%
+<br/>
+<br/>
+<strong><em>Nachricht:</em></strong>
+<br/>
+%message%
+<br/>
+<br/>
+Viele Grüße
+]]></target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.confirm_page_title">
+                <source>mremi_contact.confirm_page_title</source>
+                <target>Bestätigung</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.confirm_title">
+                <source>mremi_contact.confirm_title</source>
+                <target>Danke, %title% %fullName%</target>
+            </trans-unit>
+            <trans-unit id="mremi_contact.confirm_message">
+                <source>mremi_contact.confirm_message</source>
+                <target>Ihre Anfrage wurde erfolgreich übermittelt und wird schnellstmöglich bearbeitet.</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
