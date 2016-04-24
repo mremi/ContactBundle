@@ -4,11 +4,11 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
 
-    <route id="mremi_contact_form" pattern="/contact">
+    <route id="mremi_contact_form" path="/contact">
         <default key="_controller">mremi_contact.contact_controller:indexAction</default>
     </route>
 
-    <route id="mremi_contact_confirmation" pattern="/contact/confirmation">
+    <route id="mremi_contact_confirmation" path="/contact/confirmation">
         <default key="_controller">mremi_contact.contact_controller:confirmAction</default>
         <requirement key="_method">GET</requirement>
     </route>

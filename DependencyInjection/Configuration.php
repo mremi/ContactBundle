@@ -11,6 +11,7 @@
 
 namespace Mremi\ContactBundle\DependencyInjection;
 
+use Mremi\ContactBundle\Form\Type\ContactType;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
@@ -38,7 +39,7 @@ class Configuration implements ConfigurationInterface
                 ->arrayNode('form')
                     ->addDefaultsIfNotSet()
                     ->children()
-                        ->scalarNode('type')->defaultValue('mremi_contact')->cannotBeEmpty()->end()
+                        ->scalarNode('type')->defaultValue(ContactType::class)->cannotBeEmpty()->end()
                         ->scalarNode('name')->defaultValue('contact_form')->cannotBeEmpty()->end()
                         ->arrayNode('validation_groups')
                             ->prototype('scalar')->end()

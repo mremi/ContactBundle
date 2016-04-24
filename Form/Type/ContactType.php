@@ -14,9 +14,14 @@ namespace Mremi\ContactBundle\Form\Type;
 use Mremi\ContactBundle\Model\Contact;
 use Mremi\ContactBundle\Provider\SubjectProviderInterface;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
  * Contact type class.
@@ -59,27 +64,45 @@ class ContactType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $titles = Contact::getTitles();
+        if (version_compare(Kernel::VERSION, '3.0.0', '>=')) {
+            $titles = array_flip($titles);
+        }
+
         $builder
-            ->add('title', 'choice', array(
-                'choices'  => Contact::getTitles(),
+            ->add('title', ChoiceType::class, array(
+                'choices'  => $titles,
                 'expanded' => true,
                 'label'    => 'mremi_contact.form.title',
             ))
-            ->add('firstName', 'text',  array('label' => 'mremi_contact.form.first_name'))
-            ->add('lastName',  'text',  array('label' => 'mremi_contact.form.last_name'))
-            ->add('email',     'email', array('label' => 'mremi_contact.form.email'));
+            ->add('firstName', TextType::class, array(
+                'label' => 'mremi_contact.form.first_name',
+            ))
+            ->add('lastName', TextType::class, array(
+                'label' => 'mremi_contact.form.last_name',
+            ))
+            ->add('email', EmailType::class, array(
+                'label' => 'mremi_contact.form.email',
+            ));
 
         if ($subjects = $this->subjectProvider->getSubjects()) {
-            $builder
-                ->add('subject', 'choice', array(
-                    'choices' => $subjects,
-                    'label'   => 'mremi_contact.form.subject',
-                ));
+            if (version_compare(Kernel::VERSION, '3.0.0', '>=')) {
+                $subjects = array_flip($subjects);
+            }
+
+            $builder->add('subject', ChoiceType::class, array(
+                'choices' => $subjects,
+                'label'   => 'mremi_contact.form.subject',
+            ));
         } else {
-            $builder->add('subject', 'text', array('label' => 'mremi_contact.form.subject'));
+            $builder->add('subject', TextType::class, array(
+                'label' => 'mremi_contact.form.subject',
+            ));
         }
 
-        $builder->add('message', 'textarea', array('label' => 'mremi_contact.form.message'));
+        $builder->add('message', TextareaType::class, array(
+            'label' => 'mremi_contact.form.message',
+        ));
 
         if ($this->captchaType) {
             $builder->add('captcha', $this->captchaType, array(
@@ -87,17 +110,9 @@ class ContactType extends AbstractType
             ));
         }
 
-        $builder->add('save', 'submit', array('label' => 'mremi_contact.form_submit'));
-    }
-
-    /**
-     * {@inheritdoc}
-     *
-     * @todo: Remove it when bumping requirements to Symfony 2.7+
-     */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
-    {
-        $this->configureOptions($resolver);
+        $builder->add('save', SubmitType::class, array(
+            'label' => 'mremi_contact.form_submit',
+        ));
     }
 
     /**
@@ -107,16 +122,8 @@ class ContactType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class'         => $this->class,
-            'intention'          => 'contact',
+            'csrf_token_id'      => 'contact',
             'translation_domain' => 'MremiContactBundle',
         ));
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getName()
-    {
-        return 'mremi_contact';
     }
 }

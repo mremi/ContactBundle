@@ -13,7 +13,7 @@
         </service>
 
         <service id="mremi_contact.contact_form_type" class="Mremi\ContactBundle\Form\Type\ContactType">
-            <tag name="form.type" alias="mremi_contact" />
+            <tag name="form.type" />
             <argument />
             <argument />
             <argument />
