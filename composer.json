@@ -1,8 +1,8 @@
 {
     "name": "mremi/contact-bundle",
     "type": "symfony-bundle",
-    "description": "Implementation of a contact form for Symfony2",
-    "keywords": ["Symfony2", "contact", "form"],
+    "description": "Implementation of a contact form for Symfony3",
+    "keywords": ["Symfony3", "Symfony2", "contact", "form"],
     "homepage": "https://github.com/mremi/ContactBundle",
     "license": "MIT",
     "authors": [
@@ -12,16 +12,16 @@
         }
     ],
     "require": {
-        "php": ">=5.3.3",
+        "php": ">=5.5.0",
         "swiftmailer/swiftmailer": "~4.3|~5",
-        "symfony/form": "~2.3",
-        "symfony/framework-bundle": "~2.3",
-        "twig/twig": "~1.20"
+        "symfony/form": "~2.8|~3.0",
+        "symfony/framework-bundle": "~2.8|~3.0",
+        "twig/twig": "~1.20|~2.0"
     },
     "require-dev": {
         "fabpot/php-cs-fixer": "~0.1|~1.0",
         "phpunit/phpunit": "~4.8",
-        "symfony/phpunit-bridge": "~2.7|~3.0"
+        "symfony/phpunit-bridge": "~2.8|~3.0"
     },
     "suggest": {
         "mremi/templating-extra-bundle": "In order to profile pages, get some statistics and enhance front office development"

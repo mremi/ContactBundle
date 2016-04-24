@@ -5,15 +5,13 @@
                   http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
     <mapped-superclass name="Mremi\ContactBundle\Entity\Contact">
-
-        <field name="title"     column="title"      type="string"   length="10"  nullable="true" />
-        <field name="firstName" column="first_name" type="string"   length="255" nullable="true" />
-        <field name="lastName"  column="last_name"  type="string"   length="255" nullable="true" />
-        <field name="email"     column="email"      type="string"   length="255" nullable="true" />
-        <field name="subject"   column="subject"    type="string"   length="255" nullable="true" />
-        <field name="message"   column="message"    type="string"   length="255" nullable="true" />
-        <field name="createdAt" column="created_at" type="datetime"              />
-
+        <field name="title" column="title" type="string" length="10" nullable="true"/>
+        <field name="firstName" column="first_name" type="string" length="255" nullable="true"/>
+        <field name="lastName" column="last_name" type="string" length="255" nullable="true"/>
+        <field name="email" column="email" type="string" length="255" nullable="true"/>
+        <field name="subject" column="subject" type="string" length="255" nullable="true"/>
+        <field name="message" column="message" type="text" nullable="true"/>
+        <field name="createdAt" column="created_at" type="datetime"/>
     </mapped-superclass>
 
 </doctrine-mapping>

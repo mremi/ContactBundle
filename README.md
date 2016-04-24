@@ -56,6 +56,8 @@ Add MremiContactBundle in your composer.json:
 }
 ```
 
+Use tag ```1.3.0``` for versions of Symfony below 2.8.
+
 Now tell composer to download the bundle by running the command:
 
 ``` bash
