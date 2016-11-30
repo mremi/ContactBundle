@@ -3,23 +3,29 @@
 <container xmlns="http://symfony.com/schema/dic/services"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    
+    <parameters>
+        <parameter key="mremi_contact.form_factory.class">Mremi\ContactBundle\Form\Factory\FormFactory</parameter>
+        <parameter key="mremi_contact.contact_form_type.class">Mremi\ContactBundle\Form\Type\ContactType</parameter>
+        <parameter key="mremi_contact.subject_provider.noop.class">Mremi\ContactBundle\Provider\NoopSubjectProvider</parameter>
+    </parameters>
 
     <services>
-        <service id="mremi_contact.form_factory" class="Mremi\ContactBundle\Form\Factory\FormFactory">
+        <service id="mremi_contact.form_factory" class="%mremi_contact.form_factory.class%">
             <argument type="service" id="form.factory" />
             <argument />
             <argument />
             <argument />
         </service>
 
-        <service id="mremi_contact.contact_form_type" class="Mremi\ContactBundle\Form\Type\ContactType">
+        <service id="mremi_contact.contact_form_type" class="%mremi_contact.contact_form_type.class%">
             <tag name="form.type" alias="mremi_contact" />
             <argument />
             <argument />
             <argument />
         </service>
 
-        <service id="mremi_contact.subject_provider.noop" class="Mremi\ContactBundle\Provider\NoopSubjectProvider">
+        <service id="mremi_contact.subject_provider.noop" class="%mremi_contact.subject_provider.noop.class%">
         </service>
     </services>
 
