@@ -11,6 +11,9 @@ file that was distributed with this source code.
 
 {% trans_default_domain 'MremiContactBundle' %}
 
+{% block subject %}
+{% endblock %}
+
 {% block body_text %}
 {% autoescape false %}
 {{ 'mremi_contact.email_message_txt'|trans({
