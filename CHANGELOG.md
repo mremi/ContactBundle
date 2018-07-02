@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+### master (2018-07-02)
+
+* [BC BREAK] add Symfony 3 support
+* Travis CI : remove hhvm support
+* Travis CI : support php 7.2 
+
 ### master (2015-10-02)
 
 * [BC BREAK] The Doctrine manager registry is now injected in the ``ContactManager`` to fix Symfony 3.0 compatibility.
