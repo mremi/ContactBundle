@@ -11,6 +11,7 @@
 
 namespace Mremi\ContactBundle\DependencyInjection;
 
+use Mremi\ContactBundle\Form\Type\ContactType;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
@@ -80,7 +81,7 @@ class MremiContactExtension extends Extension
         $definition->replaceArgument(2, $config['form']['type']);
         $definition->replaceArgument(3, $config['form']['validation_groups']);
 
-        if ('mremi_contact' !== $config['form']['type']) {
+        if (ContactType::class !== $config['form']['type']) {
             $container->removeDefinition('mremi_contact.contact_form_type');
 
             return;

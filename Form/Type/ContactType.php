@@ -14,6 +14,11 @@ namespace Mremi\ContactBundle\Form\Type;
 use Mremi\ContactBundle\Model\Contact;
 use Mremi\ContactBundle\Provider\SubjectProviderInterface;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -60,26 +65,26 @@ class ContactType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', 'choice', array(
+            ->add('title', ChoiceType::class, array(
                 'choices'  => Contact::getTitles(),
                 'expanded' => true,
                 'label'    => 'mremi_contact.form.title',
             ))
-            ->add('firstName', 'text',  array('label' => 'mremi_contact.form.first_name'))
-            ->add('lastName',  'text',  array('label' => 'mremi_contact.form.last_name'))
-            ->add('email',     'email', array('label' => 'mremi_contact.form.email'));
+            ->add('firstName', TextType::class,  array('label' => 'mremi_contact.form.first_name'))
+            ->add('lastName',  TextType::class,  array('label' => 'mremi_contact.form.last_name'))
+            ->add('email',     EmailType::class, array('label' => 'mremi_contact.form.email'));
 
         if ($subjects = $this->subjectProvider->getSubjects()) {
             $builder
-                ->add('subject', 'choice', array(
+                ->add('subject', ChoiceType::class, array(
                     'choices' => $subjects,
                     'label'   => 'mremi_contact.form.subject',
                 ));
         } else {
-            $builder->add('subject', 'text', array('label' => 'mremi_contact.form.subject'));
+            $builder->add('subject', TextType::class, array('label' => 'mremi_contact.form.subject'));
         }
 
-        $builder->add('message', 'textarea', array('label' => 'mremi_contact.form.message'));
+        $builder->add('message', TextareaType::class, array('label' => 'mremi_contact.form.message'));
 
         if ($this->captchaType) {
             $builder->add('captcha', $this->captchaType, array(
@@ -87,7 +92,7 @@ class ContactType extends AbstractType
             ));
         }
 
-        $builder->add('save', 'submit', array('label' => 'mremi_contact.form_submit'));
+        $builder->add('save', SubmitType::class, array('label' => 'mremi_contact.form_submit'));
     }
 
     /**

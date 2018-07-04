@@ -99,7 +99,7 @@ class ContactController
 
         $form->handleRequest($request);
 
-        if ($form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $event = new FormEvent($form, $request);
             $this->eventDispatcher->dispatch(ContactEvents::FORM_SUCCESS, $event);
 
